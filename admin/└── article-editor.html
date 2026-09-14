@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Newsroom CMS Article Editor"
+  >
+
+  <title>Article Editor | Newsroom CMS</title>
+
+  <style>
+
+    /* =====================================================
+       ROOT
+    ===================================================== */
+
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+
+      --text: #111827;
+      --text-soft: #475569;
+      --muted: #64748b;
+
+      --primary: #111827;
+      --primary-hover: #1f2937;
+
+      --accent: #b42318;
+      --accent-soft: #fff1f0;
+
+      --success: #15803d;
+      --warning: #b45309;
+
+      --sidebar: #111827;
+      --sidebar-hover: #1f2937;
+
+      --radius: 10px;
+      --shadow:
+        0 5px 20px rgba(15, 23, 42, 0.06);
+    }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans Devanagari",
+        Arial,
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+
+      line-height: 1.5;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+    }
+
+
+    /* =====================================================
+       TOP HEADER
+    ===================================================== */
+
+    .topbar {
+      height: 64px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 24px;
+
+      background: var(--surface);
+
+      border-bottom:
+        1px solid var(--border);
+
+      position: sticky;
+      top: 0;
+
+      z-index: 100;
+    }
+
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+
+    .brand-mark {
+      width: 35px;
+      height: 35px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 8px;
+
+      background: var(--primary);
+      color: #fff;
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+
+    .save-status {
+      display: inline-flex;
+      align-items: center;
+
+      min-height: 32px;
+
+      padding: 0 11px;
+
+      border-radius: 999px;
+
+      background: #f1f5f9;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+
+    .save-status.saved {
+      background: #ecfdf3;
+      color: var(--success);
+    }
+
+
+    /* =====================================================
+       APPLICATION LAYOUT
+    ===================================================== */
+
+    .app-layout {
+      display: grid;
+
+      grid-template-columns:
+        220px
+        minmax(0, 1fr);
+
+      min-height:
+        calc(100vh - 64px);
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+    ===================================================== */
+
+    .sidebar {
+      background: var(--sidebar);
+      color: #fff;
+
+      padding: 18px 12px;
+    }
+
+
+    .sidebar-section-title {
+      margin: 10px 10px 8px;
+
+      color: #94a3b8;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      width: 100%;
+
+      padding: 10px 11px;
+
+      margin-bottom: 3px;
+
+      border-radius: 7px;
+
+      color: #cbd5e1;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+
+    .sidebar-link:hover,
+    .sidebar-link.active {
+      background:
+        var(--sidebar-hover);
+
+      color: #fff;
+    }
+
+
+    .sidebar-icon {
+      width: 20px;
+
+      text-align: center;
+
+      opacity: .9;
+    }
+
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
+
+    .main {
+      min-width: 0;
+
+      padding: 28px;
+    }
+
+
+    .page-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-start;
+
+      gap: 20px;
+
+      margin-bottom: 24px;
+    }
+
+
+    .page-title {
+      margin: 0;
+
+      font-size: 27px;
+
+      line-height: 1.2;
+
+      letter-spacing: -0.025em;
+    }
+
+
+    .page-description {
+      margin: 7px 0 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .btn {
+      min-height: 38px;
+
+      padding: 0 13px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: #fff;
+
+      color: var(--text);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .15s ease;
+    }
+
+
+    .btn:hover {
+      border-color:
+        var(--border-dark);
+
+      transform:
+        translateY(-1px);
+    }
+
+
+    .btn-primary {
+      background:
+        var(--primary);
+
+      border-color:
+        var(--primary);
+
+      color: #fff;
+    }
+
+
+    .btn-primary:hover {
+      background:
+        var(--primary-hover);
+    }
+
+
+    .btn-danger {
+      background:
+        var(--accent);
+
+      border-color:
+        var(--accent);
+
+      color: #fff;
+    }
+
+
+    .btn-soft {
+      background:
+        var(--accent-soft);
+
+      border-color:
+        #fecaca;
+
+      color:
+        var(--accent);
+    }
+
+
+    .btn-small {
+      min-height: 32px;
+
+      padding: 0 10px;
+
+      font-size: 11px;
+    }
+
+
+    /* =====================================================
+       EDITOR GRID
+    ===================================================== */
+
+    .editor-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        330px;
+
+      gap: 20px;
+
+      align-items: start;
+    }
+
+
+    .card {
+      margin-bottom: 18px;
+
+      background:
+        var(--surface);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius);
+
+      box-shadow:
+        var(--shadow);
+
+      overflow: hidden;
+    }
+
+
+    .card-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 14px 17px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+
+    .card-body {
+      padding: 18px;
+    }
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+
+    label {
+      display: block;
+
+      margin-bottom: 6px;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 8px;
+
+      background:
+        #fff;
+
+      color:
+        var(--text);
+
+      outline: none;
+    }
+
+
+    input,
+    select {
+      min-height: 40px;
+
+      padding:
+        0 11px;
+    }
+
+
+    textarea {
+      min-height: 100px;
+
+      padding:
+        10px 11px;
+
+      resize: vertical;
+
+      line-height: 1.55;
+    }
+
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color:
+        #94a3b8;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(15, 23, 42, .05);
+    }
+
+
+    .hint {
+      margin-top: 5px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    .two-column {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 12px;
+    }
+
+
+    /* =====================================================
+       ARTICLE TITLE
+    ===================================================== */
+
+    .title-input {
+      width: 100%;
+
+      padding:
+        2px 0 8px;
+
+      border: 0;
+
+      border-bottom:
+        1px solid transparent;
+
+      border-radius: 0;
+
+      background:
+        transparent;
+
+      font-size: 34px;
+
+      font-weight: 850;
+
+      line-height: 1.2;
+
+      letter-spacing:
+        -0.035em;
+
+      box-shadow: none;
+    }
+
+
+    .title-input:focus {
+      border-bottom:
+        1px solid var(--border-dark);
+
+      box-shadow: none;
+    }
+
+
+    .slug-row {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      gap: 8px;
+
+      align-items: center;
+    }
+
+
+    /* =====================================================
+       RICH TEXT EDITOR
+    ===================================================== */
+
+    .editor-wrapper {
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        9px;
+
+      overflow: hidden;
+    }
+
+
+    .toolbar {
+      display: flex;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 3px;
+
+      padding: 7px;
+
+      background:
+        var(--surface-soft);
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+
+    .toolbar-button {
+      min-width: 32px;
+      height: 31px;
+
+      padding:
+        0 7px;
+
+      border:
+        1px solid transparent;
+
+      border-radius:
+        6px;
+
+      background:
+        transparent;
+
+      color:
+        var(--text);
+
+      font-size: 12px;
+
+      font-weight: 750;
+    }
+
+
+    .toolbar-button:hover {
+      background:
+        #fff;
+
+      border-color:
+        var(--border);
+    }
+
+
+    .toolbar-button.active {
+      background:
+        #e2e8f0;
+    }
+
+
+    .toolbar-divider {
+      width: 1px;
+
+      height: 22px;
+
+      margin:
+        0 4px;
+
+      background:
+        var(--border);
+    }
+
+
+    #articleContent {
+      min-height:
+        520px;
+
+      padding:
+        24px;
+
+      outline: none;
+
+      background:
+        #fff;
+
+      font-size:
+        17px;
+
+      line-height:
+        1.85;
+    }
+
+
+    #articleContent:empty::before {
+      content:
+        attr(data-placeholder);
+
+      color:
+        #94a3b8;
+
+      pointer-events:
+        none;
+    }
+
+
+    #articleContent h2 {
+      margin:
+        30px 0 12px;
+
+      font-size:
+        25px;
+
+      line-height:
+        1.3;
+    }
+
+
+    #articleContent h3 {
+      margin:
+        25px 0 10px;
+
+      font-size:
+        21px;
+
+      line-height:
+        1.35;
+    }
+
+
+    #articleContent p {
+      margin:
+        0 0 18px;
+    }
+
+
+    #articleContent ul,
+    #articleContent ol {
+      margin:
+        0 0 20px;
+
+      padding-left:
+        28px;
+    }
+
+
+    #articleContent blockquote {
+      margin:
+        22px 0;
+
+      padding:
+        14px 18px;
+
+      border-left:
+        4px solid var(--accent);
+
+      background:
+        var(--accent-soft);
+
+      color:
+        var(--text-soft);
+    }
+
+
+    #articleContent img {
+      display: block;
+
+      max-width: 100%;
+
+      height: auto;
+
+      margin:
+        20px 0;
+
+      border-radius:
+        8px;
+    }
+
+
+    #articleContent a {
+      color:
+        #1d4ed8;
+    }
+
+
+    /* =====================================================
+       SOURCE BOX
+    ===================================================== */
+
+    .source-item {
+      padding:
+        12px;
+
+      margin-bottom:
+        10px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        8px;
+
+      background:
+        var(--surface-soft);
+    }
+
+
+    .source-item:last-child {
+      margin-bottom: 0;
+    }
+
+
+    .source-number {
+      display: inline-flex;
+
+      width: 22px;
+      height: 22px;
+
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 6px;
+
+      border-radius:
+        50%;
+
+      background:
+        #e2e8f0;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+    }
+
+
+    /* =====================================================
+       RIGHT PANEL
+    ===================================================== */
+
+    .sticky-panel {
+      position: sticky;
+
+      top: 82px;
+    }
+
+
+    /* =====================================================
+       FEATURED IMAGE
+    ===================================================== */
+
+    .image-preview {
+      width: 100%;
+
+      aspect-ratio:
+        16 / 9;
+
+      display: grid;
+
+      place-items: center;
+
+      margin-bottom:
+        10px;
+
+      border:
+        1px dashed #cbd5e1;
+
+      border-radius:
+        8px;
+
+      background:
+        #f8fafc;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
+      overflow:
+        hidden;
+    }
+
+
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+
+      object-fit:
+        cover;
+    }
+
+
+    /* =====================================================
+       TAGS
+    ===================================================== */
+
+    .tag-input {
+      min-height:
+        42px;
+    }
+
+
+    /* =====================================================
+       CHECK LIST
+    ===================================================== */
+
+    .check-list {
+      display:
+        grid;
+
+      gap:
+        10px;
+    }
+
+
+    .check-item {
+      display:
+        flex;
+
+      align-items:
+        flex-start;
+
+      gap:
+        9px;
+
+      margin:
+        0;
+
+      font-size:
+        12px;
+
+      font-weight:
+        600;
+
+      color:
+        var(--text-soft);
+    }
+
+
+    .check-item input {
+      width:
+        15px;
+
+      height:
+        15px;
+
+      min-height:
+        15px;
+
+      margin:
+        1px 0 0;
+    }
+
+
+    /* =====================================================
+       FACT CHECK
+    ===================================================== */
+
+    .verification-status {
+      display:
+        inline-flex;
+
+      padding:
+        4px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        #fff7ed;
+
+      color:
+        var(--warning);
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+    }
+
+
+    .verification-status.complete {
+      background:
+        #ecfdf3;
+
+      color:
+        var(--success);
+    }
+
+
+    .fact-summary {
+      margin:
+        10px 0 14px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      line-height:
+        1.55;
+    }
+
+
+    /* =====================================================
+       SEO
+    ===================================================== */
+
+    .seo-preview {
+      margin-top:
+        14px;
+
+      padding:
+        13px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        8px;
+
+      background:
+        #fff;
+    }
+
+
+    .seo-title-preview {
+      margin-bottom:
+        4px;
+
+      color:
+        #1a0dab;
+
+      font-size:
+        16px;
+
+      line-height:
+        1.3;
+    }
+
+
+    .seo-url-preview {
+      margin-bottom:
+        5px;
+
+      color:
+        #188038;
+
+      font-size:
+        11px;
+    }
+
+
+    .seo-description-preview {
+      color:
+        #4d5156;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.5;
+    }
+
+
+    .counter {
+      margin-top:
+        5px;
+
+      text-align:
+        right;
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+    }
+
+
+    /* =====================================================
+       BOTTOM SAVE BAR
+    ===================================================== */
+
+    .bottom-save-bar {
+      position:
+        sticky;
+
+      bottom:
+        15px;
+
+      z-index:
+        40;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        15px;
+
+      margin-top:
+        6px;
+
+      padding:
+        10px 12px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        11px;
+
+      background:
+        rgba(255,255,255,.96);
+
+      box-shadow:
+        0 10px 35px rgba(15,23,42,.14);
+
+      backdrop-filter:
+        blur(8px);
+    }
+
+
+    .bottom-save-info {
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+    }
+
+
+    .bottom-save-actions {
+      display:
+        flex;
+
+      gap:
+        7px;
+    }
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal {
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      z-index:
+        500;
+
+      display:
+        none;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        20px;
+
+      background:
+        rgba(15,23,42,.65);
+    }
+
+
+    .modal.open {
+      display:
+        flex;
+    }
+
+
+    .modal-window {
+      width:
+        min(900px, 100%);
+
+      max-height:
+        90vh;
+
+      overflow:
+        auto;
+
+      border-radius:
+        12px;
+
+      background:
+        #fff;
+
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.3);
+    }
+
+
+    .modal-header {
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
+      padding:
+        14px 18px;
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+
+    .modal-content {
+      padding:
+        25px;
+    }
+
+
+    .preview-article-title {
+      margin:
+        0 0 8px;
+
+      font-size:
+        38px;
+
+      line-height:
+        1.2;
+    }
+
+
+    .preview-meta {
+      margin-bottom:
+        24px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+    }
+
+
+    .preview-excerpt {
+      margin-bottom:
+        24px;
+
+      font-size:
+        18px;
+
+      line-height:
+        1.65;
+
+      font-weight:
+        650;
+    }
+
+
+    .preview-content {
+      font-size:
+        17px;
+
+      line-height:
+        1.85;
+    }
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    .toast {
+      position:
+        fixed;
+
+      right:
+        20px;
+
+      bottom:
+        20px;
+
+      z-index:
+        700;
+
+      max-width:
+        320px;
+
+      padding:
+        11px 15px;
+
+      border-radius:
+        8px;
+
+      background:
+        #111827;
+
+      color:
+        #fff;
+
+      font-size:
+        12px;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.2);
+
+      opacity:
+        0;
+
+      transform:
+        translateY(12px);
+
+      pointer-events:
+        none;
+
+      transition:
+        .2s ease;
+    }
+
+
+    .toast.show {
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1100px) {
+
+      .editor-grid {
+        grid-template-columns:
+          minmax(0, 1fr);
+      }
+
+      .sticky-panel {
+        position:
+          static;
+      }
+
+      .sidebar {
+        display:
+          none;
+      }
+
+      .app-layout {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .topbar {
+        height:
+          auto;
+
+        min-height:
+          60px;
+
+        padding:
+          10px 14px;
+
+        gap:
+          10px;
+      }
+
+      .top-actions {
+        gap:
+          5px;
+      }
+
+      .save-status {
+        display:
+          none;
+      }
+
+      .main {
+        padding:
+          16px;
+      }
+
+      .page-header {
+        flex-direction:
+          column;
+      }
+
+      .page-title {
+        font-size:
+          23px;
+      }
+
+      .header-actions {
+        width:
+          100%;
+      }
+
+      .header-actions .btn {
+        flex:
+          1;
+      }
+
+      .two-column {
+        grid-template-columns:
+          1fr;
+      }
+
+      .title-input {
+        font-size:
+          27px;
+      }
+
+      #articleContent {
+        min-height:
+          400px;
+
+        padding:
+          17px;
+
+        font-size:
+          16px;
+      }
+
+      .botto
+  /*
+   * =====================================================
+   * SAVE DRAFT
+   * =====================================================
+   */
+
+  function saveDraft() {
+
+    const article =
+      collectArticleData();
+
+    article.status = "draft";
+
+    localStorage.setItem(
+      "newsroom_article_draft",
+      JSON.stringify(article)
+    );
+
+    markSaved();
+
+    showToast(
+      "Draft successfully saved."
+    );
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * LOAD DRAFT
+   * =====================================================
+   */
+
+  function loadDraft() {
+
+    const saved =
+      localStorage.getItem(
+        "newsroom_article_draft"
+      );
+
+    if (!saved) {
+      return;
+    }
+
+
+    try {
+
+      const article =
+        JSON.parse(saved);
+
+
+      document.getElementById(
+        "articleTitle"
+      ).value =
+        article.title || "";
+
+
+      document.getElementById(
+        "articleSlug"
+      ).value =
+        article.slug || "";
+
+
+      document.getElementById(
+        "category"
+      ).value =
+        article.category || "";
+
+
+      document.getElementById(
+        "author"
+      ).value =
+        article.author || "";
+
+
+      document.getElementById(
+        "excerpt"
+      ).value =
+        article.excerpt || "";
+
+
+      document.getElementById(
+        "articleContent"
+      ).innerHTML =
+        article.content || "";
+
+
+      document.getElementById(
+        "status"
+      ).value =
+        article.status || "draft";
+
+
+      document.getElementById(
+        "publishDate"
+      ).value =
+        article.publishDate || "";
+
+
+      document.getElementById(
+        "visibility"
+      ).value =
+        article.visibility || "public";
+
+
+      document.getElementById(
+        "tags"
+      ).value =
+        Array.isArray(article.tags)
+          ? article.tags.join(", ")
+          : (article.tags || "");
+
+
+      document.getElementById(
+        "seoTitle"
+      ).value =
+        article.seoTitle || "";
+
+
+      document.getElementById(
+        "seoDescription"
+      ).value =
+        article.seoDescription || "";
+
+
+      /*
+       * ARTICLE OPTIONS
+       */
+
+      if (article.options) {
+
+        document.getElementById(
+          "featuredArticle"
+        ).checked =
+          !!article.options.featured;
+
+
+        document.getElementById(
+          "breakingArticle"
+        ).checked =
+          !!article.options.breaking;
+
+
+        document.getElementById(
+          "commentsEnabled"
+        ).checked =
+          article.options.comments !== false;
+
+
+        document.getElementById(
+          "socialEnabled"
+        ).checked =
+          article.options.socialSharing !== false;
+
+      }
+
+
+      /*
+       * FACT CHECK
+       */
+
+      if (article.factCheck) {
+
+        document.getElementById(
+          "factPrimary"
+        ).checked =
+          !!article.factCheck.primarySource;
+
+
+        document.getElementById(
+          "factNames"
+        ).checked =
+          !!article.factCheck.namesDatesLocations;
+
+
+        document.getElementById(
+          "factClaims"
+        ).checked =
+          !!article.factCheck.majorClaims;
+
+
+        document.getElementById(
+          "factMedia"
+        ).checked =
+          !!article.factCheck.mediaContext;
+
+      }
+
+
+      /*
+       * SOURCES
+       */
+
+      if (
+        Array.isArray(
+          article.sources
+        ) &&
+        article.sources.length
+      ) {
+
+        const container =
+          document.getElementById(
+            "sourcesContainer"
+          );
+
+
+        container.innerHTML = "";
+
+
+        article.sources.forEach(
+          function(source, index) {
+
+            const item =
+              document.createElement(
+                "div"
+              );
+
+
+            item.className =
+              "source-item";
+
+
+            item.innerHTML = `
+
+              <div
+                style="
+                  display:flex;
+                  align-items:center;
+                  justify-content:space-between;
+                  margin-bottom:8px;
+                "
+              >
+
+                <div>
+
+                  <span class="source-number">
+                    ${index + 1}
+                  </span>
+
+                  <strong
+                    style="font-size:11px;"
+                  >
+                    Source
+                  </strong>
+
+                </div>
+
+
+                <button
+                  class="btn btn-small"
+                  type="button"
+                  onclick="removeSource(this)"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+
+              <input
+                type="text"
+                class="source-input"
+                value="${escapeHtmlAttribute(source)}"
+                placeholder="Source name / URL / document reference"
+                oninput="markUnsaved()"
+              >
+
+            `;
+
+
+            container.appendChild(
+              item
+            );
+
+          }
+        );
+
+
+        sourceCounter =
+          article.sources.length;
+
+      }
+
+
+      /*
+       * FEATURED IMAGE
+       */
+
+      if (
+        article.featuredImage
+      ) {
+
+        featuredImageData =
+          article.featuredImage;
+
+
+        document.getElementById(
+          "imagePreview"
+        ).innerHTML =
+
+          `<img
+            src="${article.featuredImage}"
+            alt="Featured image preview"
+          >`;
+
+      }
+
+
+      updateSEO();
+
+      updateFactStatus();
+
+      markSaved();
+
+
+    } catch (error) {
+
+      console.error(
+        "Draft loading failed:",
+        error
+      );
+
+      showToast(
+        "Saved draft पढ़ने में समस्या हुई।"
+      );
+
+    }
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * HTML ATTRIBUTE ESCAPE
+   * =====================================================
+   */
+
+  function escapeHtmlAttribute(value) {
+
+    return String(value)
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      );
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * ARTICLE VALIDATION
+   * =====================================================
+   */
+
+  function validateArticle() {
+
+    const article =
+      collectArticleData();
+
+
+    if (!article.title) {
+
+      showToast(
+        "Article title दर्ज करें।"
+      );
+
+      document.getElementById(
+        "articleTitle"
+      ).focus();
+
+      return false;
+
+    }
+
+
+    if (!article.slug) {
+
+      generateSlug();
+
+      if (
+        !document.getElementById(
+          "articleSlug"
+        ).value
+      ) {
+
+        showToast(
+          "Article slug दर्ज करें।"
+        );
+
+        return false;
+
+      }
+
+    }
+
+
+    if (!article.category) {
+
+      showToast(
+        "Article category चुनें।"
+      );
+
+      document.getElementById(
+        "category"
+      ).focus();
+
+      return false;
+
+    }
+
+
+    if (!article.author) {
+
+      showToast(
+        "Author दर्ज करें।"
+      );
+
+      document.getElementById(
+        "author"
+      ).focus();
+
+      return false;
+
+    }
+
+
+    if (!article.content) {
+
+      showToast(
+        "Article content लिखें।"
+      );
+
+      document.getElementById(
+        "articleContent"
+      ).focus();
+
+      return false;
+
+    }
+
+
+    return true;
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * PUBLISH ARTICLE
+   * =====================================================
+   */
+
+  function publishArticle() {
+
+    if (!validateArticle()) {
+      return;
+    }
+
+
+    const article =
+      collectArticleData();
+
+
+    /*
+     * Fact-check warning
+     */
+
+    const factChecks = [
+
+      article.factCheck.primarySource,
+
+      article.factCheck.namesDatesLocations,
+
+      article.factCheck.majorClaims,
+
+      article.factCheck.mediaContext
+
+    ];
+
+
+    const factCheckComplete =
+      factChecks.every(
+        Boolean
+      );
+
+
+    if (!factCheckComplete) {
+
+      const continuePublishing =
+        confirm(
+          "Fact Check अभी पूरा नहीं हुआ है।\n\n" +
+          "क्या आप फिर भी article publish करना चाहते हैं?"
+        );
+
+
+      if (!continuePublishing) {
+        return;
+      }
+
+    }
+
+
+    /*
+     * Final confirmation
+     */
+
+    const confirmed =
+      confirm(
+        "क्या आप इस article को publish करना चाहते हैं?"
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    article.status =
+      "published";
+
+
+    article.publishedAt =
+      new Date().toISOString();
+
+
+    /*
+     * TEMPORARY FRONTEND STORAGE
+     *
+     * Production backend आने तक
+     * localStorage इस्तेमाल हो रहा है।
+     */
+
+    localStorage.setItem(
+      "newsroom_published_article",
+      JSON.stringify(article)
+    );
+
+
+    localStorage.setItem(
+      "newsroom_article_draft",
+      JSON.stringify(article)
+    );
+
+
+    document.getElementById(
+      "status"
+    ).value =
+      "published";
+
+
+    markSaved();
+
+
+    showToast(
+      "Article successfully published."
+    );
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * PREVIEW
+   * =====================================================
+   */
+
+  function openPreview() {
+
+    const article =
+      collectArticleData();
+
+
+    document.getElementById(
+      "previewTitle"
+    ).textContent =
+      article.title ||
+      "Untitled Article";
+
+
+    document.getElementById(
+      "previewMeta"
+    ).textContent =
+
+      [
+        article.category,
+        article.author
+      ]
+      .filter(Boolean)
+      .join(" · ") ||
+
+      "Category · Author";
+
+
+    document.getElementById(
+      "previewExcerpt"
+    ).textContent =
+      article.excerpt || "";
+
+
+    document.getElementById(
+      "previewContent"
+    ).innerHTML =
+
+      article.content ||
+
+      "<p>Article content अभी उपलब्ध नहीं है।</p>";
+
+
+    document.getElementById(
+      "previewModal"
+    ).classList.add(
+      "open"
+    );
+
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * CLOSE PREVIEW
+   * =====================================================
+   */
+
+  function closePreview() {
+
+    document.getElementById(
+      "previewModal"
+    ).classList.remove(
+      "open"
+    );
+
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * MODAL BACKDROP CLICK
+   * =====================================================
+   */
+
+  document
+    .getElementById(
+      "previewModal"
+    )
+    .addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target ===
+          this
+        ) {
+
+          closePreview();
+
+        }
+
+      }
+    );
+
+
+
+  /*
+   * =====================================================
+   * ESCAPE KEY
+   * =====================================================
+   */
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        closePreview();
+
+      }
+
+    }
+  );
+
+
+
+  /*
+   * =====================================================
+   * KEYBOARD SHORTCUT
+   * Ctrl + S / Cmd + S
+   * =====================================================
+   */
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        (event.ctrlKey ||
+         event.metaKey) &&
+        event.key.toLowerCase() === "s"
+      ) {
+
+        event.preventDefault();
+
+        saveDraft();
+
+      }
+
+    }
+  );
+
+
+
+  /*
+   * =====================================================
+   * EDITOR INPUT TRACKING
+   * =====================================================
+   */
+
+  document
+    .getElementById(
+      "articleContent"
+    )
+    .addEventListener(
+      "input",
+      function() {
+
+        markUnsaved();
+
+      }
+    );
+
+
+
+  /*
+   * =====================================================
+   * EDITOR PASTE CLEANUP
+   * =====================================================
+   */
+
+  document
+    .getElementById(
+      "articleContent"
+    )
+    .addEventListener(
+      "paste",
+      function(event) {
+
+        /*
+         * Plain text paste.
+         *
+         * इससे external websites की
+         * अनावश्यक styling editor में
+         * नहीं आएगी।
+         */
+
+        event.preventDefault();
+
+
+        const text =
+          event.clipboardData
+            .getData(
+              "text/plain"
+            );
+
+
+        document.execCommand(
+          "insertText",
+          false,
+          text
+        );
+
+
+        markUnsaved();
+
+      }
+    );
+
+
+
+  /*
+   * =====================================================
+   * AUTOSAVE
+   *
+   * अभी localStorage आधारित।
+   * बाद में API autosave से replace किया जा सकता है।
+   * =====================================================
+   */
+
+  let autosaveTimer = null;
+
+
+  function scheduleAutosave() {
+
+    clearTimeout(
+      autosaveTimer
+    );
+
+
+    autosaveTimer =
+      setTimeout(
+        function() {
+
+          const article =
+            collectArticleData();
+
+
+          /*
+           * Empty article को autosave
+           * नहीं करना है।
+           */
+
+          if (
+            !article.title &&
+            !article.content
+          ) {
+
+            return;
+
+          }
+
+
+          localStorage.setItem(
+            "newsroom_article_autosave",
+            JSON.stringify(article)
+          );
+
+
+          document.getElementById(
+            "saveInfo"
+          ).textContent =
+            "Autosaved locally";
+
+
+        },
+        1500
+      );
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * INPUT EVENTS FOR AUTOSAVE
+   * =====================================================
+   */
+
+  document.addEventListener(
+    "input",
+    function(event) {
+
+      if (
+        event.target.closest(
+          ".main"
+        )
+      ) {
+
+        markUnsaved();
+
+        scheduleAutosave();
+
+      }
+
+    }
+  );
+
+
+
+  /*
+   * =====================================================
+   * DEFAULT DATE/TIME
+   * =====================================================
+   */
+
+  function setDefaultPublishDate() {
+
+    const field =
+      document.getElementById(
+        "publishDate"
+      );
+
+
+    if (field.value) {
+      return;
+    }
+
+
+    const now =
+      new Date();
+
+
+    const local =
+      new Date(
+        now.getTime() -
+        now.getTimezoneOffset() * 60000
+      )
+      .toISOString()
+      .slice(
+        0,
+        16
+      );
+
+
+    field.value =
+      local;
+
+  }
+
+
+
+  /*
+   * =====================================================
+   * INITIALIZE
+   * =====================================================
+   */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+      setDefaultPublishDate();
+
+      loadDraft();
+
+      updateSEO();
+
+      updateFactStatus();
+
+    }
+  );
+
+
+
+  /*
+   * =====================================================
+   * BEFORE LEAVING PAGE
+   * =====================================================
+   */
+
+  window.addEventListener(
+    "beforeunload",
+    function(event) {
+
+      const status =
+        document.getElementById(
+          "saveStatus"
+        );
+
+
+      if (
+        !status.classList.contains(
+          "saved"
+        )
+      ) {
+
+        event.preventDefault();
+
+        event.returnValue = "";
+
+      }
+
+    }
+  );
+
+</script>
+
+
+</body>
+</html>
