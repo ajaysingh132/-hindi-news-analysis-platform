@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Social Generator — Newsroom</title>
+
+  <meta
+    name="description"
+    content="Newsroom Social Content Generator — प्रकाशित समाचारों के लिए सोशल मीडिया सामग्री तैयार करें।"
+  >
+
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --border: #dfe4ea;
+      --text: #17202a;
+      --muted: #687381;
+      --primary: #1d4ed8;
+      --primary-dark: #1e40af;
+      --success: #15803d;
+      --danger: #b91c1c;
+      --warning: #b45309;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans Devanagari",
+        Arial,
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       APP HEADER
+       ========================= */
+
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #111827;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-inner {
+      width: min(1400px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: #2563eb;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 750;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      margin: 3px 0 0;
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-link {
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #dbeafe;
+      font-size: 13px;
+      transition: background 0.2s ease;
+    }
+
+    .header-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* =========================
+       PAGE
+       ========================= */
+
+    .page {
+      width: min(1400px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .page-heading {
+      margin-bottom: 24px;
+    }
+
+    .page-heading h1 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 34px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .page-heading p {
+      margin: 8px 0 0;
+      max-width: 800px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       STATUS BAR
+       ========================= */
+
+    .status-bar {
+      display: none;
+      margin-bottom: 20px;
+      padding: 12px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      font-size: 13px;
+    }
+
+    .status-bar.show {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .status-bar.success {
+      color: var(--success);
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .status-bar.error {
+      color: var(--danger);
+      border-color: #fecaca;
+      background: #fef2f2;
+    }
+
+    .status-bar.info {
+      color: var(--primary-dark);
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    /* =========================
+       MAIN GRID
+       ========================= */
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .panel-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .panel-body {
+      padding: 20px;
+    }
+
+    /* =========================
+       FORM
+       ========================= */
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .field-hint {
+      margin: -2px 0 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--text);
+      padding: 10px 12px;
+      outline: none;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="url"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .article-input {
+      min-height: 120px;
+    }
+
+    .character-count {
+      margin-top: 5px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .article-meta {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface-soft);
+    }
+
+    .article-meta.show {
+      display: block;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 4px 0;
+      font-size: 12px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-weight: 650;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    /* =========================
+       PLATFORM SELECTOR
+       ========================= */
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .platform-option {
+      position: relative;
+    }
+
+    .platform-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .platform-option label {
+      display: block;
+      padding: 10px 9px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--text);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .platform-option label:hover {
+      border-color: #93c5fd;
+      background: #f8fbff;
+    }
+
+    .platform-option input:checked + label {
+      border-color: var(--primary);
+      background: #eff6ff;
+      color: var(--primary-dark);
+    }
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 9px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      transition:
+        transform 0.15s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-soft);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .btn-danger {
+      background: #ffffff;
+      border-color: #fecaca;
+      color: var(--danger);
+    }
+
+    .btn-small {
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+
+    .generate-button {
+      width: 100%;
+      margin-top: 4px;
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+
+    /* =========================
+       OUTPUT AREA
+       ========================= */
+
+    .output-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .output-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .output-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--surface-soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .output-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .platform-badge {
+      min-width: 30px;
+      height: 28px;
+      padding: 0 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      background: #e5e7eb;
+      color: #374151;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .output-title strong {
+      font-size: 13px;
+    }
+
+    .output-actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .output-body {
+      padding: 14px;
+    }
+
+    .output-text {
+      width: 100%;
+      min-height: 125px;
+      border: 0;
+      padding: 0;
+      resize
+    /*
+     * ==========================================
+     * PART 2/3
+     * PLATFORM CONTENT GENERATION
+     * ==========================================
+     */
+
+    const PLATFORM_LIMITS = {
+      facebook: 63206,
+      x: 280,
+      instagram: 2200,
+      whatsapp: 65536,
+      telegram: 4096,
+      linkedin: 3000
+    };
+
+
+    const PLATFORM_NAMES = {
+      facebook: "Facebook",
+      x: "X / Twitter",
+      instagram: "Instagram",
+      whatsapp: "WhatsApp",
+      telegram: "Telegram",
+      linkedin: "LinkedIn"
+    };
+
+
+    const PLATFORM_BADGES = {
+      facebook: "FB",
+      x: "X",
+      instagram: "IG",
+      whatsapp: "WA",
+      telegram: "TG",
+      linkedin: "LI"
+    };
+
+
+    function cleanText(value) {
+      return normalizeWhitespace(value)
+        .replace(/\n{3,}/g, "\n\n");
+    }
+
+
+    function getHashtagText(input) {
+      if (!input.hashtags) {
+        return "";
+      }
+
+      const tags = input.hashtags
+        .split(/[\s,]+/)
+        .map(tag => tag.trim())
+        .filter(Boolean)
+        .map(tag => {
+          const clean = tag.replace(/^#+/, "");
+
+          return clean
+            ? `#${clean.replace(/\s+/g, "")}`
+            : "";
+        })
+        .filter(Boolean);
+
+      return Array.from(new Set(tags)).join(" ");
+    }
+
+
+    function buildArticleLink(input) {
+      if (!input.url) {
+        return "";
+      }
+
+      return input.url;
+    }
+
+
+    function trimToLimit(text, limit) {
+      const value = String(text || "");
+
+      if (value.length <= limit) {
+        return value;
+      }
+
+      if (limit <= 3) {
+        return value.slice(0, limit);
+      }
+
+      return value
+        .slice(0, limit - 3)
+        .trimEnd() + "...";
+    }
+
+
+    function generateFacebookContent(input) {
+      const hashtags = getHashtagText(input);
+      const url = buildArticleLink(input);
+
+      const parts = [
+        input.title,
+        "",
+        input.summary
+      ];
+
+      if (url) {
+        parts.push("", `पूरी खबर: ${url}`);
+      }
+
+      if (hashtags) {
+        parts.push("", hashtags);
+      }
+
+      return trimToLimit(
+        parts.join("\n"),
+        PLATFORM_LIMITS.facebook
+      );
+    }
+
+
+    function generateXContent(input) {
+      const hashtags = getHashtagText(input);
+      const url = buildArticleLink(input);
+
+      let content =
+        `${input.title}\n\n${input.summary}`;
+
+      if (url) {
+        content += `\n\n${url}`;
+      }
+
+      if (hashtags) {
+        content += `\n${hashtags}`;
+      }
+
+      return trimToLimit(
+        content,
+        PLATFORM_LIMITS.x
+      );
+    }
+
+
+    function generateInstagramContent(input) {
+      const hashtags = getHashtagText(input);
+      const url = buildArticleLink(input);
+
+      const parts = [
+        `📰 ${input.title}`,
+        "",
+        input.summary
+      ];
+
+      if (url) {
+        parts.push(
+          "",
+          `पूरी खबर: ${url}`
+        );
+      }
+
+      if (hashtags) {
+        parts.push(
+          "",
+          hashtags
+        );
+      }
+
+      return trimToLimit(
+        parts.join("\n"),
+        PLATFORM_LIMITS.instagram
+      );
+    }
+
+
+    function generateWhatsAppContent(input) {
+      const hashtags = getHashtagText(input);
+      const url = buildArticleLink(input);
+
+      const parts = [
+        `📰 ${input.title}`,
+        "",
+        input.summary
+      ];
+
+      if (url) {
+        parts.push(
+          "",
+          `पढ़ें: ${url}`
+        );
+      }
+
+      if (hashtags) {
+        parts.push(
+          "",
+          hashtags
+        );
+      }
+
+      return trimToLimit(
+        parts.join("\n"),
+        PLATFORM_LIMITS.whatsapp
+      );
+    }
+
+
+    function generateTelegramContent(input) {
+      const hashtags = getHashtagText(input);
+      const url = buildArticleLink(input);
+
+      const parts = [
+        `📰 ${input.title}`,
+        "",
+        input.summary
+      ];
+
+      if (url) {
+        parts.push(
+          "",
+          `पूरी खबर पढ़ें: ${url}`
+        );
+      }
+
+      if (hashtags) {
+        parts.push(
+          "",
+          hashtags
+        );
+      }
+
+      return trimToLimit(
+        parts.join("\n"),
+        PLATFORM_LIMITS.telegram
+      );
+    }
+
+
+    function generateLinkedInContent(input) {
+      const hashtags = getHashtagText(input);
+      const url = buildArticleLink(input);
+
+      const parts = [
+        input.title,
+        "",
+        input.summary
+      ];
+
+      if (url) {
+        parts.push(
+          "",
+          `पूरी खबर: ${url}`
+        );
+      }
+
+      if (hashtags) {
+        parts.push(
+          "",
+          hashtags
+        );
+      }
+
+      return trimToLimit(
+        parts.join("\n"),
+        PLATFORM_LIMITS.linkedin
+      );
+    }
+
+
+    function generatePlatformContent(platform, input) {
+
+      switch (platform) {
+
+        case "facebook":
+          return generateFacebookContent(input);
+
+        case "x":
+          return generateXContent(input);
+
+        case "instagram":
+          return generateInstagramContent(input);
+
+        case "whatsapp":
+          return generateWhatsAppContent(input);
+
+        case "telegram":
+          return generateTelegramContent(input);
+
+        case "linkedin":
+          return generateLinkedInContent(input);
+
+        default:
+          return "";
+      }
+    }
+
+
+    function getLimitStatus(text, limit) {
+      const length = String(text || "").length;
+
+      if (length > limit) {
+        return {
+          className: "over-limit",
+          label: `${length} / ${limit} — सीमा से अधिक`
+        };
+      }
+
+      return {
+        className: "within-limit",
+        label: `${length} / ${limit}`
+      };
+    }
+
+
+    function createOutputCard(platform, content) {
+
+      const safePlatform =
+        escapeHtml(platform);
+
+      const safeName =
+        escapeHtml(
+          PLATFORM_NAMES[platform] || platform
+        );
+
+      const badge =
+        escapeHtml(
+          PLATFORM_BADGES[platform] || "S"
+        );
+
+      const safeContent =
+        escapeHtml(content);
+
+      const limit =
+        PLATFORM_LIMITS[platform] || 0;
+
+      const status =
+        getLimitStatus(content, limit);
+
+      return `
+        <article
+          class="output-card"
+          data-platform="${safePlatform}"
+        >
+
+          <div class="output-card-header">
+
+            <div class="output-title">
+
+              <span class="platform-badge">
+                ${badge}
+              </span>
+
+              <strong>
+                ${safeName}
+              </strong>
+
+            </div>
+
+
+            <div class="output-actions">
+
+              <button
+                class="btn btn-secondary btn-small copy-output"
+                type="button"
+                data-platform="${safePlatform}"
+              >
+                Copy
+              </button>
+
+              <button
+                class="btn btn-secondary btn-small regenerate-output"
+                type="button"
+                data-platform="${safePlatform}"
+              >
+                Regenerate
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="output-body">
+
+            <textarea
+              class="output-text"
+              data-output-platform="${safePlatform}"
+              aria-label="${safeName} generated content"
+            >${safeContent}</textarea>
+
+
+            <div class="output-footer">
+
+              <span class="output-count ${status.className}">
+                ${status.label}
+              </span>
+
+              <span>
+                Platform optimized
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+      `;
+    }
+
+
+    function renderOutputs(results) {
+
+      if (!results.length) {
+
+        elements.outputContainer.innerHTML = `
+          <div class="empty-state">
+
+            <div class="empty-icon">!</div>
+
+            <h3>
+              कोई platform selected नहीं है
+            </h3>
+
+            <p>
+              कम-से-कम एक social platform चुनें।
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      elements.outputContainer.innerHTML = `
+        <div class="output-stack">
+          ${results
+            .map(item =>
+              createOutputCard(
+                item.platform,
+                item.content
+              )
+            )
+            .join("")}
+        </div>
+      `;
+
+
+      attachOutputEvents();
+    }
+
+
+    function updateOutputCounter(textarea) {
+
+      const platform =
+        textarea.dataset.outputPlatform;
+
+      const limit =
+        PLATFORM_LIMITS[platform] || 0;
+
+      const status =
+        getLimitStatus(
+          textarea.value,
+          limit
+        );
+
+      const card =
+        textarea.closest(".output-card");
+
+      if (!card) {
+        return;
+      }
+
+      const counter =
+        card.querySelector(".output-count");
+
+      if (!counter) {
+        return;
+      }
+
+      counter.textContent =
+        status.label;
+
+      counter.className =
+        `output-count ${status.className}`;
+    }
+
+
+    async function copyText(text) {
+
+      if (!text) {
+        showStatus(
+          "Copy करने के लिए कोई content उपलब्ध नहीं है।",
+          "error"
+        );
+
+        return false;
+      }
+
+
+      try {
+
+        await navigator.clipboard.writeText(text);
+
+        return true;
+
+      } catch (error) {
+
+        /*
+         * Clipboard API unavailable होने की स्थिति में
+         * legacy fallback।
+         */
+
+        try {
+
+          const temporary =
+            document.createElement("textarea");
+
+          temporary.value = text;
+
+          temporary.style.position = "fixed";
+          temporary.style.opacity = "0";
+
+          document.body.appendChild(
+            temporary
+          );
+
+          temporary.focus();
+          temporary.select();
+
+          const copied =
+            document.execCommand("copy");
+
+          temporary.remove();
+
+          return copied;
+
+        } catch (fallbackError) {
+
+          console.error(
+            "Copy failed:",
+            fallbackError
+          );
+
+          return false;
+        }
+      }
+    }
+
+
+    async function copyOutput(platform) {
+
+      const textarea =
+        document.querySelector(
+          `[data-output-platform="${platform}"]`
+        );
+
+      if (!textarea) {
+        showStatus(
+          "Content नहीं मिला।",
+          "error"
+        );
+
+        return;
+      }
+
+      const copied =
+        await copyText(
+          textarea.value
+        );
+
+      if (copied) {
+
+        showStatus(
+          `${PLATFORM_NAMES[platform]} content clipboard में copy हो गया।`,
+          "success"
+        );
+
+      } else {
+
+        showStatus(
+          "Content copy नहीं हो सका।",
+          "error"
+        );
+      }
+    }
+
+
+    function regeneratePlatform(platform) {
+
+      const input =
+        getCurrentInput();
+
+      if (!input.title || !input.summary) {
+
+        showStatus(
+          "Regenerate करने से पहले title और summary भरें।",
+          "error"
+        );
+
+        return;
+      }
+
+
+      const content =
+        generatePlatformContent(
+          platform,
+          input
+        );
+
+
+      const textarea =
+        document.querySelector(
+          `[data-output-platform="${platform}"]`
+        );
+
+
+      if (!textarea) {
+        return;
+      }
+
+
+      textarea.value =
+        content;
+
+      updateOutputCounter(
+        textarea
+      );
+
+
+      showStatus(
+        `${PLATFORM_NAMES[platform]} content regenerate हो गया।`,
+        "success"
+      );
+    }
+
+
+    function attachOutputEvents() {
+
+      const copyButtons =
+        document.querySelectorAll(
+          ".copy-output"
+        );
+
+      copyButtons.forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+            copyOutput(
+              button.dataset.platform
+            );
+          }
+        );
+
+      });
+
+
+      const regenerateButtons =
+        document.querySelectorAll(
+          ".regenerate-output"
+        );
+
+      regenerateButtons.forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+            regeneratePlatform(
+              button.dataset.platform
+            );
+          }
+        );
+
+      });
+
+
+      const textareas =
+        document.querySelectorAll(
+          ".output-text"
+        );
+
+      textareas.forEach(textarea => {
+
+        textarea.addEventListener(
+          "input",
+          () => {
+            updateOutputCounter(
+              textarea
+            );
+          }
+        );
+
+      });
+    }
+
+
+    function generateSocialContent() {
+
+      if (!validateInput()) {
+        return;
+      }
+
+
+      const input =
+        getCurrentInput();
+
+      const platforms =
+        getSelectedPlatforms();
+
+
+      const results =
+        platforms.map(platform => ({
+          platform,
+          content:
+            generatePlatformContent(
+              platform,
+              input
+        /*
+     * ==========================================
+     * PART 3/3
+     * INITIALIZATION + ARTICLE INTEGRATION
+     * ==========================================
+     */
+
+    function autoLoadPublishedArticle() {
+
+      const article =
+        readPublishedArticle();
+
+      if (!article) {
+        return;
+      }
+
+      /*
+       * अगर Published Article मौजूद है तो
+       * उसे automatically form में load करें।
+       */
+
+      applyPublishedArticle(article);
+    }
+
+
+    function initializeGenerator() {
+
+      updateSummaryCount();
+
+      /*
+       * पहले से प्रकाशित article उपलब्ध हो तो
+       * उसे automatically load करें।
+       */
+
+      autoLoadPublishedArticle();
+
+      /*
+       * URL में article slug होने पर future
+       * deep-link integration के लिए जगह।
+       */
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const requestedSlug =
+        params.get("slug");
+
+      if (
+        requestedSlug &&
+        !elements.url.value
+      ) {
+
+        elements.url.value =
+          `/article.html?slug=${encodeURIComponent(
+            requestedSlug
+          )}`;
+
+      }
+    }
+
+
+    /*
+     * ==========================================
+     * FUTURE AI INTEGRATION BOUNDARY
+     * ==========================================
+     *
+     * आगे चलकर इसी function को AI API से
+     * जोड़ा जाएगा।
+     *
+     * अभी rule-based generator उपयोग हो रहा है।
+     *
+     * इससे UI और बाकी CMS architecture को
+     * दोबारा लिखने की आवश्यकता नहीं होगी।
+     */
+
+    async function generateWithAI(platform, input) {
+
+      /*
+       * Future implementation:
+       *
+       * const response = await fetch(
+       *   "/api/social/generate",
+       *   {
+       *     method: "POST",
+       *     headers: {
+       *       "Content-Type": "application/json"
+       *     },
+       *     body: JSON.stringify({
+       *       platform,
+       *       title: input.title,
+       *       summary: input.summary,
+       *       tone: input.tone,
+       *       hashtags: input.hashtags,
+       *       url: input.url
+       *     })
+       *   }
+       * );
+       *
+       * return response.json();
+       */
+
+      return generatePlatformContent(
+        platform,
+        input
+      );
+    }
+
+
+    /*
+     * ==========================================
+     * KEYBOARD SHORTCUTS
+     * ==========================================
+     */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        /*
+         * Ctrl + Enter / Android keyboard
+         * environments में उपलब्ध होने पर
+         * content generation।
+         */
+
+        if (
+          (event.ctrlKey || event.metaKey) &&
+          event.key === "Enter"
+        ) {
+
+          event.preventDefault();
+
+          generateSocialContent();
+        }
+
+      }
+    );
+
+
+    /*
+     * ==========================================
+     * INITIALIZE
+     * ==========================================
+     */
+
+    if (
+      document.readyState === "loading"
+    ) {
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        initializeGenerator
+      );
+
+    } else {
+
+      initializeGenerator();
+
+    }
+
+  </script>
+
+</body>
+</html>        )
+        }));
+
+
+      renderOutputs(
+        results
+      );
+
+
+      showStatus(
+        `${results.length} platform के लिए social content तैयार हो गया।`,
+        "success"
+      );
+    }
+
+
+    elements.generateButton.addEventListener(
+      "click",
+      generateSocialContent
+    );
+      
