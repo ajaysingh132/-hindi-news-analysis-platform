@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Newsroom Dashboard | GBSBFORYOU</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Devanagari","Nirmala UI",Arial,sans-serif;background:#f4f6f8;color:#17202a}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+
+.sidebar{
+ position:fixed;left:0;top:0;bottom:0;width:240px;
+ background:#111827;color:white;padding:20px 14px;
+ overflow:auto
+}
+.logo{padding:5px 10px 20px;border-bottom:1px solid #374151;margin-bottom:18px}
+.logo b{font-size:20px}.logo small{display:block;color:#9ca3af;margin-top:5px}
+.nav-title{font-size:10px;color:#6b7280;margin:18px 10px 7px;text-transform:uppercase}
+.nav a{display:block;padding:10px 12px;border-radius:7px;color:#d1d5db;font-size:14px;margin:2px 0}
+.nav a:hover,.nav a.active{background:#1f2937;color:#fff}
+
+.main{margin-left:240px;min-height:100vh}
+.topbar{
+ height:65px;background:#fff;border-bottom:1px solid #e5e7eb;
+ display:flex;align-items:center;justify-content:space-between;padding:0 25px;
+ position:sticky;top:0;z-index:5
+}
+.topbar b{font-size:17px}
+.user{display:flex;align-items:center;gap:8px;font-size:13px}
+.avatar{width:34px;height:34px;border-radius:50%;background:#e5e7eb;display:grid;place-items:center;font-weight:bold}
+
+.content{padding:25px;max-width:1450px;margin:auto}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.header h1{font-size:26px;margin:0 0 5px}
+.header p{margin:0;color:#6b7280;font-size:13px}
+
+.btn{
+ border:0;border-radius:7px;padding:10px 15px;cursor:pointer;font-weight:600
+}
+.primary{background:#111827;color:white}
+.primary:hover{background:#374151}
+
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:9px}
+.stat{padding:17px}
+.stat small{color:#6b7280;font-size:12px}
+.stat strong{display:block;font-size:26px;margin-top:8px}
+.stat span{font-size:11px;color:#6b7280}
+
+.grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+
+.panel{background:#fff;border:1px solid #e5e7eb;border-radius:9px;overflow:hidden}
+.panel-head{
+ padding:15px 17px;border-bottom:1px solid #e5e7eb;
+ display:flex;justify-content:space-between;align-items:center
+}
+.panel-head b{font-size:15px}
+
+.filters{
+ padding:13px 16px;border-bottom:1px solid #e5e7eb;
+ display:flex;gap:9px;flex-wrap:wrap
+}
+.search{flex:1;min-width:200px}
+.search input,input,select{
+ width:100%;padding:9px 10px;border:1px solid #d1d5db;border-radius:6px;
+ background:#fff;outline:none
+}
+.filters select{width:auto;min-width:130px}
+
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th{
+ text-align:left;background:#f9fafb;color:#6b7280;
+ font-size:11px;padding:11px 13px;border-bottom:1px solid #e5e7eb
+}
+td{padding:13px;border-bottom:1px solid #e5e7eb;font-size:12px}
+tr:last-child td{border-bottom:0}
+.title{font-weight:700;min-width:250px;line-height:1.45}
+.meta{color:#9ca3af;font-size:10px;margin-top:4px}
+
+.badge{
+ display:inline-block;padding:4px 7px;border-radius:20px;
+ font-size:10px;font-weight:bold;white-space:nowrap
+}
+.draft{background:#f3f4f6;color:#374151}
+.review{background:#fef3c7;color:#92400e}
+.approved{background:#dbeafe;color:#1e40af}
+.published{background:#dcfce7;color:#166534}
+
+.actions{display:flex;gap:5px}
+.action{
+ border:1px solid #e5e7eb;background:#fff;
+ padding:5px 7px;border-radius:5px;cursor:pointer;font-size:10px
+}
+.action:hover{background:#f3f4f6}
+
+.side{margin-bottom:18px}
+.list{padding:5px 16px 15px}
+.item{padding:12px 0;border-bottom:1px solid #e5e7eb}
+.item:last-child{border:0}
+.item b{font-size:12px;line-height:1.4}
+.item small{display:block;color:#6b7280;margin-top:4px}
+
+.quick{padding:14px 16px;display:grid;gap:8px}
+.quick a,.quick button{
+ display:block;text-align:left;width:100%;
+ padding:10px;border:1px solid #e5e7eb;background:#fff;
+ border-radius:6px;cursor:pointer;font-size:12px
+}
+.quick a:hover,.quick button:hover{background:#f9fafb}
+
+.empty{display:none;text-align:center;padding:30px;color:#6b7280;font-size:13px}
+
+@media(max-width:1100px){
+ .stats{grid-template-columns:repeat(3,1fr)}
+ .grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+ .sidebar{width:62px;padding:14px 7px}
+ .logo b,.logo small,.nav-title,.nav a span{display:none}
+ .logo{text-align:center;padding:5px 0 15px}
+ .nav a{text-align:center;font-size:18px;padding:10px 4px}
+ .main{margin-left:62px}
+ .content{padding:15px}
+ .topbar{padding:0 15px}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .header{align-items:flex-start;gap:12px;flex-direction:column}
+}
+@media(max-width:430px){
+ .stats{grid-template-columns:1fr}
+ .user-name{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+<div class="logo">
+<b>GBSBFORYOU</b>
+<small>Newsroom CMS</small>
+</div>
+
+<nav class="nav">
+
+<div class="nav-title">Newsroom</div>
+
+<a href="dashboard.html" class="active">
+<span>▦</span> Dashboard
+</a>
+
+<a href="article-editor.html">
+<span>✎</span> नया विवेचन
+</a>
+
+<a href="../index.html">
+<span>⌂</span> वेबसाइट
+</a>
+
+<div class="nav-title">Content</div>
+
+<a href="#"><span>▤</span> Articles</a>
+<a href="#"><span>◈</span> Sources</a>
+<a href="#"><span>✓</span> Fact Check</a>
+<a href="#"><span>▣</span> Categories</a>
+
+<div class="nav-title">Distribution</div>
+
+<a href="social-generator.html">
+<span>↗</span> Social Generator
+</a>
+
+<a href="#"><span>◷</span> Content Calendar</a>
+
+<div class="nav-title">System</div>
+
+<a href="#"><span>⌁</span> Analytics</a>
+<a href="#"><span>⚙</span> Settings</a>
+
+</nav>
+</aside>
+
+
+<main class="main">
+
+<header class="topbar">
+<b>Newsroom Dashboard</b>
+
+<div class="user">
+<div class="avatar">A</div>
+<span class="user-name">Editor</span>
+</div>
+</header>
+
+
+<div class="content">
+
+<section class="header">
+
+<div>
+<h1>न्यूज़रूम</h1>
+<p>GBSBFORYOU — News & Analysis Publishing System</p>
+</div>
+
+<a class="btn primary" href="article-editor.html">
+＋ नया विवेचन
+</a>
+
+</section>
+
+
+<section class="stats">
+
+<div class="card stat">
+<small>कुल Articles</small>
+<strong>24</strong>
+<span>सभी सामग्री</span>
+</div>
+
+<div class="card stat">
+<small>Draft</small>
+<strong>6</strong>
+<span>कार्य प्रगति में</span>
+</div>
+
+<div class="card stat">
+<small>Review</small>
+<strong>3</strong>
+<span>Editor review आवश्यक</span>
+</div>
+
+<div class="card stat">
+<small>Published</small>
+<strong>15</strong>
+<span>Live content</span>
+</div>
+
+<div class="card stat">
+<small>आज के Views</small>
+<strong>1,284</strong>
+<span>+12.4% इस सप्ताह</span>
+</div>
+
+</section>
+
+
+<section class="grid">
+
+<div class="panel">
+
+<div class="panel-head">
+<b>हाल के Articles</b>
+<a href="#" style="font-size:11px;color:#6b7280">सभी देखें →</a>
+</div>
+
+
+<div class="filters">
+
+<div class="search">
+<input
+ id="search"
+ type="search"
+ placeholder="Article खोजें..."
+ oninput="filterArticles()">
+</div>
+
+<select id="status" onchange="filterArticles()">
+<option value="">सभी Status</option>
+<option value="draft">Draft</option>
+<option value="review">Review</option>
+<option value="approved">Approved</option>
+<option value="published">Published</option>
+</select>
+
+<select id="category" onchange="filterArticles()">
+<option value="">सभी Categories</option>
+<option value="analysis">विवेचन</option>
+<option value="politics">राजनीति</option>
+<option value="india">भारत</option>
+<option value="world">विश्व</option>
+<option value="fact-check">Fact Check</option>
+</select>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>ARTICLE</th>
+<th>CATEGORY</th>
+<th>STATUS</th>
+<th>AUTHOR</th>
+<th>UPDATED</th>
+<th>ACTIONS</th>
+</tr>
+</thead>
+
+<tbody id="articles">
+
+<tr data-title="भारत की बदलती राजनीति" data-status="published" data-category="analysis">
+
+<td>
+<div class="title">भारत की बदलती राजनीति: नए दौर की दिशा क्या है?</div>
+<div class="meta">/bharat-ki-badalti-rajniti</div>
+</td>
+
+<td>विवेचन</td>
+
+<td><span class="badge published">Published</span></td>
+
+<td>Editorial</td>
+<td>आज 09:30</td>
+
+<td>
+<div class="actions">
+<button class="action">देखें</button>
+<button class="action">Edit</button>
+</div>
+</td>
+
+</tr>
+
+
+<tr data-title="सरकार की नई नीति" data-status="review" data-category="politics">
+
+<td>
+<div class="title">सरकार की नई नीति का आम नागरिक पर प्रभाव</div>
+<div class="meta">/sarkar-ki-nayi-niti</div>
+</td>
+
+<td>राजनीति</td>
+
+<td><span class="badge review">Review</span></td>
+
+<td>Reporter</td>
+<td>आज 08:45</td>
+
+<td>
+<div class="actions">
+<button class="action">Review</button>
+<button class="action">Edit</button>
+</div>
+</td>
+
+</tr>
+
+
+<tr data-title="भारत और वैश्विक व्यवस्था" data-status="draft" data-category="world">
+
+<td>
+<div class="title">भारत और बदलती वैश्विक व्यवस्था</div>
+<div class="meta">/bharat-global-order</div>
+</td>
+
+<td>विश्व</td>
+
+<td><span class="badge draft">Draft</span></td>
+
+<td>Research</td>
+<td>कल 18:20</td>
+
+<td>
+<div class="actions">
+<button class="action">Edit</button>
+</div>
+</td>
+
+</tr>
+
+
+<tr data-title="सोशल मीडिया दावा तथ्य जांच" data-status="approved" data-category="fact-check">
+
+<td>
+<div class="title">सोशल मीडिया पर वायरल दावे की तथ्य-जांच</div>
+<div class="meta">/viral-claim-fact-check</div>
+</td>
+
+<td>Fact Check</td>
+
+<td><span class="badge approved">Approved</span></td>
+
+<td>Fact Checker</td>
+<td>कल 16:10</td>
+
+<td>
+<div class="actions">
+<button class="action">देखें</button>
+<button class="action">Publish</button>
+</div>
+</td>
+
+</tr>
+
+
+<tr data-title="भारतीय अर्थव्यवस्था का नया चरण" data-status="published" data-category="india">
+
+<td>
+<div class="title">भारतीय अर्थव्यवस्था: विकास और चुनौतियों का नया चरण</div>
+<div class="meta">/indian-economy-new-phase</div>
+</td>
+
+<td>भारत</td>
+
+<td><span class="badge published">Published</span></td>
+
+<td>Editorial</td>
+<td>12 सितम्बर</td>
+
+<td>
+<div class="actions">
+<button class="action">देखें</button>
+<button class="action">Edit</button>
+</div>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+
+<div class="empty" id="empty">
+कोई Article नहीं मिला।
+</div>
+
+</div>
+</div>
+
+
+<aside>
+
+<div class="panel side">
+
+<div class="panel-head">
+<b>Quick Actions</b>
+</div>
+
+<div class="quick">
+
+<a href="article-editor.html">✎ नया Article लिखें</a>
+
+<button onclick="alert('Source Database अगले चरण में जोड़ा जाएगा।')">
+◈ नया Source जोड़ें
+</button>
+
+<button onclick="alert('Fact Check module अगले चरण में जोड़ा जाएगा।')">
+✓ Fact Check शुरू करें
+</button>
+
+<a href="social-generator.html">
+↗ Social Content बनाएं
+</a>
+
+</div>
+</div>
+
+
+<div class="panel side">
+
+<div class="panel-head">
+<b>Review Queue</b>
+<span class="badge review">3</span>
+</div>
+
+<div class="list">
+
+<div class="item">
+<b>सरकार की नई नीति का प्रभाव</b>
+<small>Politics · Reporter</small>
+</div>
+
+<div class="item">
+<b>नई आर्थिक नीति का विश्लेषण</b>
+<small>Economy · Research</small>
+</div>
+
+<div class="item">
+<b>वायरल दावे की तथ्य-जांच</b>
+<small>Fact Check · Fact Checker</small>
+</div>
+
+</div>
+</div>
+
+
+<div class="panel side">
+
+<div class="panel-head">
+<b>Blogger विवेचन</b>
+</div>
+
+<div class="list">
+
+<div class="item">
+<b>Blogger से आने वाले विवेचन</b>
+<small>RSS / Atom integration point</small>
+</div>
+
+<div class="item">
+<b>स्थिति</b>
+<small>Integration — अगले चरण में</small>
+</div>
+
+</div>
+</div>
+
+</aside>
+
+</section>
+
+</div>
+</main>
+
+
+<script>
+function filterArticles(){
+
+ const q=document.getElementById("search").value.toLowerCase();
+ const status=document.getElementById("status").value;
+ const category=document.getElementById("category").value;
+
+ const rows=document.querySelectorAll("#articles tr");
+ let count=0;
+
+ rows.forEach(row=>{
+
+  const title=(row.dataset.title||"").toLowerCase();
+  const okSearch=title.includes(q);
+  const okStatus=!status||row.dataset.status===status;
+  const okCategory=!category||row.dataset.category===category;
+
+  if(okSearch&&okStatus&&okCategory){
+   row.style.display="";
+   count++;
+  }else{
+   row.style.display="none";
+  }
+
+ });
+
+ document.getElementById("empty").style.display=
+   count?"none":"block";
+}
+</script>
+
+</body>
+  </html>
