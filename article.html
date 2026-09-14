@@ -1645,21 +1645,82 @@
     /* =====================================================
        URL SLUG
     ===================================================== */
+/* =====================================================
+   URL SLUG
+===================================================== */
 
 
-    function getRequestedSlug() {
+function getRequestedSlug() {
 
-      const params =
-        new URLSearchParams(
-          window.location.search
-        );
-
-
-      const querySlug =
-        params.get(
-          "slug"
-        );
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
 
 
-      if (querySlug) {
-        return querySl
+  const querySlug =
+    params.get(
+      "slug"
+    );
+
+
+  if (querySlug) {
+
+    return querySlug.trim();
+
+  }
+
+
+  return "";
+
+}
+
+
+
+/* =====================================================
+   ARTICLE SLUG MATCH
+===================================================== */
+
+
+function articleMatchesRequestedSlug(
+  article
+) {
+
+  const requestedSlug =
+    getRequestedSlug();
+
+
+  /*
+   * यदि URL में slug नहीं है,
+   * तो मौजूदा व्यवहार बनाए रखें।
+   */
+
+  if (!requestedSlug) {
+
+    return true;
+
+  }
+
+
+  /*
+   * Article या slug उपलब्ध नहीं है।
+   */
+
+  if (
+    !article ||
+    !article.slug
+  ) {
+
+    return false;
+
+  }
+
+
+  return (
+    String(article.slug).trim() ===
+    String(requestedSlug).trim()
+  );
+
+}
+
+    
