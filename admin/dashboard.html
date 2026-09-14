@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Newsroom Dashboard — GBSBFORYOU</title>
+
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #17202a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #111827;
+      --accent: #b91c1c;
+      --green: #15803d;
+      --yellow: #a16207;
+      --blue: #1d4ed8;
+      --sidebar: #111827;
+      --sidebar-text: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        "Noto Sans Devanagari",
+        "Nirmala UI",
+        Arial,
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+      width: 250px;
+      background: var(--sidebar);
+      color: white;
+      padding: 22px 16px;
+      position: fixed;
+      inset: 0 auto 0 0;
+      overflow-y: auto;
+    }
+
+    .brand {
+      padding: 4px 10px 24px;
+      border-bottom: 1px solid #374151;
+      margin-bottom: 20px;
+    }
+
+    .brand h1 {
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .brand p {
+      color: #9ca3af;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .nav-title {
+      color: #6b7280;
+      font-size: 11px;
+      text-transform: uppercase;
+      margin: 18px 10px 8px;
+      letter-spacing: .08em;
+    }
+
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 12px;
+      border-radius: 8px;
+      color: var(--sidebar-text);
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: #1f2937;
+      color: white;
+    }
+
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+    }
+
+    /* MAIN */
+
+    .main {
+      margin-left: 250px;
+      width: calc(100% - 250px);
+      min-width: 0;
+    }
+
+    .topbar {
+      height: 68px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      background: #e5e7eb;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 28px;
+      max-width: 1500px;
+      margin: auto;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .page-header h2 {
+      font-size: 27px;
+      margin-bottom: 5px;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 17px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: #374151;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .stat-number {
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .stat-note {
+      font-size: 12px;
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .stat-note.green {
+      color: var(--green);
+    }
+
+    .stat-note.yellow {
+      color: var(--yellow);
+    }
+
+    /* WORKSPACE */
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 17px 19px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .panel-header h3 {
+      font-size: 16px;
+    }
+
+    /* FILTERS */
+
+    .filters {
+      padding: 15px 19px;
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 220px;
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      outline: none;
+    }
+
+    .search input:focus,
+    select:focus {
+      border-color: #9ca3af;
+    }
+
+    select {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: white;
+      color: var(--text);
+    }
+
+    /* ARTICLE TABLE */
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      background: #f9fafb;
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .article-title {
+      font-weight: 700;
+      line-height: 1.4;
+      min-width: 270px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-draft {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .badge-review {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-published {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-approved {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .action-btn {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 6px;
+      padding: 6px 9px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .action-btn:hover {
+      background: #f3f4f6;
+    }
+
+    /* RIGHT PANEL */
+
+    .side-section {
+      margin-bottom: 20px;
+    }
+
+    .side-list {
+      padding: 5px 18px 16px;
+    }
+
+    .side-item {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .side-item:last-child {
+      border-bottom: 0;
+    }
+
+    .side-item-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .side-item-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .quick-actions {
+      padding: 15px 18px 18px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .quick-action {
+      border: 1px solid var(--border);
+      background: white;
+      padding: 11px;
+      border-radius: 7px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .quick-action:hover {
+      background: #f9fafb;
+    }
+
+    /* EMPTY STATE */
+
+    .empty {
+      display: none;
+      padding: 35px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1100px) {
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .sidebar {
+        width: 70px;
+        padding: 15px 8px;
+      }
+
+      .brand h1,
+      .brand p,
+      .nav-title,
+      .nav a span:not(.nav-icon) {
+        display: none;
+      }
+
+      .brand {
+        padding: 5px 0 15px;
+      }
+
+      .nav a {
+        justify-content: center;
+      }
+
+      .main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+      }
+
+      .content {
+        padding: 18px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .topbar {
+        padding: 0 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-title {
+        font-size: 15px;
+      }
+
+      .user-name {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <h1>GBSBFORYOU</h1>
+      <p>Newsroom CMS</p>
+    </div>
+
+    <nav class="nav">
+
+      <div class="nav-title">Newsroom</div>
+
+      <a href="dashboard.html" class="active">
+        <span class="nav-icon">▦</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="article-editor.html">
+        <span class="nav-icon">✎</span>
+        <span>नया विवेचन</span>
+      </a>
+
+      <a href="../index.html">
+        <span class="nav-icon">⌂</span>
+        <span>वेबसाइट</span>
+      </a>
+
+      <div class="nav-title">Content</div>
+
+      <a href="#">
+        <span class="nav-icon">▤</span>
+        <span>Articles</span>
+      </a>
+
+      <a href="#">
+        <span class="nav-icon">◈</span>
+        <span>Sources</span>
+      </a>
+
+      <a href="#">
+        <span class="nav-icon">✓</span>
+        <span>Fact Check</span>
+      </a>
+
+      <a href="#">
+        <span class="nav-icon">▣</span>
+        <span>Categories</span>
+      </a>
+
+      <div class="nav-title">Distribution</div>
+
+      <a href="social-generator.html">
+        <span class="nav-icon">↗</span>
+        <span>Social Generator</span>
+      </a>
+
+      <a href="#">
+        <span class="nav-icon">◷</span>
+        <span>Content Calendar</span>
+      </a>
+
+      <div class="nav-title">System</div>
+
+      <a href="#">
+        <span class="nav-icon">⌁</span>
+        <span>Analytics</span>
+      </a>
+
+      <a href="#">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-title">
+        Newsroom Dashboard
+      </div>
+
+      <div class="topbar-right">
+
+        <div class="user">
+          <div class="avatar">A</div>
+          <span class="user-name">Editor</span>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="content">
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-header">
+
+        <div>
+          <h2>न्यूज़रूम</h2>
+          <p>GBSBFORYOU — News & Analysis Publishing System</p>
+        </div>
+
+        <a
+          href="article-editor.html"
+          class="button button-primary">
+          ＋ नया विवेचन
+        </a>
+
+      </div>
+
+
+      <!-- STATISTICS -->
+
+      <section class="stats">
+
+        <div class="stat">
+          <div class="stat-label">कुल Articles</div>
+          <div class="stat-number">24</div>
+          <div class="stat-note">सभी सामग्री</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Draft</div>
+          <div class="stat-number">6</div>
+          <div class="stat-note">कार्य प्रगति में</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Review</div>
+          <div class="stat-number">3</div>
+          <div class="stat-note yellow">Editor review आवश्यक</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Published</div>
+          <div class="stat-number">15</div>
+          <div class="stat-note green">Live content</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">आज के Views</div>
+          <div class="stat-number">1,284</div>
+          <div class="stat-note green">+12.4% इस सप्ताह</div>
+        </div>
+
+      </section>
+
+
+      <!-- WORKSPACE -->
+
+      <section class="workspace">
+
+        <!-- ARTICLES -->
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <h3>हाल के Articles</h3>
+
+            <a href="#" style="font-size:12px;color:#6b7280;">
+              सभी देखें →
+            </a>
+
+          </div>
+
+
+          <!-- FILTERS -->
+
+          <div class="filters">
+
+            <div class="search">
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Article खोजें..."
+                oninput="filterArticles()">
+            </div>
+
+            <select id="statusFilter" onchange="filterArticles()">
+              <option value="">सभी Status</option>
+              <option value="draft">Draft</option>
+              <option value="review">Review</option>
+              <option value="approved">Approved</option>
+              <option value="published">Published</option>
+            </select>
+
+            <select id="categoryFilter" onchange="filterArticles()">
+              <option value="">सभी Categories</option>
+              <option value="analysis">विवेचन</option>
+              <option value="politics">राजनीति</option>
+              <option value="india">भारत</option>
+              <option value="world">विश्व</option>
+              <option value="fact-check">Fact Check</option>
+            </select>
+
+          </div>
+
+
+          <!-- TABLE -->
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+
+                <tr>
+                  <th>ARTICLE</th>
+                  <th>CATEGORY</th>
+                  <th>STATUS</th>
+                  <th>AUTHOR</th>
+                  <th>UPDATED</th>
+                  <th>ACTIONS</th>
+                </tr>
+
+              </thead>
+
+              <tbody id="articleTable">
+
+                <tr
+                  data-title="भारत की बदलती राजनीति"
+                  data-status="published"
+                  data-category="analysis">
+
+                  <td>
+                    <div class="article-title">
+                      भारत की बदलती राजनीति: नए दौर की दिशा क्या है?
+                    </div>
+                    <div class="article-meta">
+                      /bharat-ki-badalti-rajniti
+                    </div>
+                  </td>
+
+                  <td>विवेचन</td>
+
+                  <td>
+                    <span class="badge badge-published">
+                      Published
+                    </span>
+                  </td>
+
+                  <td>Editorial</td>
+
+                  <td>आज 09:30</td>
+
+                  <td>
+                    <div class="actions">
+                      <button class="action-btn">देखें</button>
+                      <button class="action-btn">Edit</button>
+                    </div>
+                  </td>
+
+                </tr>
+
+
+                <tr
+                  data-title="सरकार की नई नीति"
+                  data-status="review"
+                  data-category="politics">
+
+                  <td>
+                    <div class="article-title">
+                      सरकार की नई नीति का आम नागरिक पर प्रभाव
+                    </div>
+                    <div class="article-meta">
+                      /sarkar-ki-nayi-niti
+                    </div>
+                  </td>
+
+                  <td>राजनीति</td>
+
+                  <td>
+                    <span class="badge badge-review">
+                      Review
+                    </span>
+                  </td>
+
+                  <td>Reporter</td>
+
+                  <td>आज 08:45</td>
+
+                  <td>
+                    <div class="actions">
+                      <button class="action-btn">Review</button>
+                      <button class="action-btn">Edit</button>
+                    </div>
+                  </td>
+
+                </tr>
+
+
+                <tr
+                  data-title="भारत और वैश्विक व्यवस्था"
+                  data-status="draft"
+                  data-category="world">
+
+                  <td>
+                    <div class="article-title">
+                      भारत और बदलती वैश्विक व्यवस्था
+                    </div>
+                    <div class="article-meta">
+                      /bharat-global-order
+                    </div>
+                  </td>
+
+                  <td>विश्व</td>
+
+                  <td>
+                    <span class="badge badge-draft">
+                      Draft
+                    </span>
+                  </td>
+
+                  <td>Research</td>
+
+                  <td>कल 18:20</td>
+
+                  <td>
+                    <div class="actions">
+                      <button class="action-btn">Edit</button>
+                    </div>
+                  </td>
+
+                </tr>
+
+
+                <tr
+                  data-title="सोशल मीडिया दावा तथ्य जांच"
+                  data-status="approved"
+                  data-category="fact-check">
+
+                  <td>
+                    <div class="article-title">
+                      सोशल मीडिया पर वायरल दावे की तथ्य-जांच
+                    </div>
+                    <div class="article-meta">
+                      /viral-claim-fact-check
+                    </div>
+                  </td>
+
+                  <td>Fact Check</td>
+
+                  <td>
+                    <span class="badge badge-approved">
+                      Approved
+                    </span>
+                  </td>
+
+                  <td>Fact Checker</td>
+
+                  <td>कल 16:10</td>
+
+                  <td>
+                    <div class="actions">
+                      <button class="action-btn">देखें</button>
+                      <button class="action-btn">Publish</button>
+                    </div>
+                  </td>
+
+                </tr>
+
+
+                <tr
+                  data-title="भारतीय अर्थव्यवस्था का नया चरण"
+                  data-status="published"
+                  data-category="india">
+
+                  <td>
+                    <div class="article-title">
+                      भारतीय अर्थव्यवस्था: विकास और चुनौतियों का नया चरण
+                    </div>
+                    <div class="article-meta">
+                      /indian-economy-new-phase
+                    </div>
+                  </td>
+
+                  <td>भारत</td>
+
+                  <td>
+                    <span class="badge badge-published">
+                      Published
+                    </span>
+                  </td>
+
+                  <td>Editorial</td>
+
+                  <td>12 सितम्बर</td>
+
+                  <td>
+                    <div class="actions">
+                      <button class="action-btn">देखें</button>
+                      <button class="action-btn">Edit</button>
+                    </div>
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+            <div class="empty" id="emptyState">
+              कोई Article नहीं मिला।
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDEBAR -->
+
+        <aside>
+
+          <!-- QUICK ACTIONS -->
+
+          <div class="panel side-section">
+
+            <div class="panel-header">
+              <h3>Quick Actions</h3>
+            </div>
+
+            <div class="quick-actions">
+
+              <a
+                href="article-editor.html"
+                class="quick-action">
+                ✎ नया Article लिखें
+              </a>
+
+              <button class="quick-action">
+                ◈ नया Source जोड़ें
+              </button>
+
+              <button c
