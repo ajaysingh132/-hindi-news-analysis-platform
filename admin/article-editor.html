@@ -10,10 +10,10 @@
 
   <meta
     name="description"
-    content="Newsroom CMS Article Editor"
+    content="न्यूज़रूम CMS — हिन्दी समाचार लेख संपादक"
   >
 
-  <title>Article Editor | Newsroom CMS</title>
+  <title>लेख संपादक | न्यूज़रूम CMS</title>
 
   <style>
 
@@ -40,12 +40,16 @@
       --accent-soft: #fff1f0;
 
       --success: #15803d;
+      --success-soft: #ecfdf3;
+
       --warning: #b45309;
+      --warning-soft: #fffbeb;
 
       --sidebar: #111827;
       --sidebar-hover: #1f2937;
 
       --radius: 10px;
+
       --shadow:
         0 5px 20px rgba(15, 23, 42, 0.06);
     }
@@ -79,7 +83,7 @@
       background: var(--bg);
       color: var(--text);
 
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     button,
@@ -95,11 +99,12 @@
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
 
     /* =====================================================
-       TOP HEADER
+       TOP BAR
     ===================================================== */
 
     .topbar {
@@ -122,16 +127,15 @@
       z-index: 100;
     }
 
-
     .brand {
       display: flex;
       align-items: center;
+
       gap: 11px;
 
       font-size: 17px;
       font-weight: 800;
     }
-
 
     .brand-mark {
       width: 35px;
@@ -149,13 +153,12 @@
       font-weight: 800;
     }
 
-
     .top-actions {
       display: flex;
       align-items: center;
+
       gap: 10px;
     }
-
 
     .save-status {
       display: inline-flex;
@@ -172,12 +175,11 @@
       color: var(--muted);
 
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-
     .save-status.saved {
-      background: #ecfdf3;
+      background: var(--success-soft);
       color: var(--success);
     }
 
@@ -209,9 +211,9 @@
       padding: 18px 12px;
     }
 
-
     .sidebar-section-title {
-      margin: 10px 10px 8px;
+      margin:
+        10px 10px 8px;
 
       color: #94a3b8;
 
@@ -222,7 +224,6 @@
 
       letter-spacing: 0.08em;
     }
-
 
     .sidebar-link {
       display: flex;
@@ -240,12 +241,9 @@
 
       color: #cbd5e1;
 
-      text-decoration: none;
-
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 650;
     }
-
 
     .sidebar-link:hover,
     .sidebar-link.active {
@@ -254,7 +252,6 @@
 
       color: #fff;
     }
-
 
     .sidebar-icon {
       width: 20px;
@@ -275,7 +272,6 @@
       padding: 28px;
     }
 
-
     .page-header {
       display: flex;
 
@@ -287,7 +283,6 @@
       margin-bottom: 24px;
     }
 
-
     .page-title {
       margin: 0;
 
@@ -298,18 +293,18 @@
       letter-spacing: -0.025em;
     }
 
-
     .page-description {
-      margin: 7px 0 0;
+      margin:
+        7px 0 0;
 
       color: var(--muted);
 
       font-size: 13px;
     }
 
-
     .header-actions {
       display: flex;
+
       flex-wrap: wrap;
 
       gap: 8px;
@@ -323,7 +318,8 @@
     .btn {
       min-height: 38px;
 
-      padding: 0 13px;
+      padding:
+        0 13px;
 
       border:
         1px solid var(--border);
@@ -335,14 +331,13 @@
       color: var(--text);
 
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 750;
 
       transition:
         background .15s ease,
         border-color .15s ease,
         transform .15s ease;
     }
-
 
     .btn:hover {
       border-color:
@@ -351,7 +346,6 @@
       transform:
         translateY(-1px);
     }
-
 
     .btn-primary {
       background:
@@ -363,12 +357,10 @@
       color: #fff;
     }
 
-
     .btn-primary:hover {
       background:
         var(--primary-hover);
     }
-
 
     .btn-danger {
       background:
@@ -380,6 +372,9 @@
       color: #fff;
     }
 
+    .btn-danger:hover {
+      background: #991b1b;
+    }
 
     .btn-soft {
       background:
@@ -392,11 +387,21 @@
         var(--accent);
     }
 
+    .btn-success {
+      background:
+        var(--success);
+
+      border-color:
+        var(--success);
+
+      color: #fff;
+    }
 
     .btn-small {
       min-height: 32px;
 
-      padding: 0 10px;
+      padding:
+        0 10px;
 
       font-size: 11px;
     }
@@ -419,6 +424,10 @@
     }
 
 
+    /* =====================================================
+       CARD
+    ===================================================== */
+
     .card {
       margin-bottom: 18px;
 
@@ -437,14 +446,14 @@
       overflow: hidden;
     }
 
-
     .card-header {
       display: flex;
 
       justify-content: space-between;
       align-items: center;
 
-      padding: 14px 17px;
+      padding:
+        14px 17px;
 
       border-bottom:
         1px solid var(--border);
@@ -453,6 +462,12 @@
       font-weight: 800;
     }
 
+    .card-header-title {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+    }
 
     .card-body {
       padding: 18px;
@@ -467,11 +482,9 @@
       margin-bottom: 17px;
     }
 
-
     .form-group:last-child {
       margin-bottom: 0;
     }
-
 
     label {
       display: block;
@@ -482,6 +495,10 @@
       font-weight: 800;
     }
 
+    .required {
+      color:
+        var(--accent);
+    }
 
     input,
     textarea,
@@ -502,7 +519,6 @@
       outline: none;
     }
 
-
     input,
     select {
       min-height: 40px;
@@ -510,7 +526,6 @@
       padding:
         0 11px;
     }
-
 
     textarea {
       min-height: 100px;
@@ -523,7 +538,6 @@
       line-height: 1.55;
     }
 
-
     input:focus,
     textarea:focus,
     select:focus {
@@ -535,22 +549,20 @@
         rgba(15, 23, 42, .05);
     }
 
-
     .hint {
       margin-top: 5px;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
       font-size: 10px;
     }
-
 
     .two-column {
       display: grid;
 
       grid-template-columns:
-        1fr
-        1fr;
+        1fr 1fr;
 
       gap: 12px;
     }
@@ -588,7 +600,6 @@
       box-shadow: none;
     }
 
-
     .title-input:focus {
       border-bottom:
         1px solid var(--border-dark);
@@ -596,6 +607,10 @@
       box-shadow: none;
     }
 
+
+    /* =====================================================
+       SLUG
+    ===================================================== */
 
     .slug-row {
       display: grid;
@@ -607,6 +622,25 @@
       gap: 8px;
 
       align-items: center;
+    }
+
+    .slug-preview {
+      margin-top: 6px;
+
+      padding:
+        8px 10px;
+
+      border-radius: 7px;
+
+      background:
+        var(--surface-soft);
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+
+      word-break: break-all;
     }
 
 
@@ -623,7 +657,6 @@
 
       overflow: hidden;
     }
-
 
     .toolbar {
       display: flex;
@@ -642,7 +675,6 @@
       border-bottom:
         1px solid var(--border);
     }
-
 
     .toolbar-button {
       min-width: 32px;
@@ -668,7 +700,6 @@
       font-weight: 750;
     }
 
-
     .toolbar-button:hover {
       background:
         #fff;
@@ -677,12 +708,10 @@
         var(--border);
     }
 
-
     .toolbar-button.active {
       background:
         #e2e8f0;
     }
-
 
     .toolbar-divider {
       width: 1px;
@@ -695,7 +724,6 @@
       background:
         var(--border);
     }
-
 
     #articleContent {
       min-height:
@@ -716,7 +744,6 @@
         1.85;
     }
 
-
     #articleContent:empty::before {
       content:
         attr(data-placeholder);
@@ -727,7 +754,6 @@
       pointer-events:
         none;
     }
-
 
     #articleContent h2 {
       margin:
@@ -740,7 +766,6 @@
         1.3;
     }
 
-
     #articleContent h3 {
       margin:
         25px 0 10px;
@@ -752,12 +777,10 @@
         1.35;
     }
 
-
     #articleContent p {
       margin:
         0 0 18px;
     }
-
 
     #articleContent ul,
     #articleContent ol {
@@ -767,7 +790,6 @@
       padding-left:
         28px;
     }
-
 
     #articleContent blockquote {
       margin:
@@ -786,7 +808,6 @@
         var(--text-soft);
     }
 
-
     #articleContent img {
       display: block;
 
@@ -801,7 +822,6 @@
         8px;
     }
 
-
     #articleContent a {
       color:
         #1d4ed8;
@@ -809,7 +829,7 @@
 
 
     /* =====================================================
-       SOURCE BOX
+       SOURCE ITEM
     ===================================================== */
 
     .source-item {
@@ -829,11 +849,9 @@
         var(--surface-soft);
     }
 
-
     .source-item:last-child {
       margin-bottom: 0;
     }
-
 
     .source-number {
       display: inline-flex;
@@ -885,17 +903,19 @@
 
       place-items: center;
 
+      overflow: hidden;
+
       margin-bottom:
         10px;
 
       border:
-        1px dashed #cbd5e1;
+        1px dashed var(--border-dark);
 
       border-radius:
-        8px;
+        9px;
 
       background:
-        #f8fafc;
+        var(--surface-soft);
 
       color:
         var(--muted);
@@ -903,10 +923,9 @@
       font-size:
         12px;
 
-      overflow:
-        hidden;
+      text-align:
+        center;
     }
-
 
     .image-preview img {
       width: 100%;
@@ -918,129 +937,24 @@
 
 
     /* =====================================================
-       TAGS
-    ===================================================== */
-
-    .tag-input {
-      min-height:
-        42px;
-    }
-
-
-    /* =====================================================
-       CHECK LIST
+       CHECKLIST
     ===================================================== */
 
     .check-list {
-      display:
-        grid;
+      display: grid;
 
-      gap:
-        10px;
+      gap: 9px;
     }
-
 
     .check-item {
-      display:
-        flex;
+      display: flex;
 
-      align-items:
-        flex-start;
+      align-items: flex-start;
 
-      gap:
-        9px;
-
-      margin:
-        0;
-
-      font-size:
-        12px;
-
-      font-weight:
-        600;
-
-      color:
-        var(--text-soft);
-    }
-
-
-    .check-item input {
-      width:
-        15px;
-
-      height:
-        15px;
-
-      min-height:
-        15px;
-
-      margin:
-        1px 0 0;
-    }
-
-
-    /* =====================================================
-       FACT CHECK
-    ===================================================== */
-
-    .verification-status {
-      display:
-        inline-flex;
+      gap: 9px;
 
       padding:
-        4px 8px;
-
-      border-radius:
-        999px;
-
-      background:
-        #fff7ed;
-
-      color:
-        var(--warning);
-
-      font-size:
-        10px;
-
-      font-weight:
-        800;
-    }
-
-
-    .verification-status.complete {
-      background:
-        #ecfdf3;
-
-      color:
-        var(--success);
-    }
-
-
-    .fact-summary {
-      margin:
-        10px 0 14px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-      line-height:
-        1.55;
-    }
-
-
-    /* =====================================================
-       SEO
-    ===================================================== */
-
-    .seo-preview {
-      margin-top:
-        14px;
-
-      padding:
-        13px;
+        9px 10px;
 
       border:
         1px solid var(--border);
@@ -1050,113 +964,202 @@
 
       background:
         #fff;
-    }
-
-
-    .seo-title-preview {
-      margin-bottom:
-        4px;
-
-      color:
-        #1a0dab;
-
-      font-size:
-        16px;
-
-      line-height:
-        1.3;
-    }
-
-
-    .seo-url-preview {
-      margin-bottom:
-        5px;
-
-      color:
-        #188038;
 
       font-size:
         11px;
     }
 
+    .check-item input {
+      width: auto;
 
-    .seo-description-preview {
-      color:
-        #4d5156;
+      min-height: auto;
 
-      font-size:
-        11px;
-
-      line-height:
-        1.5;
-    }
-
-
-    .counter {
       margin-top:
-        5px;
+        3px;
+    }
 
-      text-align:
-        right;
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .status-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 25px;
+
+      padding:
+        0 9px;
+
+      border-radius:
+        999px;
+
+      background:
+        #f1f5f9;
 
       color:
         var(--muted);
 
       font-size:
         10px;
+
+      font-weight:
+        800;
+    }
+
+    .status-draft {
+      background:
+        #f1f5f9;
+
+      color:
+        var(--muted);
+    }
+
+    .status-published {
+      background:
+        var(--success-soft);
+
+      color:
+        var(--success);
     }
 
 
     /* =====================================================
-       BOTTOM SAVE BAR
+       TAGS
     ===================================================== */
 
-    .bottom-save-bar {
-      position:
-        sticky;
+    .tags-container {
+      display: flex;
 
-      bottom:
-        15px;
+      flex-wrap: wrap;
 
-      z-index:
-        40;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        15px;
+      gap: 6px;
 
       margin-top:
-        6px;
+        8px;
+    }
+
+    .tag {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
 
       padding:
-        10px 12px;
+        5px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        #f1f5f9;
+
+      color:
+        var(--text-soft);
+
+      font-size:
+        10px;
+
+      font-weight:
+        700;
+    }
+
+    .tag-remove {
+      border: 0;
+
+      padding: 0;
+
+      background: transparent;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+      line-height: 1;
+    }
+
+
+    /* =====================================================
+       FACT CHECK
+    ===================================================== */
+
+    .fact-box {
+      padding:
+        12px;
+
+      border:
+        1px solid #fde68a;
+
+      border-radius:
+        8px;
+
+      background:
+        var(--warning-soft);
+    }
+
+    .fact-title {
+      margin-bottom:
+        8px;
+
+      color:
+        var(--warning);
+
+      font-size:
+        11px;
+
+      font-weight:
+        850;
+    }
+
+
+    /* =====================================================
+       BOTTOM ACTION BAR
+    ===================================================== */
+
+    .bottom-bar {
+      position: sticky;
+
+      bottom: 0;
+
+      z-index: 50;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top:
+        8px;
+
+      padding:
+        12px 14px;
 
       border:
         1px solid var(--border);
 
       border-radius:
-        11px;
+        10px 10px 0 0;
 
       background:
         rgba(255,255,255,.96);
 
       box-shadow:
-        0 10px 35px rgba(15,23,42,.14);
+        0 -5px 20px
+        rgba(15,23,42,.05);
 
       backdrop-filter:
         blur(8px);
     }
 
-
-    .bottom-save-info {
+    .bottom-info {
       color:
         var(--muted);
 
@@ -1164,13 +1167,14 @@
         11px;
     }
 
+    .bottom-actions {
+      display: flex;
 
-    .bottom-save-actions {
-      display:
-        flex;
+      gap: 8px;
 
-      gap:
-        7px;
+      flex-wrap: wrap;
+
+      justify-content: flex-end;
     }
 
 
@@ -1178,42 +1182,31 @@
        MODAL
     ===================================================== */
 
-    .modal {
-      position:
-        fixed;
+    .modal-backdrop {
+      position: fixed;
 
-      inset:
-        0;
+      inset: 0;
 
-      z-index:
-        500;
+      z-index: 500;
 
-      display:
-        none;
+      display: none;
 
-      align-items:
-        center;
+      align-items: center;
 
-      justify-content:
-        center;
+      justify-content: center;
 
-      padding:
-        20px;
+      padding: 20px;
 
       background:
-        rgba(15,23,42,.65);
+        rgba(15,23,42,.55);
     }
 
-
-    .modal.open {
-      display:
-        flex;
+    .modal-backdrop.open {
+      display: flex;
     }
 
-
-    .modal-window {
-      width:
-        min(900px, 100%);
+    .modal {
+      width: min(760px, 100%);
 
       max-height:
         90vh;
@@ -1228,79 +1221,51 @@
         #fff;
 
       box-shadow:
-        0 25px 80px rgba(0,0,0,.3);
+        0 25px 70px
+        rgba(15,23,42,.25);
     }
 
-
     .modal-header {
-      display:
-        flex;
+      display: flex;
 
-      justify-content:
-        space-between;
+      justify-content: space-between;
 
-      align-items:
-        center;
+      align-items: center;
 
       padding:
-        14px 18px;
+        16px 18px;
 
       border-bottom:
         1px solid var(--border);
     }
 
-
-    .modal-content {
-      padding:
-        25px;
-    }
-
-
-    .preview-article-title {
-      margin:
-        0 0 8px;
-
+    .modal-title {
       font-size:
-        38px;
-
-      line-height:
-        1.2;
-    }
-
-
-    .preview-meta {
-      margin-bottom:
-        24px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-    }
-
-
-    .preview-excerpt {
-      margin-bottom:
-        24px;
-
-      font-size:
-        18px;
-
-      line-height:
-        1.65;
+        15px;
 
       font-weight:
-        650;
+        850;
     }
 
+    .modal-close {
+      width: 32px;
+      height: 32px;
 
-    .preview-content {
-      font-size:
-        17px;
+      border: 0;
 
-      line-height:
-        1.85;
+      border-radius:
+        7px;
+
+      background:
+        #f1f5f9;
+
+      color:
+        var(--text);
+    }
+
+    .modal-body {
+      padding:
+        18px;
     }
 
 
@@ -1308,957 +1273,1757 @@
        TOAST
     ===================================================== */
 
+    .toast-container {
+      position: fixed;
+
+      right: 18px;
+      bottom: 18px;
+
+      z-index: 1000;
+
+      display: grid;
+
+      gap: 8px;
+    }
+
     .toast {
-      position:
-        fixed;
-
-      right:
-        20px;
-
-      bottom:
-        20px;
-
-      z-index:
-        700;
+      min-width:
+        250px;
 
       max-width:
-        320px;
+        380px;
 
       padding:
-        11px 15px;
+        11px 14px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        9px;
+
+      background:
+        #fff;
+
+      box-shadow:
+        0 10px 35px
+        rgba(15,23,42,.14);
+
+      color:
+        var(--text);
+
+      font-size:
+        12px;
+
+      font-weight:
+        650;
+    }
+
+    .toast.success {
+      border-color:
+        #bbf7d0;
+    }
+
+    .toast.error {
+      border-color:
+        #fecaca;
+    }
+
+
+    /* =====================================================
+       PREVIEW
+    ===================================================== */
+
+    .preview-frame {
+      width: 100%;
+
+      min-height:
+        600px;
+
+      border:
+        1px solid var(--border);
 
       border-radius:
         8px;
 
       background:
-        #111827;
-
-      color:
         #fff;
-
-      font-size:
-        12px;
-
-      box-shadow:
-        0 12px 35px rgba(0,0,0,.2);
-
-      opacity:
-        0;
-
-      transform:
-        translateY(12px);
-
-      pointer-events:
-        none;
-
-      transition:
-        .2s ease;
-    }
-
-
-    .toast.show {
-      opacity:
-        1;
-
-      transform:
-        translateY(0);
     }
 
 
     /* =====================================================
-       RESPONSIVE
+       UTILITY
     ===================================================== */
 
-    @media (max-width: 1100px) {
-
-      .editor-grid {
-        grid-template-columns:
-          minmax(0, 1fr);
-      }
-
-      .sticky-panel {
-        position:
-          static;
-      }
-
-      .sidebar {
-        display:
-          none;
-      }
-
-      .app-layout {
-        grid-template-columns:
-          1fr;
-      }
-
+    .muted {
+      color:
+        var(--muted);
     }
 
+    .small {
+      font-size:
+        11px;
+    }
 
-    @media (max-width: 700px) {
+    .danger-text {
+      color:
+        var(--accent);
+    }
 
-      .topbar {
-        height:
-          auto;
+    .succe
+   <script>
+/* =========================================================
+   हिन्दी न्यूज़रूम — Article Editor
+   PART 2/3 — Editor Mechanics & Data Layer
+   ========================================================= */
 
-        min-height:
-          60px;
+const DRAFT_KEY =
+  "newsroom_article_draft";
 
-        padding:
-          10px 14px;
+const PUBLISHED_KEY =
+  "newsroom_published_article";
 
-        gap:
-          10px;
-      }
+let currentTags = [];
 
-      .top-actions {
-        gap:
-          5px;
-      }
+let sourceCounter = 1;
 
-      .save-status {
-        display:
-          none;
-      }
+let slugManuallyEdited = false;
 
-      .main {
-        padding:
-          16px;
-      }
+let isDirty = false;
 
-      .page-header {
-        flex-direction:
-          column;
-      }
 
-      .page-title {
-        font-size:
-          23px;
-      }
+/* =========================================================
+   सामान्य उपयोगिता
+   ========================================================= */
 
-      .header-actions {
-        width:
-          100%;
-      }
+function escapeHtml(value) {
 
-      .header-actions .btn {
-        flex:
-          1;
-      }
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
-      .two-column {
-        grid-template-columns:
-          1fr;
-      }
 
-      .title-input {
-        font-size:
-          27px;
-      }
+/*
+ * Rich text को basic safe HTML में बदलना।
+ * MVP स्तर पर script, iframe और event-handler हटाए जाते हैं।
+ */
+function sanitizeEditorHtml(html) {
 
-      #articleContent {
-        min-height:
-          400px;
+  const wrapper =
+    document.createElement("div");
 
-        padding:
-          17px;
+  wrapper.innerHTML =
+    String(html || "");
 
-        font-size:
-          16px;
-      }
+  wrapper
+    .querySelectorAll(
+      "script, iframe, object, embed"
+    )
+    .forEach((element) => {
+      element.remove();
+    });
 
-      .botto
-  /*
-   * =====================================================
-   * SAVE DRAFT
-   * =====================================================
-   */
+  wrapper
+    .querySelectorAll("*")
+    .forEach((element) => {
 
-  function saveDraft() {
+      [...element.attributes]
+        .forEach((attribute) => {
 
-    const article =
-      collectArticleData();
+          const name =
+            attribute.name.toLowerCase();
 
-    article.status = "draft";
+          const value =
+            attribute.value.trim()
+              .toLowerCase();
 
-    localStorage.setItem(
-      "newsroom_article_draft",
-      JSON.stringify(article)
-    );
+          if (name.startsWith("on")) {
+            element.removeAttribute(
+              attribute.name
+            );
+          }
 
-    markSaved();
+          if (
+            (
+              name === "href" ||
+              name === "src"
+            ) &&
+            value.startsWith(
+              "javascript:"
+            )
+          ) {
+            element.removeAttribute(
+              attribute.name
+            );
+          }
+        });
+    });
 
-    showToast(
-      "Draft successfully saved."
-    );
+  return wrapper.innerHTML.trim();
+}
 
+
+/* =========================================================
+   Slug
+   ========================================================= */
+
+function slugify(text) {
+
+  return String(text || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFKC")
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+
+function generateSlug() {
+
+  const title =
+    document.getElementById(
+      "title"
+    ).value;
+
+  if (slugManuallyEdited) {
+    return;
   }
 
+  const slug =
+    slugify(title);
+
+  document.getElementById(
+    "slug"
+  ).value = slug;
+
+  markUnsaved();
+}
 
 
-  /*
-   * =====================================================
-   * LOAD DRAFT
-   * =====================================================
-   */
+function updateSlugPreview() {
 
-  function loadDraft() {
+  const slug =
+    document.getElementById(
+      "slug"
+    ).value.trim();
 
-    const saved =
-      localStorage.getItem(
-        "newsroom_article_draft"
+  const preview =
+    document.getElementById(
+      "slugPreview"
+    );
+
+  if (preview) {
+
+    preview.textContent =
+      slug
+        ? `/article.html?slug=${slug}`
+        : "/article.html?slug=...";
+  }
+}
+
+
+/* =========================================================
+   Tags
+   ========================================================= */
+
+function renderTags() {
+
+  const container =
+    document.getElementById(
+      "tagsContainer"
+    );
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  currentTags.forEach(
+    (tag, index) => {
+
+      const item =
+        document.createElement(
+          "span"
+        );
+
+      item.className =
+        "tag-chip";
+
+      item.innerHTML = `
+        <span>${escapeHtml(tag)}</span>
+        <button
+          type="button"
+          aria-label="टैग हटाएँ"
+          onclick="removeTag(${index})"
+        >
+          ×
+        </button>
+      `;
+
+      container.appendChild(item);
+    }
+  );
+}
+
+
+function addTag(value) {
+
+  const tag =
+    String(value || "")
+      .trim()
+      .replace(/,+$/, "");
+
+  if (!tag) {
+    return;
+  }
+
+  const exists =
+    currentTags.some(
+      (item) =>
+        item.toLowerCase() ===
+        tag.toLowerCase()
+    );
+
+  if (!exists) {
+    currentTags.push(tag);
+  }
+
+  renderTags();
+
+  const input =
+    document.getElementById(
+      "tagsInput"
+    );
+
+  if (input) {
+    input.value = "";
+  }
+
+  markUnsaved();
+}
+
+
+function removeTag(index) {
+
+  currentTags.splice(
+    index,
+    1
+  );
+
+  renderTags();
+
+  markUnsaved();
+}
+
+
+function handleTagInput(event) {
+
+  if (
+    event.key === "Enter" ||
+    event.key === ","
+  ) {
+
+    event.preventDefault();
+
+    addTag(event.target.value);
+  }
+}
+
+
+/* =========================================================
+   Sources
+   ========================================================= */
+
+function addSource(
+  title = "",
+  url = ""
+) {
+
+  const container =
+    document.getElementById(
+      "sourcesContainer"
+    );
+
+  if (!container) {
+    return;
+  }
+
+  sourceCounter += 1;
+
+  const item =
+    document.createElement(
+      "div"
+    );
+
+  item.className =
+    "source-item";
+
+  item.dataset.sourceId =
+    sourceCounter;
+
+  item.innerHTML = `
+    <div class="source-number">
+      स्रोत ${sourceCounter}
+    </div>
+
+    <div class="form-group">
+      <label>
+        स्रोत का नाम
+      </label>
+
+      <input
+        type="text"
+        class="source-title"
+        value="${escapeHtml(title)}"
+        placeholder="उदाहरण: PIB, सरकारी रिपोर्ट, आधिकारिक बयान"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>
+        स्रोत URL
+      </label>
+
+      <input
+        type="url"
+        class="source-url"
+        value="${escapeHtml(url)}"
+        placeholder="https://..."
+      />
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-danger btn-small"
+      onclick="removeSource(this)"
+    >
+      स्रोत हटाएँ
+    </button>
+  `;
+
+  container.appendChild(item);
+
+  markUnsaved();
+}
+
+
+function removeSource(button) {
+
+  const item =
+    button.closest(
+      ".source-item"
+    );
+
+  if (!item) {
+    return;
+  }
+
+  item.remove();
+
+  renumberSources();
+
+  markUnsaved();
+}
+
+
+function renumberSources() {
+
+  const items =
+    document.querySelectorAll(
+      ".source-item"
+    );
+
+  items.forEach(
+    (item, index) => {
+
+      const number =
+        item.querySelector(
+          ".source-number"
+        );
+
+      if (number) {
+
+        number.textContent =
+          `स्रोत ${index + 1}`;
+      }
+    }
+  );
+
+  sourceCounter =
+    items.length || 1;
+}
+
+
+/* =========================================================
+   Editor Toolbar
+   ========================================================= */
+
+function focusEditor() {
+
+  const editor =
+    document.getElementById(
+      "articleContent"
+    );
+
+  if (editor) {
+    editor.focus();
+  }
+}
+
+
+function formatText(command) {
+
+  focusEditor();
+
+  document.execCommand(
+    command,
+    false,
+    null
+  );
+
+  updateEditorStats();
+
+  markUnsaved();
+}
+
+
+function formatHeading(tag) {
+
+  focusEditor();
+
+  document.execCommand(
+    "formatBlock",
+    false,
+    tag
+  );
+
+  updateEditorStats();
+
+  markUnsaved();
+}
+
+
+function insertLink() {
+
+  const url =
+    prompt(
+      "लिंक URL दर्ज करें:"
+    );
+
+  if (!url) {
+    return;
+  }
+
+  focusEditor();
+
+  document.execCommand(
+    "createLink",
+    false,
+    url.trim()
+  );
+
+  markUnsaved();
+}
+
+
+function insertImage() {
+
+  const url =
+    prompt(
+      "चित्र का URL दर्ज करें:"
+    );
+
+  if (!url) {
+    return;
+  }
+
+  focusEditor();
+
+  document.execCommand(
+    "insertImage",
+    false,
+    url.trim()
+  );
+
+  updateEditorStats();
+
+  markUnsaved();
+}
+
+
+/* =========================================================
+   Featured Image
+   ========================================================= */
+
+function updateFeaturedImage() {
+
+  const input =
+    document.getElementById(
+      "featuredImage"
+    );
+
+  const preview =
+    document.getElementById(
+      "imagePreview"
+    );
+
+  if (!input || !preview) {
+    return;
+  }
+
+  const url =
+    input.value.trim();
+
+  if (!url) {
+
+    preview.innerHTML = `
+      <div class="image-placeholder">
+        <span>🖼️</span>
+        <small>
+          Featured Image URL डालें
+        </small>
+      </div>
+    `;
+
+    return;
+  }
+
+  preview.innerHTML = `
+    <img
+      src="${escapeHtml(url)}"
+      alt="Featured Image Preview"
+      onerror="
+        this.style.display='none';
+        this.parentElement.innerHTML =
+        '<div class=&quot;image-placeholder&quot;>चित्र लोड नहीं हुआ</div>';
+      "
+    />
+  `;
+
+  markUnsaved();
+}
+
+
+/* =========================================================
+   Editor Statistics
+   ========================================================= */
+
+function getEditorText() {
+
+  const editor =
+    document.getElementById(
+      "articleContent"
+    );
+
+  if (!editor) {
+    return "";
+  }
+
+  return editor.textContent
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+
+function updateEditorStats() {
+
+  const text =
+    getEditorText();
+
+  const words =
+    text
+      ? text.split(/\s+/).length
+      : 0;
+
+  const wordCount =
+    document.getElementById(
+      "wordCount"
+    );
+
+  if (wordCount) {
+
+    wordCount.textContent =
+      `${words.toLocaleString("hi-IN")} शब्द`;
+  }
+
+  const readingTime =
+    document.getElementById(
+      "readingTime"
+    );
+
+  if (readingTime) {
+
+    const minutes =
+      words > 0
+        ? Math.max(
+            1,
+            Math.ceil(words / 200)
+          )
+        : 0;
+
+    readingTime.textContent =
+      `${minutes} मिनट पढ़ने का समय`;
+  }
+}
+
+
+/* =========================================================
+   Status
+   ========================================================= */
+
+function updateStatusUI(status) {
+
+  const badge =
+    document.getElementById(
+      "articleStatusBadge"
+    );
+
+  const sideStatus =
+    document.getElementById(
+      "sideStatus"
+    );
+
+  const normalized =
+    status === "published"
+      ? "published"
+      : "draft";
+
+  if (badge) {
+
+    badge.textContent =
+      normalized === "published"
+        ? "प्रकाशित"
+        : "ड्राफ्ट";
+
+    badge.className =
+      `status-badge ${normalized}`;
+  }
+
+  if (sideStatus) {
+
+    sideStatus.value =
+      normalized;
+  }
+}
+
+
+function markUnsaved() {
+
+  isDirty = true;
+
+  const state =
+    document.getElementById(
+      "saveState"
+    );
+
+  if (state) {
+
+    state.textContent =
+      "परिवर्तन सहेजे नहीं गए";
+  }
+}
+
+
+function markSaved() {
+
+  isDirty = false;
+
+  const state =
+    document.getElementById(
+      "saveState"
+    );
+
+  if (state) {
+
+    state.textContent =
+      "सभी परिवर्तन सहेजे गए";
+  }
+}
+
+
+/* =========================================================
+   Toast
+   ========================================================= */
+
+function showToast(
+  message,
+  type = "success"
+) {
+
+  const container =
+    document.getElementById(
+      "toastContainer"
+    );
+
+  if (!container) {
+    return;
+  }
+
+  const toast =
+    document.createElement(
+      "div"
+    );
+
+  toast.className =
+    `toast toast-${type}`;
+
+  toast.textContent =
+    message;
+
+  container.appendChild(
+    toast
+  );
+
+  setTimeout(
+    () => {
+
+      toast.classList.add(
+        "hide"
       );
 
-    if (!saved) {
-      return;
+      setTimeout(
+        () => toast.remove(),
+        300
+      );
+
+    },
+    3000
+  );
+}
+
+
+/* =========================================================
+   Sources Collection
+   ========================================================= */
+
+function collectSources() {
+
+  const items =
+    document.querySelectorAll(
+      ".source-item"
+    );
+
+  const sources = [];
+
+  items.forEach(
+    (item) => {
+
+      const title =
+        item.querySelector(
+          ".source-title"
+        )?.value.trim() || "";
+
+      const url =
+        item.querySelector(
+          ".source-url"
+        )?.value.trim() || "";
+
+      if (title || url) {
+
+        sources.push({
+          title,
+          url
+        });
+      }
     }
+  );
+
+  return sources;
+}
 
 
-    try {
+/* =========================================================
+   Article Data
+   ========================================================= */
 
-      const article =
-        JSON.parse(saved);
+function collectArticleData() {
 
-
+  const content =
+    sanitizeEditorHtml(
       document.getElementById(
-        "articleTitle"
-      ).value =
-        article.title || "";
+        "articleContent"
+      )?.innerHTML || ""
+    );
 
+  const article = {
 
+    id:
+      crypto.randomUUID
+        ? crypto.randomUUID()
+        : `article-${Date.now()}`,
+
+    title:
       document.getElementById(
-        "articleSlug"
-      ).value =
-        article.slug || "";
+        "title"
+      )?.value.trim() || "",
 
+    slug:
+      document.getElementById(
+        "slug"
+      )?.value.trim() || "",
 
+    category:
       document.getElementById(
         "category"
-      ).value =
-        article.category || "";
+      )?.value || "",
 
-
+    author:
       document.getElementById(
         "author"
-      ).value =
-        article.author || "";
+      )?.value.trim() || "",
 
-
+    excerpt:
       document.getElementById(
         "excerpt"
-      ).value =
-        article.excerpt || "";
+      )?.value.trim() || "",
 
+    content,
 
+    status:
       document.getElementById(
-        "articleContent"
-      ).innerHTML =
-        article.content || "";
+        "sideStatus"
+      )?.value || "draft",
 
+    publishedAt:
+      null,
 
-      document.getElementById(
-        "status"
-      ).value =
-        article.status || "draft";
-
-
+    publishDate:
       document.getElementById(
         "publishDate"
-      ).value =
-        article.publishDate || "";
+      )?.value || "",
 
-
+    visibility:
       document.getElementById(
         "visibility"
-      ).value =
-        article.visibility || "public";
+      )?.value || "public",
 
-
+    featuredImage:
       document.getElementById(
-        "tags"
-      ).value =
-        Array.isArray(article.tags)
-          ? article.tags.join(", ")
-          : (article.tags || "");
+        "featuredImage"
+      )?.value.trim() || "",
 
+    tags:
+      [...currentTags],
 
-      document.getElementById(
-        "seoTitle"
-      ).value =
-        article.seoTitle || "";
+    seo: {
 
-
-      document.getElementById(
-        "seoDescription"
-      ).value =
-        article.seoDescription || "";
-
-
-      /*
-       * ARTICLE OPTIONS
-       */
-
-      if (article.options) {
-
+      title:
         document.getElementById(
-          "featuredArticle"
-        ).checked =
-          !!article.options.featured;
+          "seoTitle"
+        )?.value.trim() || "",
 
-
+      description:
         document.getElementById(
-          "breakingArticle"
-        ).checked =
-          !!article.options.breaking;
+          "seoDescription"
+        )?.value.trim() || ""
+    },
 
+    options: {
 
-        document.getElementById(
-          "commentsEnabled"
-        ).checked =
-          article.options.comments !== false;
-
-
-        document.getElementById(
-          "socialEnabled"
-        ).checked =
-          article.options.socialSharing !== false;
-
-      }
-
-
-      /*
-       * FACT CHECK
-       */
-
-      if (article.factCheck) {
-
-        document.getElementById(
-          "factPrimary"
-        ).checked =
-          !!article.factCheck.primarySource;
-
-
-        document.getElementById(
-          "factNames"
-        ).checked =
-          !!article.factCheck.namesDatesLocations;
-
-
-        document.getElementById(
-          "factClaims"
-        ).checked =
-          !!article.factCheck.majorClaims;
-
-
-        document.getElementById(
-          "factMedia"
-        ).checked =
-          !!article.factCheck.mediaContext;
-
-      }
-
-
-      /*
-       * SOURCES
-       */
-
-      if (
-        Array.isArray(
-          article.sources
-        ) &&
-        article.sources.length
-      ) {
-
-        const container =
+      featured:
+        Boolean(
           document.getElementById(
-            "sourcesContainer"
-          );
+            "optionFeatured"
+          )?.checked
+        ),
+
+      breaking:
+        Boolean(
+          document.getElementById(
+            "optionBreaking"
+          )?.checked
+        ),
+
+      comments:
+        Boolean(
+          document.getElementById(
+            "optionComments"
+          )?.checked
+        ),
+
+      related:
+        Boolean(
+          document.getElementById(
+            "optionRelated"
+          )?.checked
+        )
+    },
+
+    factCheck: {
+
+      primarySource:
+        Boolean(
+          document.getElementById(
+            "fcPrimarySource"
+          )?.checked
+        ),
+
+      namesDatesLocations:
+        Boolean(
+          document.getElementById(
+            "fcNamesDatesLocations"
+          )?.checked
+        ),
+
+      majorClaims:
+        Boolean(
+          document.getElementById(
+            "fcMajorClaims"
+          )?.checked
+        ),
+
+      mediaContext:
+        Boolean(
+          document.getElementById(
+            "fcMediaContext"
+          )?.checked
+        )
+    },
+
+    sources:
+      collectSources(),
+
+    updatedAt:
+      new Date().toISOString(),
+
+    createdAt:
+      null
+  };
+
+  return article;
+}
 
 
-        container.innerHTML = "";
+/* =========================================================
+   Validation
+   ========================================================= */
+
+function validateArticle() {
+
+  const title =
+    document.getElementById(
+      "title"
+    )?.value.trim();
+
+  const slug =
+    document.getElementById(
+      "slug"
+    )?.value.trim();
+
+  const category =
+    document.getElementById(
+      "category"
+    )?.value;
+
+  const author =
+    document.getElementById(
+      "author"
+    )?.value.trim();
+
+  const excerpt =
+    document.getElementById(
+      "excerpt"
+    )?.value.trim();
+
+  const content =
+    getEditorText();
+
+  if (!title) {
+
+    showToast(
+      "कृपया लेख का शीर्षक दर्ज करें।",
+      "error"
+    );
+
+    document.getElementById(
+      "title"
+    )?.focus();
+
+    return false;
+  }
+
+  if (!slug) {
+
+    showToast(
+      "लेख का स्लग (URL Slug) आवश्यक है।",
+      "error"
+    );
+
+    document.getElementById(
+      "slug"
+    )?.focus();
+
+    return false;
+  }
+
+  if (!category) {
+
+    showToast(
+      "कृपया लेख की श्रेणी चुनें।",
+      "error"
+    );
+
+    document.getElementById(
+      "category"
+    )?.focus();
+
+    return false;
+  }
+
+  if (!author) {
+
+    showToast(
+      "लेखक का नाम आवश्यक है।",
+      "error"
+    );
+
+    document.getElementById(
+      "author"
+    )?.focus();
+
+    return false;
+  }
+
+  if (!excerpt) {
+
+    showToast(
+      "लेख का संक्षिप्त विवरण दर्ज करें।",
+      "error"
+    );
+
+    document.getElementById(
+      "excerpt"
+    )?.focus();
+
+    return false;
+  }
+
+  if (!content) {
+
+    showToast(
+      "लेख की मुख्य सामग्री खाली है।",
+      "error"
+    );
+
+    document.getElementById(
+      "articleContent"
+    )?.focus();
+
+    return false;
+  }
+
+  return true;
+}
 
 
-        article.sources.forEach(
-          function(source, index) {
+/* =========================================================
+   Form → Article
+   ========================================================= */
 
-            const item =
-              document.createElement(
-                "div"
-              );
+function applyArticleToForm(article) {
+
+  if (!article) {
+    return;
+  }
+
+  document.getElementById(
+    "title"
+  ).value =
+    article.title || "";
+
+  document.getElementById(
+    "slug"
+  ).value =
+    article.slug || "";
+
+  document.getElementById(
+    "category"
+  ).value =
+    article.category || "";
+
+  document.getElementById(
+    "author"
+  ).value =
+    article.author || "";
+
+  document.getElementById(
+    "excerpt"
+  ).value =
+    article.excerpt || "";
+
+  document.getElementById(
+    "publishDate"
+  ).value =
+    article.publishDate || "";
+
+  document.getElementById(
+    "visibility"
+  ).value =
+    article.visibility || "public";
+
+  document.getElementById(
+    "featuredImage"
+  ).value =
+    article.featuredImage || "";
+
+  document.getElementById(
+    "seoTitle"
+  ).value =
+    article.seo?.title || "";
+
+  document.getElementById(
+    "seoDescription"
+  ).value =
+    article.seo?.description || "";
+
+  document.getElementById(
+    "articleContent"
+  ).innerHTML =
+    sanitizeEditorHtml(
+      article.content || ""
+    );
 
 
-            item.className =
-              "source-item";
+  /*
+   * Tags
+   */
+
+  currentTags =
+    Array.isArray(article.tags)
+      ? [...article.tags]
+      : [];
+
+  renderTags();
 
 
-            item.innerHTML = `
+  /*
+   * Options
+   */
 
-              <div
-                style="
-                  display:flex;
-                  align-items:center;
-                  justify-content:space-between;
-                  margin-bottom:8px;
-                "
-              >
+  document.getElementById(
+    "optionFeatured"
+  ).checked =
+    Boolean(
+      article.options?.featured
+    );
 
-                <div>
+  document.getElementById(
+    "optionBreaking"
+  ).checked =
+    Boolean(
+      article.options?.breaking
+    );
 
-                  <span class="source-number">
-                    ${index + 1}
-                  </span>
+  document.getElementById(
+    "optionComments"
+  ).checked =
+    article.options?.comments !== false;
 
-                  <strong
-                    style="font-size:11px;"
-                  >
-                    Source
-                  </strong>
-
-                </div>
-
-
-                <button
-                  class="btn btn-small"
-                  type="button"
-                  onclick="removeSource(this)"
-                >
-                  Remove
-                </button>
-
-              </div>
+  document.getElementById(
+    "optionRelated"
+  ).checked =
+    article.options?.related !== false;
 
 
-              <input
-                type="text"
-                class="source-input"
-                value="${escapeHtmlAttribute(source)}"
-                placeholder="Source name / URL / document reference"
-                oninput="markUnsaved()"
-              >
+  /*
+   * Fact Check
+   */
 
-            `;
+  document.getElementById(
+    "fcPrimarySource"
+  ).checked =
+    Boolean(
+      article.factCheck?.primarySource
+    );
+
+  document.getElementById(
+    "fcNamesDatesLocations"
+  ).checked =
+    Boolean(
+      article.factCheck?.namesDatesLocations
+    );
+
+  document.getElementById(
+    "fcMajorClaims"
+  ).checked =
+    Boolean(
+      article.factCheck?.majorClaims
+    );
+
+  document.getElementById(
+    "fcMediaContext"
+  ).checked =
+    Boolean(
+      article.factCheck?.mediaContext
+    );
 
 
-            container.appendChild(
-              item
-            );
+  /*
+   * Sources
+   */
 
-          }
+  const sourcesContainer =
+    document.getElementById(
+      "sourcesContainer"
+    );
+
+  sourcesContainer.innerHTML = "";
+
+  sourceCounter = 0;
+
+  if (
+    Array.isArray(article.sources) &&
+    article.sources.length
+  ) {
+
+    article.sources.forEach(
+      (source) => {
+
+        addSource(
+          source.title || "",
+          source.url || ""
         );
-
-
-        sourceCounter =
-          article.sources.length;
-
       }
+    );
+
+  } else {
+
+    addSource();
+  }
 
 
-      /*
-       * FEATURED IMAGE
-       */
+  /*
+   * Status
+   */
 
-      if (
+  updateStatusUI(
+    article.status || "draft"
+  );
+
+
+  /*
+   * Featured image
+   */
+
+  updateFeaturedImage();
+
+  updateSlugPreview();
+
+  updateEditorStats();
+
+  markSaved();
+}
+
+
+/* =========================================================
+   नया लेख
+   ========================================================= */
+
+function newArticle() {
+
+  if (
+    isDirty &&
+    !confirm(
+      "आपके कुछ परिवर्तन अभी सहेजे नहीं गए हैं।\n\n" +
+      "क्या आप नया लेख शुरू करना चाहते हैं?"
+    )
+  ) {
+    return;
+  }
+
+  document
+    .querySelectorAll(
+      "input, textarea, select"
+    )
+    .forEach(
+      (element) => {
+
+        if (
+          element.type ===
+          "checkbox"
+        ) {
+          element.checked =
+            element.id ===
+              "optionComments" ||
+            element.id ===
+              "optionRelated";
+
+        } else {
+
+          element.value = "";
+        }
+      }
+    );
+
+
+  document.getElementById(
+    "articleContent"
+  ).innerHTML = "";
+
+
+  document.getElementById(
+  "category"
+).value = "";
+
+
+document.getElementById(
+  "visibility"
+).value =
+  "public";
+
+
+document.getElementById(
+  "articleContent"
+).innerHTML = "";
+
+
+currentTags = [];
+
+renderTags();
+
+
+const sourcesContainer =
+  document.getElementById(
+    "sourcesContainer"
+  );
+
+sourcesContainer.innerHTML = "";
+
+sourceCounter = 0;
+
+addSource();
+
+
+localStorage.removeItem(
+  DRAFT_KEY
+);
+
+
+updateStatusUI(
+  "draft"
+);
+
+
+setDefaultPublishDate();
+
+
+updateFeaturedImage();
+
+
+updateSlugPreview();
+
+
+updateEditorStats();
+
+
+markSaved();
+
+
+showToast(
+  "नया लेख तैयार है।"
+);
+            }
+
+  /* =========================================================
+   Dashboard Navigation
+   ========================================================= */
+
+function goToDashboard() {
+
+  if (
+    isDirty &&
+    !confirm(
+      "आपके कुछ परिवर्तन अभी सहेजे नहीं गए हैं।\n\n" +
+      "क्या आप डैशबोर्ड पर जाना चाहते हैं?"
+    )
+  ) {
+    return;
+  }
+
+  window.location.href =
+    "dashboard.html";
+}
+
+
+/* =========================================================
+   Preview
+   ========================================================= */
+
+function previewArticle() {
+
+  const article =
+    collectArticleData();
+
+  const preview =
+    document.getElementById(
+      "previewContent"
+    );
+
+  if (!preview) {
+    return;
+  }
+
+  const tagsHtml =
+    article.tags.length
+      ? `
+        <div class="preview-tags">
+          ${article.tags
+            .map(
+              (tag) =>
+                `<span>${escapeHtml(tag)}</span>`
+            )
+            .join("")}
+        </div>
+      `
+      : "";
+
+  preview.innerHTML = `
+    <article class="article-preview">
+
+      ${
         article.featuredImage
-      ) {
-
-        featuredImageData =
-          article.featuredImage;
-
-
-        document.getElementById(
-          "imagePreview"
-        ).innerHTML =
-
-          `<img
-            src="${article.featuredImage}"
-            alt="Featured image preview"
-          >`;
-
+          ? `
+            <img
+              class="preview-featured-image"
+              src="${escapeHtml(
+                article.featuredImage
+              )}"
+              alt="${escapeHtml(
+                article.title
+              )}"
+            />
+          `
+          : ""
       }
 
+      <div class="preview-category">
+        ${escapeHtml(article.category)}
+      </div>
 
-      updateSEO();
+      <h1>
+        ${escapeHtml(article.title)}
+      </h1>
 
-      updateFactStatus();
+      <div class="preview-meta">
+        <span>
+          लेखक: ${escapeHtml(article.author)}
+        </span>
 
-      markSaved();
+        <span>
+          ${escapeHtml(article.publishDate)}
+        </span>
+      </div>
+
+      <p class="preview-excerpt">
+        ${escapeHtml(article.excerpt)}
+      </p>
+
+      ${tagsHtml}
+
+      <div class="preview-body">
+        ${article.content}
+      </div>
+
+    </article>
+  `;
+
+  document.getElementById(
+    "previewModal"
+  ).classList.add(
+    "open"
+  );
+}
 
 
-    } catch (error) {
+function closePreview() {
 
-      console.error(
-        "Draft loading failed:",
-        error
-      );
+  document.getElementById(
+    "previewModal"
+  )?.classList.remove(
+    "open"
+  );
+}
 
-      showToast(
-        "Saved draft पढ़ने में समस्या हुई।"
-      );
 
-    }
+/* =========================================================
+   Draft Loading
+   ========================================================= */
 
+function loadDraft() {
+
+  const raw =
+    localStorage.getItem(
+      DRAFT_KEY
+    );
+
+  if (!raw) {
+    return false;
   }
 
-
-
-  /*
-   * =====================================================
-   * HTML ATTRIBUTE ESCAPE
-   * =====================================================
-   */
-
-  function escapeHtmlAttribute(value) {
-
-    return String(value)
-      .replace(
-        /&/g,
-        "&amp;"
-      )
-      .replace(
-        /"/g,
-        "&quot;"
-      )
-      .replace(
-        /</g,
-        "&lt;"
-      )
-      .replace(
-        />/g,
-        "&gt;"
-      );
-
-  }
-
-
-
-  /*
-   * =====================================================
-   * ARTICLE VALIDATION
-   * =====================================================
-   */
-
-  function validateArticle() {
+  try {
 
     const article =
-      collectArticleData();
+      JSON.parse(raw);
 
-
-    if (!article.title) {
-
-      showToast(
-        "Article title दर्ज करें।"
-      );
-
-      document.getElementById(
-        "articleTitle"
-      ).focus();
-
+    if (!article) {
       return false;
-
     }
 
+    applyArticleToForm(
+      article
+    );
 
-    if (!article.slug) {
-
-      generateSlug();
-
-      if (
-        !document.getElementById(
-          "articleSlug"
-        ).value
-      ) {
-
-        showToast(
-          "Article slug दर्ज करें।"
-        );
-
-        return false;
-
-      }
-
-    }
-
-
-    if (!article.category) {
-
-      showToast(
-        "Article category चुनें।"
-      );
-
-      document.getElementById(
-        "category"
-      ).focus();
-
-      return false;
-
-    }
-
-
-    if (!article.author) {
-
-      showToast(
-        "Author दर्ज करें।"
-      );
-
-      document.getElementById(
-        "author"
-      ).focus();
-
-      return false;
-
-    }
-
-
-    if (!article.content) {
-
-      showToast(
-        "Article content लिखें।"
-      );
-
-      document.getElementById(
-        "articleContent"
-      ).focus();
-
-      return false;
-
-    }
-
+    showToast(
+      "पिछला ड्राफ्ट लोड किया गया।"
+    );
 
     return true;
 
-  }
+  } catch (error) {
 
-
-
-  /*
-   * =====================================================
-   * PUBLISH ARTICLE
-   * =====================================================
-   */
-
-  function publishArticle() {
-
-    if (!validateArticle()) {
-      return;
-    }
-
-
-    const article =
-      collectArticleData();
-
-
-    /*
-     * Fact-check warning
-     */
-
-    const factChecks = [
-
-      article.factCheck.primarySource,
-
-      article.factCheck.namesDatesLocations,
-
-      article.factCheck.majorClaims,
-
-      article.factCheck.mediaContext
-
-    ];
-
-
-    const factCheckComplete =
-      factChecks.every(
-        Boolean
-      );
-
-
-    if (!factCheckComplete) {
-
-      const continuePublishing =
-        confirm(
-          "Fact Check अभी पूरा नहीं हुआ है।\n\n" +
-          "क्या आप फिर भी article publish करना चाहते हैं?"
-        );
-
-
-      if (!continuePublishing) {
-        return;
-      }
-
-    }
-
-
-    /*
-     * Final confirmation
-     */
-
-    const confirmed =
-      confirm(
-        "क्या आप इस article को publish करना चाहते हैं?"
-      );
-
-
-    if (!confirmed) {
-      return;
-    }
-
-
-    article.status =
-      "published";
-
-
-    article.publishedAt =
-      new Date().toISOString();
-
-
-    /*
-     * TEMPORARY FRONTEND STORAGE
-     *
-     * Production backend आने तक
-     * localStorage इस्तेमाल हो रहा है।
-     */
-
-    localStorage.setItem(
-      "newsroom_published_article",
-      JSON.stringify(article)
+    console.error(
+      "Draft load error:",
+      error
     );
-
-
-    localStorage.setItem(
-      "newsroom_article_draft",
-      JSON.stringify(article)
-    );
-
-
-    document.getElementById(
-      "status"
-    ).value =
-      "published";
-
-
-    markSaved();
-
 
     showToast(
-      "Article successfully published."
+      "ड्राफ्ट लोड नहीं हो पाया।",
+      "error"
     );
 
+    return false;
   }
+}
 
 
+/* =========================================================
+   Default Publish Date
+   ========================================================= */
 
-  /*
-   * =====================================================
-   * PREVIEW
-   * =====================================================
-   */
+function setDefaultPublishDate() {
 
-  function openPreview() {
-
-    const article =
-      collectArticleData();
-
-
+  const input =
     document.getElementById(
-      "previewTitle"
-    ).textContent =
-      article.title ||
-      "Untitled Article";
-
-
-    document.getElementById(
-      "previewMeta"
-    ).textContent =
-
-      [
-        article.category,
-        article.author
-      ]
-      .filter(Boolean)
-      .join(" · ") ||
-
-      "Category · Author";
-
-
-    document.getElementById(
-      "previewExcerpt"
-    ).textContent =
-      article.excerpt || "";
-
-
-    document.getElementById(
-      "previewContent"
-    ).innerHTML =
-
-      article.content ||
-
-      "<p>Article content अभी उपलब्ध नहीं है।</p>";
-
-
-    document.getElementById(
-      "previewModal"
-    ).classList.add(
-      "open"
+      "publishDate"
     );
 
-
-    document.body.style.overflow =
-      "hidden";
-
+  if (!input || input.value) {
+    return;
   }
 
+  const now =
+    new Date();
 
-
-  /*
-   * =====================================================
-   * CLOSE PREVIEW
-   * =====================================================
-   */
-
-  function closePreview() {
-
-    document.getElementById(
-      "previewModal"
-    ).classList.remove(
-      "open"
-    );
-
-
-    document.body.style.overflow =
-      "";
-
-  }
-
-
-
-  /*
-   * =====================================================
-   * MODAL BACKDROP CLICK
-   * =====================================================
-   */
-
-  document
-    .getElementById(
-      "previewModal"
+  const localDate =
+    new Date(
+      now.getTime() -
+      now.getTimezoneOffset() *
+        60000
     )
-    .addEventListener(
-      "click",
-      function(event) {
+      .toISOString()
+      .slice(0, 10);
 
-        if (
-          event.target ===
-          this
-        ) {
+  input.value =
+    localDate;
+  }
+    /* =========================================================
+   Editor Events
+   ========================================================= */
 
-          closePreview();
+function setupEditorEvents() {
 
-        }
-
-      }
+  const title =
+    document.getElementById(
+      "title"
     );
 
+  const slug =
+    document.getElementById(
+      "slug"
+    );
 
-
-  /*
-   * =====================================================
-   * ESCAPE KEY
-   * =====================================================
-   */
-
-  document.addEventListener(
-    "keydown",
-    function(event) {
-
-      if (
-        event.key === "Escape"
-      ) {
-
-        closePreview();
-
-      }
-
-    }
-  );
-
-
-
-  /*
-   * =====================================================
-   * KEYBOARD SHORTCUT
-   * Ctrl + S / Cmd + S
-   * =====================================================
-   */
-
-  document.addEventListener(
-    "keydown",
-    function(event) {
-
-      if (
-        (event.ctrlKey ||
-         event.metaKey) &&
-        event.key.toLowerCase() === "s"
-      ) {
-
-        event.preventDefault();
-
-        saveDraft();
-
-      }
-
-    }
-  );
-
-
-
-  /*
-   * =====================================================
-   * EDITOR INPUT TRACKING
-   * =====================================================
-   */
-
-  document
-    .getElementById(
+  const editor =
+    document.getElementById(
       "articleContent"
-    )
-    .addEventListener(
+    );
+
+  const tagsInput =
+    document.getElementById(
+      "tagsInput"
+    );
+
+  const featuredImage =
+    document.getElementById(
+      "featuredImage"
+    );
+
+
+  if (title) {
+
+    title.addEventListener(
       "input",
-      function() {
+      () => {
+
+        generateSlug();
 
         markUnsaved();
+      }
+    );
+  }
 
+
+  if (slug) {
+
+    slug.addEventListener(
+      "input",
+      () => {
+
+        slugManuallyEdited =
+          true;
+
+        slug.value =
+          slugify(slug.value);
+
+        updateSlugPreview();
+
+        markUnsaved();
+      }
+    );
+  }
+
+
+  if (editor) {
+
+    editor.addEventListener(
+      "input",
+      () => {
+
+        updateEditorStats();
+
+        markUnsaved();
       }
     );
 
-
-
-  /*
-   * =====================================================
-   * EDITOR PASTE CLEANUP
-   * =====================================================
-   */
-
-  document
-    .getElementById(
-      "articleContent"
-    )
-    .addEventListener(
+    editor.addEventListener(
       "paste",
-      function(event) {
-
-        /*
-         * Plain text paste.
-         *
-         * इससे external websites की
-         * अनावश्यक styling editor में
-         * नहीं आएगी।
-         */
+      (event) => {
 
         event.preventDefault();
 
-
         const text =
-          event.clipboardData
-            .getData(
-              "text/plain"
-            );
-
+          (
+            event.clipboardData ||
+            window.clipboardData
+          ).getData(
+            "text/plain"
+          );
 
         document.execCommand(
           "insertText",
@@ -2266,201 +3031,508 @@
           text
         );
 
+        updateEditorStats();
 
         markUnsaved();
+      }
+    );
+  }
 
+
+  if (tagsInput) {
+
+    tagsInput.addEventListener(
+      "keydown",
+      handleTagInput
+    );
+  }
+
+
+  if (featuredImage) {
+
+    featuredImage.addEventListener(
+      "input",
+      updateFeaturedImage
+    );
+  }
+
+
+  document
+    .querySelectorAll(
+      "input, textarea, select"
+    )
+    .forEach(
+      (element) => {
+
+        element.addEventListener(
+          "change",
+          () => {
+
+            markUnsaved();
+          }
+        );
       }
     );
 
 
-
-  /*
-   * =====================================================
-   * AUTOSAVE
-   *
-   * अभी localStorage आधारित।
-   * बाद में API autosave से replace किया जा सकता है।
-   * =====================================================
-   */
-
-  let autosaveTimer = null;
-
-
-  function scheduleAutosave() {
-
-    clearTimeout(
-      autosaveTimer
-    );
-
-
-    autosaveTimer =
-      setTimeout(
-        function() {
-
-          const article =
-            collectArticleData();
-
-
-          /*
-           * Empty article को autosave
-           * नहीं करना है।
-           */
-
-          if (
-            !article.title &&
-            !article.content
-          ) {
-
-            return;
-
-          }
-
-
-          localStorage.setItem(
-            "newsroom_article_autosave",
-            JSON.stringify(article)
-          );
-
-
-          document.getElementById(
-            "saveInfo"
-          ).textContent =
-            "Autosaved locally";
-
-
-        },
-        1500
-      );
-
-  }
-
-
-
-  /*
-   * =====================================================
-   * INPUT EVENTS FOR AUTOSAVE
-   * =====================================================
-   */
-
   document.addEventListener(
-    "input",
-    function(event) {
+    "keydown",
+    (event) => {
 
       if (
-        event.target.closest(
-          ".main"
-        )
+        event.key ===
+        "Escape"
       ) {
 
-        markUnsaved();
-
-        scheduleAutosave();
-
+        closePreview();
       }
-
     }
   );
 
-
-
-  /*
-   * =====================================================
-   * DEFAULT DATE/TIME
-   * =====================================================
-   */
-
-  function setDefaultPublishDate() {
-
-    const field =
-      document.getElementById(
-        "publishDate"
-      );
-
-
-    if (field.value) {
-      return;
-    }
-
-
-    const now =
-      new Date();
-
-
-    const local =
-      new Date(
-        now.getTime() -
-        now.getTimezoneOffset() * 60000
-      )
-      .toISOString()
-      .slice(
-        0,
-        16
-      );
-
-
-    field.value =
-      local;
-
-  }
-
-
-
-  /*
-   * =====================================================
-   * INITIALIZE
-   * =====================================================
-   */
 
   document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-      setDefaultPublishDate();
-
-      loadDraft();
-
-      updateSEO();
-
-      updateFactStatus();
-
-    }
-  );
-
-
-
-  /*
-   * =====================================================
-   * BEFORE LEAVING PAGE
-   * =====================================================
-   */
-
-  window.addEventListener(
-    "beforeunload",
-    function(event) {
-
-      const status =
-        document.getElementById(
-          "saveStatus"
-        );
-
+    "keydown",
+    (event) => {
 
       if (
-        !status.classList.contains(
-          "saved"
-        )
+        (
+          event.ctrlKey ||
+          event.metaKey
+        ) &&
+        event.key.toLowerCase() ===
+          "s"
       ) {
 
         event.preventDefault();
 
-        event.returnValue = "";
-
+        saveDraft();
       }
-
     }
   );
 
-</script>
 
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        (
+          event.ctrlKey ||
+          event.metaKey
+        ) &&
+        event.key ===
+          "Enter"
+      ) {
+
+        event.preventDefault();
+
+        publishArticle();
+      }
+    }
+  );
+}
+
+
+/* =========================================================
+   Browser Close Warning
+   ========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  (event) => {
+
+    if (!isDirty) {
+      return;
+    }
+
+    event.preventDefault();
+
+    event.returnValue = "";
+  }
+);
+      <script>
+/* =========================================================
+   Draft Save
+   ========================================================= */
+
+function saveDraft() {
+
+  if (!validateArticle()) {
+    return;
+  }
+
+  const existingRaw =
+    localStorage.getItem(
+      DRAFT_KEY
+    );
+
+  let existingArticle = null;
+
+  if (existingRaw) {
+    try {
+      existingArticle =
+        JSON.parse(existingRaw);
+    } catch (error) {
+      console.warn(
+        "Existing draft parse error:",
+        error
+      );
+    }
+  }
+
+  const article =
+    collectArticleData();
+
+  /*
+   * Existing draft की पहचान और creation time
+   * सुरक्षित रखें।
+   */
+
+  if (existingArticle?.id) {
+
+    article.id =
+      existingArticle.id;
+  }
+
+  article.createdAt =
+    existingArticle?.createdAt ||
+    new Date().toISOString();
+
+  article.status =
+    "draft";
+
+  article.publishedAt =
+    existingArticle?.publishedAt ||
+    null;
+
+  article.updatedAt =
+    new Date().toISOString();
+
+
+  localStorage.setItem(
+    DRAFT_KEY,
+    JSON.stringify(article)
+  );
+
+
+  updateStatusUI(
+    "draft"
+  );
+
+  markSaved();
+
+  showToast(
+    "ड्राफ्ट सफलतापूर्वक सहेजा गया।"
+  );
+}
+
+
+/* =========================================================
+   Publish Article
+   ========================================================= */
+
+function publishArticle() {
+
+  if (!validateArticle()) {
+    return;
+  }
+
+
+  const article =
+    collectArticleData();
+
+
+  /*
+   * Fact Check स्थिति
+   */
+
+  const factChecks = [
+    article.factCheck.primarySource,
+    article.factCheck.namesDatesLocations,
+    article.factCheck.majorClaims,
+    article.factCheck.mediaContext
+  ];
+
+  const factCheckComplete =
+    factChecks.every(Boolean);
+
+
+  if (!factCheckComplete) {
+
+    const continuePublishing =
+      confirm(
+        "तथ्य-जाँच (Fact Check) अभी पूरी नहीं हुई है।\n\n" +
+        "क्या आप फिर भी इस लेख को प्रकाशित करना चाहते हैं?"
+      );
+
+    if (!continuePublishing) {
+      return;
+    }
+  }
+
+
+  /*
+   * अंतिम पुष्टि
+   */
+
+  const confirmed =
+    confirm(
+      "क्या आप इस लेख को प्रकाशित करना चाहते हैं?"
+    );
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  /*
+   * Existing draft की ID और creation time रखें।
+   */
+
+  const existingRaw =
+    localStorage.getItem(
+      DRAFT_KEY
+    );
+
+  let existingArticle = null;
+
+  if (existingRaw) {
+
+    try {
+
+      existingArticle =
+        JSON.parse(
+          existingRaw
+        );
+
+    } catch (error) {
+
+      console.warn(
+        "Draft parse error during publish:",
+        error
+      );
+    }
+  }
+
+
+  if (existingArticle?.id) {
+
+    article.id =
+      existingArticle.id;
+  }
+
+
+  article.createdAt =
+    existingArticle?.createdAt ||
+    new Date().toISOString();
+
+
+  article.status =
+    "published";
+
+
+  article.publishedAt =
+    new Date().toISOString();
+
+
+  article.updatedAt =
+    new Date().toISOString();
+
+
+  /*
+   * Published article
+   */
+
+  localStorage.setItem(
+    PUBLISHED_KEY,
+    JSON.stringify(article)
+  );
+
+
+  /*
+   * Draft copy भी updated रहे।
+   */
+
+  localStorage.setItem(
+    DRAFT_KEY,
+    JSON.stringify(article)
+  );
+
+
+  /*
+   * UI status
+   */
+
+  updateStatusUI(
+    "published"
+  );
+
+
+  const publishedDateText =
+    document.getElementById(
+      "publishedDateText"
+    );
+
+  if (publishedDateText) {
+
+    publishedDateText.textContent =
+      new Date(
+        article.publishedAt
+      ).toLocaleString(
+        "hi-IN",
+        {
+          dateStyle: "medium",
+          timeStyle: "short"
+        }
+      );
+  }
+
+
+  markSaved();
+
+
+  showToast(
+    "लेख सफलतापूर्वक प्रकाशित हो गया।"
+  );
+}
+
+
+/* =========================================================
+   Editor Initialization
+   ========================================================= */
+
+function initializeEditor() {
+
+  /*
+   * Default date
+   */
+
+  setDefaultPublishDate();
+
+
+  /*
+   * Event listeners
+   */
+
+  setupEditorEvents();
+
+
+  /*
+   * Existing draft restore
+   */
+
+  const draftLoaded =
+    loadDraft();
+
+
+  /*
+   * यदि draft नहीं मिला तो
+   * नया source field रखें।
+   */
+
+  if (!draftLoaded) {
+
+    const sourcesContainer =
+      document.getElementById(
+        "sourcesContainer"
+      );
+
+    if (
+      sourcesContainer &&
+      !sourcesContainer.querySelector(
+        ".source-item"
+      )
+    ) {
+
+      sourceCounter = 0;
+
+      addSource();
+    }
+
+    updateStatusUI(
+      "draft"
+    );
+
+    updateFeaturedImage();
+
+    updateSlugPreview();
+
+    updateEditorStats();
+
+    markSaved();
+  }
+
+
+  /*
+   * Tags
+   */
+
+  renderTags();
+
+
+  /*
+   * Initial slug preview
+   */
+
+  updateSlugPreview();
+
+
+  /*
+   * Initial statistics
+   */
+
+  updateEditorStats();
+}
+
+
+/* =========================================================
+   DOM Ready
+   ========================================================= */
+
+if (
+  document.readyState ===
+  "loading"
+) {
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeEditor
+  );
+
+} else {
+
+  initializeEditor();
+}
+
+
+/* =========================================================
+   Preview Modal — बाहर click करने पर बंद
+   ========================================================= */
+
+document.addEventListener(
+  "click",
+  (event) => {
+
+    const modal =
+      document.getElementById(
+        "previewModal"
+      );
+
+    if (
+      modal &&
+      event.target === modal
+    ) {
+
+      closePreview();
+    }
+  }
+);
+
+
+/* =========================================================
+   Article Editor समाप्त
+   ========================================================= */
+</script>
 
 </body>
 </html>
