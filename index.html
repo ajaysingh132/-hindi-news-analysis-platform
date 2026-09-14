@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GBSBFORYOU — समाचार, विश्लेषण और ज्ञान</title>
+  <meta name="description" content="समाचार से ज्ञान तक — गहन विश्लेषण, तथ्य-जांच और शोध का प्रीमियम हिंदी डिजिटल न्यूजरूम" />
+  <meta property="og:title" content="GBSBFORYOU — समाचार, विश्लेषण और ज्ञान" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Noto Serif Devanagari (body) + Noto Sans Devanagari (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       TOKEN SYSTEM
+       Palette: Deep Ink Navy + Warm Saffron Gold + Cool Slate
+    ═══════════════════════════════════════════ */
+    :root {
+      --ink:       #0D1B2A;   /* Deep editorial ink */
+      --ink-2:     #1B2F45;   /* Secondary ink */
+      --ink-3:     #2D4460;   /* Tertiary ink / nav */
+      --saffron:   #C8731A;   /* Saffron gold accent */
+      --saffron-2: #E8861D;   /* Lighter saffron */
+      --slate:     #4A6580;   /* Cool slate */
+      --slate-2:   #8AA8C4;   /* Light slate */
+      --paper:     #F7F5F0;   /* Warm paper background */
+      --paper-2:   #EEEBE4;   /* Card background */
+      --white:     #FFFFFF;
+      --red-alert: #C0392B;   /* Breaking / alert */
+      --green-ok:  #1E7E5A;   /* Verified / fact */
+
+      --serif: 'Noto Serif Devanagari', Georgia, serif;
+      --sans:  'Noto Sans Devanagari', system-ui, sans-serif;
+
+      --gap: 1.5rem;
+      --radius: 3px;
+      --max-w: 1320px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       TOP BAR
+    ═══════════════════════════════════════════ */
+    .topbar {
+      background: var(--ink);
+      color: var(--slate-2);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--ink-3);
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .topbar-date { letter-spacing: 0.02em; }
+    .topbar-links { display: flex; gap: 1.25rem; }
+    .topbar-links a { color: var(--slate-2); transition: color 0.2s; }
+    .topbar-links a:hover { color: var(--saffron-2); }
+
+    /* ═══════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════ */
+    .header {
+      background: var(--ink);
+      padding: 1rem 0 0.875rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(13,27,42,0.5);
+    }
+    .header-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-main {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .logo-main span { color: var(--saffron); }
+    .logo-tagline {
+      font-size: 0.65rem;
+      color: var(--slate-2);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+      font-family: var(--sans);
+    }
+
+    /* Search */
+    .header-search {
+      display: flex;
+      background: var(--ink-2);
+      border: 1px solid var(--ink-3);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 380px;
+      width: 100%;
+      justify-self: center;
+    }
+    .header-search input {
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0.5rem 0.875rem;
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      flex: 1;
+    }
+    .header-search input::placeholder { color: var(--slate); }
+    .header-search button {
+      background: var(--saffron);
+      border: none;
+      padding: 0 0.875rem;
+      cursor: pointer;
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    /* Right controls */
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+    }
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--red-alert);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .live-dot {
+      width: 7px; height: 7px;
+      background: #fff;
+      border-radius: 50%;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .social-icons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .social-icons a {
+      width: 30px; height: 30px;
+      background: var(--ink-3);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--slate-2);
+      font-size: 0.75rem;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+    .social-icons a:hover { background: var(--saffron); color: var(--white); }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    .nav {
+      background: var(--ink-2);
+      border-top: 1px solid var(--ink-3);
+      border-bottom: 2px solid var(--saffron);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      white-space: nowrap;
+    }
+    .nav-list a {
+      display: block;
+      padding: 0.65rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--slate-2);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-list a:hover,
+    .nav-list a.active { color: var(--saffron-2); }
+    .nav-list a.active {
+      border-bottom: 2px solid var(--saffron-2);
+      margin-bottom: -2px;
+    }
+
+    /* ═══════════════════════════════════════════
+       BREAKING NEWS TICKER
+    ═══════════════════════════════════════════ */
+    .ticker-bar {
+      background: var(--saffron);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      height: 34px;
+    }
+    .ticker-label {
+      background: var(--red-alert);
+      padding: 0 0.875rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-track {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-inner {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-inner span {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    @keyframes ticker { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+
+    /* ═══════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════ */
+    .hero {
+      padding: 2rem 0 1.5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      grid-template-rows: auto auto;
+      gap: 1.5rem;
+    }
+
+    /* Main hero story */
+    .hero-main {
+      grid-row: 1 / 3;
+      position: relative;
+      background: var(--ink);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .hero-main-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      opacity: 0.75;
+      display: block;
+    }
+    .hero-main-body {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      padding: 1.75rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, rgba(13,27,42,0.98) 40%, transparent);
+    }
+    .story-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--saffron-2);
+      margin-bottom: 0.6rem;
+      font-family: var(--sans);
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+    .hero-sub {
+      font-size: 0.875rem;
+      color: var(--slate-2);
+      line-height: 1.55;
+      font-family: var(--sans);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.875rem;
+      font-size: 0.72rem;
+      color: var(--slate);
+      font-family: var(--sans);
+    }
+    .hero-meta .author { color: var(--slate-2); font-weight: 500; }
+
+    /* Side stories */
+    .hero-side-top,
+    .hero-side-bottom {
+      background: var(--white);
+      border: 1px solid var(--paper-2);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .hero-side-top:hover,
+    .hero-side-bottom:hover {
+      box-shadow: 0 4px 20px rgba(13,27,42,0.1);
+    }
+    .hero-side-top .story-type { color: var(--saffron); }
+    .hero-side-bottom .story-type { color: var(--green-ok); }
+    .side-headline {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--ink);
+      margin: 0.4rem 0 0.5rem;
+    }
+    .side-summary {
+      font-size: 0.8rem;
+      color: var(--slate);
+      line-height: 1.55;
+    }
+    .side-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 0.875rem;
+      background: var(--paper-2);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION HEADER
+    ═══════════════════════════════════════════ */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 1em;
+      background: var(--saffron);
+      border-radius: 2px;
+    }
+    .section-more {
+      font-size: 0.72rem;
+      color: var(--slate);
+      font-weight: 500;
+      border-bottom: 1px solid var(--slate);
+      padding-bottom: 1px;
+    }
+    .section-more:hover { color: var(--saffron); border-color: var(--saffron); }
+
+    /* ═══════════════════════════════════════════
+       LATEST NEWS GRID
+    ═══════════════════════════════════════════ */
+    .section { padding: 1.75rem 0; }
+
+    .latest-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .news-card {
+      background: var(--white);
+      border: 1px solid var(--paper-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .news-card:hover {
+      box-shadow: 0 6px 24px rgba(13,27,42,0.12);
+      transform: translateY(-2px);
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      background: var(--paper-2);
+    }
+    .card-body { padding: 0.875rem; }
+    .card-type {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: var(--saffron);
+      margin-bottom: 0.35rem;
+      font-family: var(--sans);
+    }
+    .card-type.analysis { color: var(--ink-3); }
+    .card-type.fact { color: var(--green-ok); }
+    .card-type.ground { color: var(--slate); }
+    .card-headline {
+      font-family: var(--serif);
+      font-size: 0.975rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .card-meta {
+      font-size: 0.68rem;
+      color: var(--slate);
+      display: flex;
+      gap: 0.75rem;
+      font-family: var(--sans);
+    }
+
+    /* ═══════════════════════════════════════════
+       ANALYSIS SECTION — 2-col with featured
+    ═══════════════════════════════════════════ */
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .analysis-featured {
+      background: var(--ink);
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: 1.75rem;
+      position: relative;
+      cursor: pointer;
+    }
+    .analysis-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--saffron);
+    }
+    .analysis-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--saffron);
+      margin-bottom: 0.75rem;
+      font-family: var(--sans);
+    }
+    .analysis-headline {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 0.875rem;
+    }
+    .analysis-body {
+      font-size: 0.82rem;
+      color: var(--slate-2);
+      line-height: 1.65;
+    }
+    .analysis-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .analysis-item {
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--paper-2);
+      cursor: pointer;
+      display: flex;
+      gap: 0.875rem;
+      align-items: flex-start;
+    }
+    .analysis-item:first-child { padding-top: 0; }
+    .analysis-item:last-child { border-bottom: none; }
+    .analysis-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--paper-2);
+      line-height: 1;
+      flex-shrink: 0;
+      font-family: var(--sans);
+      width: 2rem;
+    }
+    .analysis-item-text {}
+    .analysis-item-type {
+      font-size: 0.65rem;
+      color: var(--saffron);
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.25rem;
+      font-family: var(--sans);
+    }
+    .analysis-item-headline {
+      font-family: var(--serif);
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .analysis-item:hover .analysis-item-headline { color: var(--saffron); }
+
+    /* ═══════════════════════════════════════════
+       INTERVIEW / DOCUMENTS / GROUND — 3-col row
+    ═══════════════════════════════════════════ */
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--paper-2);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .panel-title {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-2);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--saffron);
+    }
+    .panel-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--paper-2);
+      cursor: pointer;
+    }
+    .panel-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .panel-thumb {
+      width: 60px; height: 45px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      background: var(--paper-2);
+      flex-shrink: 0;
+    }
+    .panel-item-headline {
+      font-family: var(--serif);
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+    .panel-item:hover .panel-item-headline { color: var(--saffron); }
+    .panel-item-meta {
+      font-size: 0.65rem;
+      color: var(--slate);
+      margin-top: 0.2rem;
+      font-family: var(--sans);
+    }
+
+    /* Document card variant */
+    .doc-item {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--paper-2);
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+    }
+    .doc-item:last-child { border-bottom: none; }
+    .doc-icon {
+      width: 32px; height: 32px;
+      background: var(--paper-2);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      color: var(--slate);
+    }
+    .doc-type {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--green-ok);
+      font-family: var(--sans);
+    }
+    .doc-title {
+      font-family: var(--serif);
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .doc-item:hover .doc-title { color: var(--saffron); }
+
+    /* ═══════════════════════════════════════════
+       VIDEO SECTION
+    ═══════════════════════════════════════════ */
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .video-card {
+      cursor: pointer;
+    }
+    .video-thumb {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--ink-2);
+      aspect-ratio: 16/9;
+    }
+    .video-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-circle {
+      width: 42px; height: 42px;
+      background: rgba(200,115,26,0.9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+    .video-card:hover .play-circle { transform: scale(1.1); }
+    .video-duration {
+      position: absolute;
+      bottom: 0.4rem;
+      right: 0.5rem;
+      background: rgba(13,27,42,0.85);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.35rem;
+      border-radius: 2px;
+      font-family: var(--sans);
+    }
+    .video-title {
+      font-family: var(--serif);
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-top: 0.5rem;
+    }
+    .video-card:hover .video-title { color: var(--saffron); }
+    .video-meta {
+      font-size: 0.68rem;
+      color: var(--slate);
+      margin-top: 0.2rem;
+      font-family: var(--sans);
+    }
+
+    /* ═══════════════════════════════════════════
+       OPINION SECTION
+    ═══════════════════════════════════════════ */
+    .opinion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .opinion-card {
+      background: var(--white);
+      border: 1px solid var(--paper-2);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .opinion-card::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      right: 0.875rem;
+      font-family: Georgia, serif;
+      font-size: 5rem;
+      color: var(--paper-2);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .opinion-author {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin-bottom: 0.875rem;
+    }
+    .author-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--paper-2);
+      object-fit: cover;
+    }
+    .author-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-2);
+      font-family: var(--sans);
+    }
+    .author-role {
+      font-size: 0.68rem;
+      color: var(--slate);
+      font-family: var(--sans);
+    }
+    .opinion-headline {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+    .opinion-card:hover .opinion-headline { color: var(--saffron); }
+
+    /* ═══════════════════════════════════════════
+       NEWSLETTER STRIP
+    ═══════════════════════════════════════════ */
+    .newsletter-strip {
+      background: var(--ink-2);
+      padding: 2rem 0;
+      margin: 2rem 0;
+    }
+    .newsletter-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+    .newsletter-text h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .newsletter-text p {
+      font-size: 0.82rem;
+      color: var(--slate-2);
+      font-family: var(--sans);
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .newsletter-form input {
+      background: var(--white);
+      border: none;
+      outline: none;
+      padding: 0.7rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      width: 260px;
+      color: var(--ink);
+    }
+    .newsletter-form button {
+      background: var(--saffron);
+      border: none;
+      padding: 0.7rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover { background: var(--saffron-2); }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    .footer {
+      background: var(--ink);
+      color: var(--slate-2);
+      padding: 2.5rem 0 1.25rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--ink-3);
+    }
+    .footer-brand .logo-main { font-size: 1.2rem; }
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: var(--slate);
+      line-height: 1.6;
+      margin: 0.75rem 0 1rem;
+    }
+    .footer-social { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .footer-social a {
+      width: 28px; height: 28px;
+      background: var(--ink-3);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--slate-2);
+      transition: background 0.2s;
+    }
+    .footer-social a:hover { background: var(--saffron); color: #fff; }
+    .footer-col h4 {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: var(--white);
+      margin-bottom: 0.875rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-col ul a {
+      font-size: 0.78rem;
+      color: var(--slate);
+      transition: color 0.15s;
+    }
+    .footer-col ul a:hover { color: var(--saffron-2); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.25rem;
+      font-size: 0.72rem;
+      color: var(--slate);
+    }
+    .ai-disclosure {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--ink-3);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius);
+      font-size: 0.68rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       MOBILE STICKY NAV
+    ═══════════════════════════════════════════ */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--ink);
+      border-top: 1px solid var(--ink-3);
+      padding: 0.5rem 0;
+      z-index: 200;
+    }
+    .mobile-nav-inner {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .mob-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      color: var(--slate-2);
+      font-size: 0.62rem;
+      font-family: var(--sans);
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+    }
+    .mob-nav-item .icon { font-size: 1.1rem; }
+    .mob-nav-item.live .icon { color: var(--red-alert); }
+    .mob-nav-item.active { color: var(--saffron); }
+
+    /* ═══════════════════════════════════════════
+       PLACEHOLDER IMAGES (CSS)
+    ═══════════════════════════════════════════ */
+    .img-placeholder {
+      background: linear-gradient(135deg, var(--ink-2) 0%, var(--ink-3) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate);
+      font-size: 0.75rem;
+      font-family: var(--sans);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-main { grid-row: auto; }
+      .hero-side-top, .hero-side-bottom {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+      .side-img { margin-bottom: 0; }
+      .latest-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner { grid-template-columns: 1fr auto; }
+      .header-search { display: none; }
+      .social-icons { display: none; }
+      .topbar { display: none; }
+      .analysis-grid { grid-template-columns: 1fr; }
+      .three-col { grid-template-columns: 1fr; }
+      .opinion-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .newsletter-inner { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { width: 100%; }
+      .mobile-nav { display: block; }
+      body { padding-bottom: 70px; }
+      .hero-headline { font-size: 1.3rem; }
+      .hero-side-top, .hero-side-bottom { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .latest-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <span class="topbar-date" id="topbar-date">सोमवार, 14 सितंबर 2026</span>
+      <div class="topbar-links">
+        <a href="/newsletter">न्यूज़लेटर</a>
+        <a href="/about">हमारे बारे में</a>
+        <a href="/editorial-policy">संपादकीय नीति</a>
+        <a href="/contact">संपर्क</a>
+        <a href="/admin">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <div class="logo-main">GBS<span>B</span>FORYOU</div>
+          <div class="logo-tagline">समाचार · विश्लेषण · ज्ञान</div>
+        </a>
+
+        <div class="header-search">
+          <input type="text" placeholder="खोजें — विषय, व्यक्ति, दस्तावेज़..." />
+          <button>🔍</button>
+        </div>
+
+        <div class="header-controls">
+          <div class="live-badge">
+            <div class="live-dot"></div>
+            LIVE
+          </div>
+          <div class="social-icons">
+            <a href="#" title="YouTube">YT</a>
+            <a href="#" title="Facebook">FB</a>
+            <a href="#" title="Instagram">IG</a>
+            <a href="#" title="X">𝕏</a>
+            <a href="#" title="Telegram">TG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="/" class="active">होम</a></li>
+          <li><a href="/latest">ताज़ा समाचार</a></li>
+          <li><a href="/analysis">विश्लेषण</a></li>
+          <li><a href="/politics">राजनीति</a></li>
+          <li><a href="/government-policy">सरकार और नीति</a></li>
+          <li><a href="/fact-check">तथ्य-जांच</a></li>
+          <li><a href="/ground-reports">ग्राउंड रिपोर्ट</a></li>
+          <li><a href="/interviews">संवाद</a></li>
+          <li><a href="/documents-facts">दस्तावेज़</a></li>
+          <li><a href="/india">भारत</a></li>
+          <li><a href="/world">विश्व</a></li>
+          <li><a href="/economy">अर्थव्यवस्था</a></li>
+          <li><a href="/opinion">विचार</a></li>
+          <li><a href="/research">शोध</a></li>
+          <li><a href="/video">वीडियो</a></li>
+          <li><a href="/books">पुस्तकें</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREAKING TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-label">ब्रेकिंग</div>
+    <div class="ticker-track">
+      <div class="ticker-inner">
+        <span>संसद में विशेष अधिवेशन की घोषणा — विपक्ष ने बहिष्कार की चेतावनी दी</span>
+        <span>सुप्रीम कोर्ट ने चुनावी बॉन्ड मामले में सुनवाई 22 सितंबर तक स्थगित की</span>
+        <span>मणिपुर में शांति प्रक्रिया: केंद्र सरकार और समुदाय प्रतिनिधियों की बैठक</span>
+        <span>GBSBFORYOU विश्लेषण: तीन राज्यों के चुनावों पर विशेष रिपोर्ट</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Main Story -->
+        <article class="hero-main">
+          <div class="img-placeholder hero-main-img" style="aspect-ratio:16/9; min-height:280px;">
+            <span style="color:var(--slate);">📸 मुख्य समाचार छवि</span>
+          </div>
+          <div class="hero-main-body">
+            <div class="story-type">🔍 गहन विश्लेषण</div>
+            <h1 class="hero-headline">
+              संविधान की धारा 370 हटने के पाँच वर्ष — जम्मू-कश्मीर में क्या बदला, क्या नहीं बदला?
+            </h1>
+            <p class="hero-sub">
+              2019 के ऐतिहासिक निर्णय के बाद ज़मीनी हकीकत, सरकारी दावे और उपलब्ध प्रमाण — एक तुलनात्मक दस्तावेज़-आधारित समीक्षा
+            </p>
+            <div class="hero-meta">
+              <span class="author">अजय सिंह चौहान</span>
+              <span>14 सित॰ 2026</span>
+              <span>⏱ 12 मिनट</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Side Story 1 -->
+        <article class="hero-side-top">
+          <div class="img-placeholder side-img" style="height:120px;">
+            <span style="font-size:0.7rem;color:var(--slate);">📸</span>
+          </div>
+          <div>
+            <div class="story-type">🏛 सरकार और नीति</div>
+            <h2 class="side-headline">
+              नई शिक्षा नीति 2020 — तीन वर्षों में कितना हुआ लागू? राज्यवार रिपोर्ट
+            </h2>
+            <p class="side-summary">
+              शिक्षा मंत्रालय के आँकड़े और ज़मीनी रिपोर्टों के बीच की खाई
+            </p>
+          </div>
+        </article>
+
+        <!-- Side Story 2 -->
+        <article class="hero-side-bottom">
+          <div class="img-placeholder side-img" style="height:120px;">
+            <span style="font-size:0.7rem;color:var(--slate);">📸</span>
+          </div>
+          <div>
+            <div class="story-type">✅ तथ्य-जांच</div>
+            <h2 class="side-headline">
+              क्या सच में 80 करोड़ लोगों को मुफ्त राशन मिल रहा है? सरकारी दावे का परीक्षण
+            </h2>
+            <p class="side-summary">
+              CLAIM vs VERIFIED: आधिकारिक दस्तावेज़ और लाभार्थियों से सीधी बात
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST NEWS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">ताज़ा समाचार</h2>
+        <a href="/latest" class="section-more">सभी देखें</a>
+      </div>
+      <div class="latest-grid">
+
+        <article class="news-card">
+          <div class="img-placeholder card-img"></div>
+          <div class="card-body">
+            <div class="card-type">राजनीति</div>
+            <h3 class="card-headline">लोकसभा उपचुनाव — पाँच सीटों पर मतदान की तारीख घोषित</h3>
+            <div class="card-meta"><span>3 घंटे पहले</span><span>⏱ 4 मिनट</span></div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="img-placeholder card-img"></div>
+          <div class="card-body">
+            <div class="card-type analysis">विश्लेषण</div>
+            <h3 class="card-headline">RBI की मौद्रिक नीति — ब्याज दरें स्थिर, महंगाई पर क्या संकेत?</h3>
+            <div class="card-meta"><span>5 घंटे पहले</span><span>⏱ 6 मिनट</span></div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="img-placeholder card-img"></div>
+          <div class="card-body">
+            <div class="card-type ground">ग्राउंड रिपोर्ट</div>
+            <h3 class="card-headline">बुंदेलखंड के सूखाग्रस्त गाँव — पानी की किल्लत और सरकारी योजनाओं की सच्चाई</h3>
+            <div class="card-meta"><span>7 घंटे पहले</span><span>⏱ 8 मिनट</span></div>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="img-placeholder card-img"></div>
+          <div class="card-body">
+            <div class="card-type fact">तथ्य-जांच</div>
+            <h3 class="card-headline">वायरल दावा: क्या भारत दुनिया की तीसरी सबसे बड़ी अर्थव्यवस्था बन गया?</h3>
+            <div class="card-meta"><span>9 घंटे पहले</span><span>⏱ 5 मिनट</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSIS SECTION -->
+  <section class="section" style="background:var(--paper-2); padding:2rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">गहन विश्लेषण</h2>
+        <a href="/analysis" class="section-more">सभी देखें</a>
+      </div>
+      <div class="analysis-grid">
+
+        <div class="analysis-featured">
+          <div class="analysis-label">संपादकीय विशेष</div>
+          <h2 class="analysis-headline">
+            "आज की खबर से कल का ज्ञान" — GBSBFORYOU का संपादकीय दृष्टिकोण
+          </h2>
+          <p class="analysis-body">
+            हम मानते हैं कि प्रत्येक समाचार एक प्रवेश-द्वार है — घटना से संदर्भ तक, संदर्भ से समझ तक, और समझ से ज्ञान तक। हमारा काम केवल "क्या हुआ" बताना नहीं है, बल्कि "क्यों हुआ, इसका अर्थ क्या है और आगे क्या होगा" — यह समझाना है।
+          </p>
+        </div>
+
+        <div class="analysis-list">
+          <div class="analysis-item">
+            <div class="analysis-num">01</div>
+            <div class="analysis-item-text">
+              <div class="analysis-item-type">अर्थव्यवस्था</div>
+              <div class="analysis-item-headline">GST संग्रह रिकॉर्ड — लेकिन आम आदमी की थाली महंगी क्यों?</div>
+            </div>
+          </div>
+          <div class="analysis-item">
+            <div class="analysis-num">02</div>
+            <div class="analysis-item-text">
+              <div class="analysis-item-type">संविधान और कानून</div>
+              <div class="analysis-item-headline">PMLA संशोधन — प्रवर्तन निदेशालय की शक्तियाँ और नागरिक अधिकार</div>
+            </div>
+          </div>
+          <div class="analysis-item">
+            <div class="analysis-num">03</div>
+            <div class="analysis-item-text">
+              <div class="analysis-item-type">समाज</div>
+              <div class="analysis-item-headline">DNT/बंजारा समुदाय और जनगणना — संख्या क्यों नहीं मिलती?</div>
+            </div>
+          </div>
+          <div class="analysis-item">
+            <div class="analysis-num">04</div>
+            <div class="analysis-item-text">
+              <div class="analysis-item-type">विश्व</div>
+              <div class="analysis-item-headline">रूस-यूक्रेन युद्ध और भारत की ऊर्जा कूटनीति — दो वर्षों का लेखा-जोखा</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERVIEW / DOCUMENTS / GROUND — 3 Panels -->
+  <section class="section">
+    <div class="container">
+      <div class="three-col">
+
+        <!-- Interviews -->
+        <div class="panel">
+          <div class="panel-title">संवाद — विशेष साक्षात्कार</div>
+          <div class="panel-item">
+            <div class="img-placeholder panel-thumb"></div>
+            <div>
+              <div class="panel-item-headline">न्यायमूर्ति [नाम]: "न्यायपालिका की स्वतंत्रता खतरे में नहीं, लेकिन सतर्कता ज़रूरी"</div>
+              <div class="panel-item-meta">संवाद · 45 मिनट</div>
+            </div>
+          </div>
+          <div class="panel-item">
+            <div class="img-placeholder panel-thumb"></div>
+            <div>
+              <div class="panel-item-headline">अर्थशास्त्री प्रो. [नाम]: "बेरोज़गारी के आँकड़े और NSSO की पद्धति"</div>
+              <div class="panel-item-meta">संवाद · 32 मिनट</div>
+            </div>
+          </div>
+          <div class="panel-item">
+            <div class="img-placeholder panel-thumb"></div>
+            <div>
+              <div class="panel-item-headline">सामाजिक कार्यकर्ता [नाम]: "जंगल अधिकार कानून — वादे और हकीकत"</div>
+              <div class="panel-item-meta">संवाद · 28 मिनट</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents & Facts -->
+        <div class="panel">
+          <div class="panel-title">दस्तावेज़ और तथ्य</div>
+          <div class="doc-item">
+            <div class="doc-icon">📄</div>
+            <div>
+              <div class="doc-type">सरकारी दस्तावेज़ · VERIFIED</div>
+              <div class="doc-title">PM-KISAN योजना — लाभार्थी डेटा और राज्यवार वितरण रिपोर्ट 2025-26</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">⚖️</div>
+            <div>
+              <div class="doc-type">न्यायालय आदेश · DOCUMENTED</div>
+              <div class="doc-title">सुप्रीम कोर्ट: चुनावी बॉन्ड मामले में SBI को पूर्ण डेटा देने का निर्देश</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📊</div>
+            <div>
+              <div class="doc-type">शोध पत्र · ACADEMIC</div>
+              <div class="doc-title">ASER रिपोर्ट 2024: ग्रामीण भारत में बच्चों की पठन क्षमता का विश्लेषण</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🏛</div>
+            <div>
+              <div class="doc-type">संसद · OFFICIAL STATEMENT</div>
+              <div class="doc-title">लोकसभा में पूछे गए प्रश्न और सरकार के लिखित उत्तर — अगस्त 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ground Reports -->
+        <div class="panel">
+          <div class="panel-title">ग्राउंड रिपोर्ट</div>
+          <div class="panel-item">
+            <div class="img-placeholder panel-thumb"></div>
+            <div>
+              <div class="panel-item-headline">छत्तीसगढ़: माइनिंग ज़िलों में आदिवासी — विस्थापन की अनकही कहानियाँ</div>
+              <div class="panel-item-meta">ग्राउंड · 3 दिन पहले</div>
+            </div>
+          </div>
+          <div class="panel-item">
+            <div class="img-placeholder panel-thumb"></div>
+            <div>
+              <div class="panel-item-headline">राजस्थान: सरकारी स्कूलों में शिक्षक-छात्र अनुपात — 1:80 की त्रासदी</div>
+              <div class="panel-item-meta">ग्राउंड · 5 दिन पहले</div>
+            </div>
+          </div>
+          <div class="panel-item">
+            <div class="img-placeholder panel-thumb"></div>
+            <div>
+              <div class="panel-item-headline">पूर्वी उत्तर प्रदेश: सुगर मिलें और किसान — बकाया गन्ना मूल्य का संकट</div>
+              <div class="panel-item-meta">ग्राउंड · 1 सप्ताह पहले</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <section class="section" style="background:var(--paper-2); padding:2rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">वीडियो</h2>
+        <a href="/video" class="section-more">सभी देखें</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="img-placeholder" style="width:100%;height:100%;"></div>
+            <div class="play-btn"><div class="play-circle">▶</div></div>
+            <div class="video-duration">45:22</div>
+          </div>
+          <div class="video-title">संवाद: क्या भारत का संविधान खतरे में है?</div>
+          <div class="video-meta">विशेष संवाद · 2.4 लाख दृश्य</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="img-placeholder" style="width:100%;height:100%;"></div>
+            <div class="play-btn"><div class="play-circle">▶</div></div>
+            <div class="video-duration">18:45</div>
+          </div>
+          <div class="video-title">तथ्य-जांच: 2025 की 10 बड़ी ग़लत खबरें</div>
+          <div class="video-meta">तथ्य-जांच · 1.8 लाख दृश्य</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="img-placeholder" style="width:100%;height:100%;"></div>
+            <div class="play-btn"><div class="play-circle">▶</div></div>
+            <div class="video-duration">12:30</div>
+          </div>
+          <div class="video-title">एक्सप्लेनर: OBC आरक्षण — इतिहास, संघर्ष और वर्तमान</div>
+          <div class="video-meta">एक्सप्लेनर · 3.1 लाख दृश्य</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb">
+            <div class="img-placeholder" style="width:100%;height:100%;"></div>
+            <div class="play-btn"><div class="play-circle">▶</div></div>
+            <div class="video-duration">08:15</div>
+          </div>
+          <div class="video-title">शॉर्ट: चुनावी बॉन्ड — 3 मिनट में पूरी कहानी</div>
+          <div class="video-meta">शॉर्ट्स · 5.2 लाख दृश्य</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINION SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">विचार</h2>
+        <a href="/opinion" class="section-more">सभी देखें</a>
+      </div>
+      <div class="opinion-grid">
+
+        <div class="opinion-card">
+          <div class="opinion-author">
+            <div class="img-placeholder author-avatar"></div>
+            <div>
+              <div class="author-name">अजय सिंह चौहान</div>
+              <div class="author-role">संस्थापक संपादक, GBSBFORYOU</div>
+            </div>
+          </div>
+          <div class="opinion-headline">जब मीडिया "क्या हुआ" से आगे नहीं जाता, तो लोकतंत्र कमज़ोर होता है</div>
+        </div>
+
+        <div class="opinion-card">
+          <div class="opinion-author">
+            <div class="img-placeholder author-avatar"></div>
+            <div>
+              <div class="author-name">अतिथि लेखक</div>
+              <div class="author-role">संविधान विशेषज्ञ</div>
+            </div>
+          </div>
+          <div class="opinion-headline">DNT समुदाय और राजनीतिक प्रतिनिधित्व — एक अनुत्तरित सवाल</div>
+        </div>
+
+        <div class="opinion-card">
+          <div class="opinion-author">
+            <div class="img-placeholder author-avatar"></div>
+            <div>
+              <div class="author-name">शोधकर्ता</div>
+              <div class="author-role">सामाजिक नीति अध्ययन</div>
+            </div>
+          </div>
+          <div class="opinion-headline">AI और पत्रकारिता — क्या मशीन कभी संपादकीय ज़िम्मेदारी ले सकती है?</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-strip">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h3>GBSBFORYOU डेली ब्रीफ</h3>
+          <p>हर सुबह — 5 ज़रूरी खबरें, 1 गहन विश्लेषण, 1 तथ्य-जांच। सीधे आपके inbox में।</p>
+        </div>
+        <div class="newsletter-form">
+          <input type="email" placeholder="आपका ईमेल पता..." />
+          <button>सदस्यता लें</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <div class="logo-main" style="font-size:1.3rem;">GBS<span style="color:var(--saffron);">B</span>FORYOU</div>
+            <div class="logo-tagline" style="color:var(--slate);">समाचार · विश्लेषण · ज्ञान</div>
+          </a>
+          <p class="footer-tagline">
+            आज की खबर को कल के ज्ञान में बदलना — यही हमारा उद्देश्य है। GBSBFORYOU Publications, भोपाल, मध्य प्रदेश।
+          </p>
+          <div class="footer-social">
+            <a href="#">YT</a>
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">𝕏</a>
+            <a href="#">TG</a>
+            <a href="#">WA</a>
+            <a href="#">LI</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>सेक्शन</h4>
+          <ul>
+            <li><a href="/latest">ताज़ा समाचार</a></li>
+            <li><a href="/analysis">विश्लेषण</a></li>
+            <li><a href="/fact-check">तथ्य-जांच</a></li>
+            <li><a href="/ground-reports">ग्राउंड रिपोर्ट</a></li>
+            <li><a href="/interviews">संवाद</a></li>
+            <li><a href="/documents-facts">दस्तावेज़</a></li>
+            <li><a href="/research">शोध</a></li>
+            <li><a href="/opinion">विचार</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>प्रकाशन</h4>
+          <ul>
+            <li><a href="/books">पुस्तकें</a></li>
+            <li><a href="/newsletter">न्यूज़लेटर</a></li>
+            <li><a href="/video">वीडियो</a></li>
+            <li><a href="/podcasts">पॉडकास्ट</a></li>
+            <li><a href="/explainers">एक्सप्लेनर</a></li>
+            <li><a href="/archive">आर्काइव</a></li>
+            <li><a href="/live">LIVE</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>संस्था</h4>
+          <ul>
+            <li><a href="/about">हमारे बारे में</a></li>
+            <li><a href="/editorial-policy">संपादकीय नीति</a></li>
+            <li><a href="/corrections">सुधार नीति</a></li>
+            <li><a href="/ai-policy">AI उपयोग नीति</a></li>
+            <li><a href="/advertise">विज्ञापन</a></li>
+            <li><a href="/contact">संपर्क</a></li>
+            <li><a href="/privacy">गोपनीयता</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 GBSBFORYOU Publications, भोपाल। सर्वाधिकार सुरक्षित।</span>
+        <div style="display:flex;gap:1rem;align-items:center;">
+          <span class="ai-disclosure">🤖 कुछ सामग्री AI-सहायता से तैयार — संपादक द्वारा समीक्षित</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY NAV -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <div class="mob-nav-item active">
+        <div class="icon">🏠</div>
+        <div>होम</div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="icon">📰</div>
+        <div>ताज़ा</div>
+      </div>
+      <div class="mob-nav-item live">
+        <div class="icon">🔴</div>
+        <div>LIVE</div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="icon">🔍</div>
+        <div>खोजें</div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="icon">⋯</div>
+        <div>और</div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    // Live date
+    const days = ['रविवार','सोमवार','मंगलवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
+    const months = ['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
+    const d = new Date();
+    document.getElementById('topbar-date').textContent = 
+      `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+
+    // Mobile nav active
+    document.querySelectorAll('.mob-nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.mob-nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
