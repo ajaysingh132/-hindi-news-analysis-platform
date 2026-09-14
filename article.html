@@ -1565,90 +1565,64 @@
     /* =====================================================
        GET ARTICLE FROM STORAGE
     ===================================================== */
+function getStoredArticle() {
+
+  const published =
+    localStorage.getItem(
+      "newsroom_published_article"
+    );
 
 
-    function getStoredArticle() {
+  if (!published) {
 
-      const published =
-        localStorage.getItem(
-          "newsroom_published_article"
-        );
+    return null;
 
-
-      if (published) {
-
-        try {
-
-          return JSON.parse(
-            published
-          );
-
-        } catch (error) {
-
-          console.error(
-            "Published article parse error:",
-            error
-          );
-
-        }
-
-      }
+  }
 
 
-      const draft =
-        localStorage.getItem(
-          "newsroom_article_draft"
-        );
+  try {
+
+    const article =
+      JSON.parse(
+        published
+      );
 
 
-      if (draft) {
-
-        try {
-
-          const article =
-            JSON.parse(
-              draft
-            );
-
-
-          /*
-           * Public page पर draft नहीं दिखाना।
-           */
-
-          if (
-            article.status ===
-            "published"
-          ) {
-
-            return article;
-
-          }
-
-        } catch (error) {
-
-          console.error(
-            "Draft parse error:",
-            error
-          );
-
-        }
-
-      }
-
+    if (
+      !article ||
+      article.status !==
+      "published"
+    ) {
 
       return null;
 
     }
 
 
+    return article;
+
+  } catch (error) {
+
+    console.error(
+      "Published article parse error:",
+      error
+    );
+
+
+    return null;
+
+  }
+
+}
+
+    
+    
+
+
 
     /* =====================================================
        URL SLUG
     ===================================================== */
-/* =====================================================
-   URL SLUG
-===================================================== */
-
 
 function getRequestedSlug() {
 
