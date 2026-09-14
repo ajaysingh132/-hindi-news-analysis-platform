@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
 
   <meta charset="UTF-8">
@@ -16,6 +17,16 @@
   >
 
   <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+  <meta
     property="og:title"
     id="ogTitle"
     content="समाचार एवं विश्लेषण"
@@ -28,12 +39,25 @@
   >
 
   <meta
-    property="og:type"
-    content="article"
+    property="og:image"
+    id="ogImage"
+    content=""
+  >
+
+  <meta
+    property="og:url"
+    id="ogUrl"
+    content=""
+  >
+
+  <link
+    rel="canonical"
+    id="canonicalUrl"
+    href=""
   >
 
   <title id="pageTitle">
-    Article | GBSBFORYOU
+    लेख | GBSBFORYOU
   </title>
 
 
@@ -56,6 +80,8 @@
       --accent: #a61b12;
 
       --accent-soft: #fff1ef;
+
+      --success: #15803d;
 
       --max-width: 1180px;
 
@@ -104,8 +130,16 @@
 
 
     button {
+
       font: inherit;
+
       cursor: pointer;
+
+    }
+
+
+    img {
+      max-width: 100%;
     }
 
 
@@ -164,9 +198,6 @@
 
     .brand {
 
-      text-decoration:
-        none;
-
       display:
         flex;
 
@@ -176,8 +207,14 @@
       gap:
         10px;
 
+      text-decoration:
+        none;
+
       font-weight:
         850;
+
+      flex:
+        0 0 auto;
 
     }
 
@@ -212,8 +249,10 @@
 
 
     .brand-name {
+
       font-size:
         17px;
+
     }
 
 
@@ -228,7 +267,7 @@
       gap:
         7px;
 
-      overflow:
+      overflow-x:
         auto;
 
     }
@@ -261,8 +300,10 @@
 
 
     .header-nav a:hover {
+
       background:
         #f1f5f9;
+
     }
 
 
@@ -290,7 +331,7 @@
     .breadcrumb {
 
       margin-bottom:
-        18px;
+        20px;
 
       color:
         var(--muted);
@@ -310,8 +351,21 @@
 
 
     .breadcrumb a:hover {
+
       color:
         var(--accent);
+
+    }
+
+
+    .breadcrumb-separator {
+
+      margin:
+        0 5px;
+
+      color:
+        #cbd5e1;
+
     }
 
 
@@ -325,7 +379,7 @@
         var(--article-width);
 
       margin:
-        0 auto 25px;
+        0 auto 28px;
 
     }
 
@@ -342,7 +396,7 @@
         27px;
 
       padding:
-        0 9px;
+        0 10px;
 
       margin-bottom:
         12px;
@@ -436,8 +490,10 @@
 
 
     .meta-separator {
+
       color:
         #cbd5e1;
+
     }
 
 
@@ -485,7 +541,7 @@
     .hero-placeholder {
 
       min-height:
-        360px;
+        300px;
 
       display:
         grid;
@@ -505,7 +561,7 @@
     .hero-caption {
 
       padding:
-        7px 12px;
+        8px 12px;
 
       color:
         #64748b;
@@ -520,7 +576,7 @@
 
 
     /* =================================================
-       MAIN CONTENT LAYOUT
+       MAIN CONTENT
     ================================================= */
 
     .content-layout {
@@ -529,7 +585,10 @@
         grid;
 
       grid-template-columns:
-        minmax(0, var(--article-width))
+        minmax(
+          0,
+          var(--article-width)
+        )
         250px;
 
       justify-content:
@@ -561,27 +620,23 @@
       border-radius:
         10px;
 
-    }
-
-
-    /* =================================================
-       ARTICLE BODY TYPOGRAPHY
-    ================================================= */
-
-    .article-body {
-
       font-size:
         17px;
 
       line-height:
         1.9;
 
+      overflow-wrap:
+        anywhere;
+
     }
 
 
     .article-body p {
+
       margin:
         0 0 20px;
+
     }
 
 
@@ -626,8 +681,10 @@
 
 
     .article-body li {
+
       margin-bottom:
         7px;
+
     }
 
 
@@ -681,6 +738,52 @@
 
       text-decoration:
         underline;
+
+    }
+
+
+    .article-body table {
+
+      width:
+        100%;
+
+      border-collapse:
+        collapse;
+
+      margin:
+        25px 0;
+
+      font-size:
+        14px;
+
+    }
+
+
+    .article-body th,
+    .article-body td {
+
+      padding:
+        9px 10px;
+
+      border:
+        1px solid var(--border);
+
+      text-align:
+        left;
+
+      vertical-align:
+        top;
+
+    }
+
+
+    .article-body th {
+
+      background:
+        #f8fafc;
+
+      font-weight:
+        800;
 
     }
 
@@ -765,8 +868,10 @@
 
 
     .share-button:hover {
+
       background:
         #f8fafc;
+
     }
 
 
@@ -823,12 +928,15 @@
 
 
     .sources-list li {
+
       margin-bottom:
         7px;
+
     }
 
 
     .sources-list a {
+
       color:
         #1d4ed8;
 
@@ -883,7 +991,7 @@
 
 
     /* =================================================
-       FACT CHECK CARD
+       FACT CHECK
     ================================================= */
 
     .fact-card {
@@ -949,7 +1057,7 @@
         #ecfdf3;
 
       color:
-        #15803d;
+        var(--success);
 
       font-size:
         9px;
@@ -1091,6 +1199,9 @@
       justify-content:
         space-between;
 
+      gap:
+        10px;
+
       padding:
         8px 0;
 
@@ -1104,25 +1215,34 @@
 
 
     .reading-box:last-child {
+
       border-bottom:
         0;
+
     }
 
 
     .reading-label {
+
       color:
         var(--muted);
+
     }
 
 
     .reading-value {
+
       font-weight:
         750;
+
+      text-align:
+        right;
+
     }
 
 
     /* =================================================
-       ERROR / LOADING
+       MESSAGE / ERROR
     ================================================= */
 
     .message {
@@ -1134,7 +1254,7 @@
         70px auto;
 
       padding:
-        25px;
+        30px 25px;
 
       text-align:
         center;
@@ -1172,6 +1292,38 @@
 
       font-size:
         13px;
+
+    }
+
+
+    .message-action {
+
+      display:
+        inline-block;
+
+      margin-top:
+        18px;
+
+      padding:
+        9px 14px;
+
+      border-radius:
+        7px;
+
+      background:
+        var(--primary);
+
+      color:
+        #fff;
+
+      text-decoration:
+        none;
+
+      font-size:
+        12px;
+
+      font-weight:
+        700;
 
     }
 
@@ -1216,12 +1368,17 @@
 
       }
 
+
       .side-card {
+
         display:
           none;
+
       }
 
+
       .article-body {
+
         max-width:
           var(--article-width);
 
@@ -1236,16 +1393,23 @@
     @media (max-width: 650px) {
 
       .header-inner {
+
         width:
           calc(100% - 20px);
+
       }
+
 
       .header-nav {
+
         display:
           none;
+
       }
 
+
       .page {
+
         width:
           calc(100% - 20px);
 
@@ -1254,25 +1418,33 @@
 
       }
 
+
       .article-header {
+
         margin-bottom:
           18px;
 
       }
 
+
       .article-title {
+
         font-size:
           30px;
 
       }
 
+
       .article-excerpt {
+
         font-size:
           16px;
 
       }
 
+
       .article-body {
+
         padding:
           20px;
 
@@ -1284,9 +1456,33 @@
 
       }
 
+
       .hero {
+
         border-radius:
           8px;
+
+      }
+
+
+      .hero-placeholder {
+
+        min-height:
+          220px;
+
+      }
+
+
+      .article-body table {
+
+        display:
+          block;
+
+        overflow-x:
+          auto;
+
+        white-space:
+          nowrap;
 
       }
 
@@ -1368,7 +1564,7 @@
         मुख्य पृष्ठ
       </a>
 
-      <span>
+      <span class="breadcrumb-separator">
         /
       </span>
 
@@ -1381,16 +1577,15 @@
 
 
     <!-- =================================================
-         ARTICLE
+         ARTICLE CONTAINER
     ================================================= -->
 
     <div id="articleContainer">
 
-
       <div class="message">
 
         <h1>
-          Article loading...
+          लेख लोड हो रहा है...
         </h1>
 
         <p>
@@ -1398,7 +1593,6 @@
         </p>
 
       </div>
-
 
     </div>
 
@@ -1420,281 +1614,2011 @@
   </main>
 
 
+  <!-- =================================================
+       JAVASCRIPT — PART 2 WILL CONTINUE HERE
+  ================================================= -->
+<script>
 
-  <script>
-
-    /* =====================================================
-       UTILITIES
-    ===================================================== */
-
-
-    function escapeHTML(value) {
-
-      return String(value ?? "")
-
-        .replace(
-          /&/g,
-          "&amp;"
-        )
-
-        .replace(
-          /</g,
-          "&lt;"
-        )
-
-        .replace(
-          />/g,
-          "&gt;"
-        )
-
-        .replace(
-          /"/g,
-          "&quot;"
-        )
-
-        .replace(
-          /'/g,
-          "&#039;"
-        );
-
-    }
+  /* =====================================================
+     ARTICLE DATA
+  ===================================================== */
 
 
-
-    function escapeAttribute(value) {
-
-      return escapeHTML(
-        value
-      );
-
-    }
+  const PUBLISHED_KEY =
+    "newsroom_published_article";
 
 
+  function getStoredArticle() {
 
-    /* =====================================================
-       DATE FORMAT
-    ===================================================== */
-
-
-    function formatDate(value) {
-
-      if (!value) {
-        return "";
-      }
-
-
-      const date =
-        new Date(value);
-
-
-      if (
-        Number.isNaN(
-          date.getTime()
-        )
-      ) {
-
-        return value;
-
-      }
-
-
-      return new Intl.DateTimeFormat(
-        "hi-IN",
-        {
-          dateStyle: "long",
-          timeStyle: "short"
-        }
-      ).format(
-        date
-      );
-
-    }
-
-
-
-    /* =====================================================
-       READING TIME
-    ===================================================== */
-
-
-    function calculateReadingTime(
-      html
-    ) {
-
-      const temporary =
-        document.createElement(
-          "div"
-        );
-
-
-      temporary.innerHTML =
-        html || "";
-
-
-      const text =
-        temporary.textContent ||
-        temporary.innerText ||
-        "";
-
-
-      const words =
-        text
-          .trim()
-          .split(
-            /\s+/u
-          )
-          .filter(Boolean);
-
-
-      if (!words.length) {
-        return 1;
-      }
-
-
-      return Math.max(
-        1,
-        Math.ceil(
-          words.length / 200
-        )
-      );
-
-    }
-
-
-
-    /* =====================================================
-       GET ARTICLE FROM STORAGE
-    ===================================================== */
-function getStoredArticle() {
-
-  const published =
-    localStorage.getItem(
-      "newsroom_published_article"
-    );
-
-
-  if (!published) {
-
-    return null;
-
-  }
-
-
-  try {
-
-    const article =
-      JSON.parse(
-        published
+    const published =
+      localStorage.getItem(
+        PUBLISHED_KEY
       );
 
 
-    if (
-      !article ||
-      article.status !==
-      "published"
-    ) {
+    if (!published) {
 
       return null;
 
     }
 
 
-    return article;
+    try {
 
-  } catch (error) {
-
-    console.error(
-      "Published article parse error:",
-      error
-    );
+      const article =
+        JSON.parse(
+          published
+        );
 
 
-    return null;
+      if (
+        !article ||
+        article.status !==
+        "published"
+      ) {
 
-  }
+        return null;
 
-}
-
-    
-    
-
-
-
-    /* =====================================================
-       URL SLUG
-    ===================================================== */
-
-function getRequestedSlug() {
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
+      }
 
 
-  const querySlug =
-    params.get(
-      "slug"
-    );
+      return article;
 
+    } catch (error) {
 
-  if (querySlug) {
+      console.error(
+        "Published article parse error:",
+        error
+      );
 
-    return querySlug.trim();
+      return null;
+
+    }
 
   }
 
 
-  return "";
 
-}
-
-
-
-/* =====================================================
-   ARTICLE SLUG MATCH
-===================================================== */
+  /* =====================================================
+     REQUESTED URL SLUG
+  ===================================================== */
 
 
-function articleMatchesRequestedSlug(
-  article
-) {
+  function getRequestedSlug() {
 
-  const requestedSlug =
-    getRequestedSlug();
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
 
 
-  /*
-   * यदि URL में slug नहीं है,
-   * तो मौजूदा व्यवहार बनाए रखें।
-   */
+    const slug =
+      params.get(
+        "slug"
+      );
 
-  if (!requestedSlug) {
 
-    return true;
+    if (!slug) {
+
+      return "";
+
+    }
+
+
+    return slug.trim();
 
   }
 
 
-  /*
-   * Article या slug उपलब्ध नहीं है।
-   */
 
-  if (
-    !article ||
-    !article.slug
+  /* =====================================================
+     ARTICLE / URL MATCH
+  ===================================================== */
+
+
+  function articleMatchesRequestedSlug(
+    article
   ) {
 
-    return false;
+    const requestedSlug =
+      getRequestedSlug();
+
+
+    /*
+     * पुराने direct article URL
+     * के लिए slug optional रखा गया है।
+     */
+
+    if (!requestedSlug) {
+
+      return true;
+
+    }
+
+
+    if (
+      !article ||
+      !article.slug
+    ) {
+
+      return false;
+
+    }
+
+
+    return (
+      String(article.slug).trim() ===
+      String(requestedSlug).trim()
+    );
 
   }
 
 
-  return (
-    String(article.slug).trim() ===
-    String(requestedSlug).trim()
+
+  /* =====================================================
+     TEXT UTILITIES
+  ===================================================== */
+
+
+  function escapeHTML(
+    value
+  ) {
+
+    return String(
+      value ?? ""
+    )
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+  }
+
+
+
+  function escapeAttribute(
+    value
+  ) {
+
+    return escapeHTML(
+      value
+    );
+
+  }
+
+
+
+  /* =====================================================
+     BASIC HTML SANITIZER
+  ===================================================== */
+
+
+  function sanitizeArticleHTML(
+    html
+  ) {
+
+    const wrapper =
+      document.createElement(
+        "div"
+      );
+
+
+    wrapper.innerHTML =
+      String(
+        html || ""
+      );
+
+
+    const forbidden =
+      wrapper.querySelectorAll(
+        "script, style, iframe, object, embed, form, meta, link"
+      );
+
+
+    forbidden.forEach(
+      element => {
+        element.remove();
+      }
+    );
+
+
+    wrapper
+      .querySelectorAll("*")
+      .forEach(
+        element => {
+
+          [...element.attributes]
+            .forEach(
+              attribute => {
+
+                const name =
+                  attribute.name.toLowerCase();
+
+                const value =
+                  attribute.value.trim();
+
+
+                /*
+                 * Event handlers जैसे
+                 * onclick / onerror हटाएँ।
+                 */
+
+                if (
+                  name.startsWith(
+                    "on"
+                  )
+                ) {
+
+                  element.removeAttribute(
+                    attribute.name
+                  );
+
+                  return;
+
+                }
+
+
+                /*
+                 * Dangerous URLs रोकें।
+                 */
+
+                if (
+                  (
+                    name === "href" ||
+                    name === "src" ||
+                    name === "action"
+                  ) &&
+                  /^(javascript|data|vbscript):/i.test(
+                    value
+                  )
+                ) {
+
+                  element.removeAttribute(
+                    attribute.name
+                  );
+
+                }
+
+              }
+            );
+
+        }
+      );
+
+
+    /*
+     * External links को सुरक्षित रखें।
+     */
+
+    wrapper
+      .querySelectorAll(
+        "a[href]"
+      )
+      .forEach(
+        link => {
+
+          link.setAttribute(
+            "target",
+            "_blank"
+          );
+
+          link.setAttribute(
+            "rel",
+            "noopener noreferrer"
+          );
+
+        }
+      );
+
+
+    return wrapper.innerHTML;
+
+  }
+
+
+
+  /* =====================================================
+     DATE FORMAT
+  ===================================================== */
+
+
+  function formatDate(
+    value
+  ) {
+
+    if (!value) {
+
+      return "";
+
+    }
+
+
+    const date =
+      new Date(
+        value
+      );
+
+
+    if (
+      Number.isNaN(
+        date.getTime()
+      )
+    ) {
+
+      return String(
+        value
+      );
+
+    }
+
+
+    return new Intl.DateTimeFormat(
+      "hi-IN",
+      {
+        dateStyle:
+          "long",
+
+        timeStyle:
+          "short"
+      }
+    ).format(
+      date
+    );
+
+  }
+
+
+
+  /* =====================================================
+     READING TIME
+  ===================================================== */
+
+
+  function calculateReadingTime(
+    html
+  ) {
+
+    const temporary =
+      document.createElement(
+        "div"
+      );
+
+
+    temporary.innerHTML =
+      html || "";
+
+
+    const text =
+      temporary.textContent ||
+      temporary.innerText ||
+      "";
+
+
+    const words =
+      text
+        .trim()
+        .split(
+          /\s+/u
+        )
+        .filter(
+          Boolean
+        );
+
+
+    if (!words.length) {
+
+      return 1;
+
+    }
+
+
+    return Math.max(
+      1,
+      Math.ceil(
+        words.length / 200
+      )
+    );
+
+  }
+
+
+
+  /* =====================================================
+     ARRAY HELPERS
+  ===================================================== */
+
+
+  function normalizeArray(
+    value
+  ) {
+
+    if (
+      !Array.isArray(
+        value
+      )
+    ) {
+
+      return [];
+
+    }
+
+
+    return value
+      .filter(
+        item =>
+          item !== null &&
+          item !== undefined &&
+          String(item).trim() !== ""
+      );
+
+  }
+
+
+
+  /* =====================================================
+     ARTICLE FIELD HELPERS
+  ===================================================== */
+
+
+  function getArticleTitle(
+    article
+  ) {
+
+    return (
+      article.title ||
+      article.headline ||
+      "समाचार एवं विश्लेषण"
+    );
+
+  }
+
+
+
+  function getArticleExcerpt(
+    article
+  ) {
+
+    return (
+      article.excerpt ||
+      article.summary ||
+      article.description ||
+      ""
+    );
+
+  }
+
+
+
+  function getArticleCategory(
+    article
+  ) {
+
+    return (
+      article.category ||
+      article.section ||
+      "लेख"
+    );
+
+  }
+
+
+
+  function getArticleAuthor(
+    article
+  ) {
+
+    return (
+      article.author ||
+      article.authorName ||
+      "GBSBFORYOU"
+    );
+
+  }
+
+
+
+  function getArticleContent(
+    article
+  ) {
+
+    return (
+      article.content ||
+      article.body ||
+      article.articleContent ||
+      ""
+    );
+
+  }
+
+
+
+  function getArticleImage(
+    article
+  ) {
+
+    return (
+      article.featuredImage ||
+      article.image ||
+      article.imageUrl ||
+      ""
+    );
+
+  }
+
+
+
+  function getArticleCaption(
+    article
+  ) {
+
+    return (
+      article.imageCaption ||
+      article.featuredImageCaption ||
+      article.caption ||
+      ""
+    );
+
+  }
+
+
+
+  /* =====================================================
+     META / SEO
+  ===================================================== */
+
+
+  function updateSEO(
+    article
+  ) {
+
+    const title =
+      getArticleTitle(
+        article
+      );
+
+
+    const excerpt =
+      getArticleExcerpt(
+        article
+      );
+
+
+    const image =
+      getArticleImage(
+        article
+      );
+
+
+    const url =
+      window.location.href;
+
+
+    document.title =
+      `${title} | GBSBFORYOU`;
+
+
+    const metaDescription =
+      document.getElementById(
+        "metaDescription"
+      );
+
+
+    if (
+      metaDescription
+    ) {
+
+      metaDescription.setAttribute(
+        "content",
+        excerpt || title
+      );
+
+    }
+
+
+    const ogTitle =
+      document.getElementById(
+        "ogTitle"
+      );
+
+
+    if (ogTitle) {
+
+      ogTitle.setAttribute(
+        "content",
+        title
+      );
+
+    }
+
+
+    const ogDescription =
+      document.getElementById(
+        "ogDescription"
+      );
+
+
+    if (ogDescription) {
+
+      ogDescription.setAttribute(
+        "content",
+        excerpt
+      );
+
+    }
+
+
+    const ogImage =
+      document.getElementById(
+        "ogImage"
+      );
+
+
+    if (
+      ogImage &&
+      image
+    ) {
+
+      ogImage.setAttribute(
+        "content",
+        image
+      );
+
+    }
+
+
+    const ogUrl =
+      document.getElementById(
+        "ogUrl"
+      );
+
+
+    if (ogUrl) {
+
+      ogUrl.setAttribute(
+        "content",
+        url
+      );
+
+    }
+
+
+    const canonical =
+      document.getElementById(
+        "canonicalUrl"
+      );
+
+
+    if (canonical) {
+
+      canonical.setAttribute(
+        "href",
+        url
+      );
+
+    }
+
+  }
+
+
+
+  /* =====================================================
+     TAGS
+  ===================================================== */
+
+
+  function renderTags(
+    tags
+  ) {
+
+    const list =
+      normalizeArray(
+        tags
+      );
+
+
+    if (!list.length) {
+
+      return "";
+
+    }
+
+
+    return `
+      <div class="tags">
+
+        ${list
+          .map(
+            tag => `
+              <span class="tag">
+                ${escapeHTML(tag)}
+              </span>
+            `
+          )
+          .join("")
+        }
+
+      </div>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     SOURCES
+  ===================================================== */
+
+
+  function renderSources(
+    sources
+  ) {
+
+    const list =
+      normalizeArray(
+        sources
+      );
+
+
+    if (!list.length) {
+
+      return "";
+
+    }
+
+
+    const items =
+      list
+        .map(
+          source => {
+
+            /*
+             * Source object
+             */
+
+            if (
+              typeof source ===
+              "object"
+            ) {
+
+              const name =
+                source.name ||
+                source.title ||
+                source.label ||
+                source.url ||
+                "स्रोत";
+
+
+              const url =
+                source.url ||
+                source.href ||
+                "";
+
+
+              if (url) {
+
+                return `
+                  <li>
+                    <a
+                      href="${escapeAttribute(url)}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ${escapeHTML(name)}
+                    </a>
+                  </li>
+                `;
+
+              }
+
+
+              return `
+                <li>
+                  ${escapeHTML(name)}
+                </li>
+              `;
+
+            }
+
+
+            /*
+             * Plain URL
+             */
+
+            const text =
+              String(
+                source
+              ).trim();
+
+
+            if (
+              /^https?:\/\//i.test(
+                text
+              )
+            ) {
+
+              return `
+                <li>
+                  <a
+                    href="${escapeAttribute(text)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ${escapeHTML(text)}
+                  </a>
+                </li>
+              `;
+
+            }
+
+
+            return `
+              <li>
+                ${escapeHTML(text)}
+              </li>
+            `;
+
+          }
+        )
+        .join("");
+
+
+    return `
+      <section class="sources-section">
+
+        <h2 class="section-title">
+          स्रोत
+        </h2>
+
+        <ol class="sources-list">
+          ${items}
+        </ol>
+
+      </section>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     FACT CHECK
+  ===================================================== */
+
+
+  function renderFactCheck(
+    article
+  ) {
+
+    const factCheck =
+      article.factCheck ||
+      article.factcheck ||
+      article.fact_check;
+
+
+    if (!factCheck) {
+
+      return "";
+
+    }
+
+
+    let text =
+      "";
+
+    let status =
+      "जाँच उपलब्ध";
+
+
+    if (
+      typeof factCheck ===
+      "string"
+    ) {
+
+      text =
+        factCheck;
+
+    } else {
+
+      text =
+        factCheck.summary ||
+        factCheck.description ||
+        factCheck.result ||
+        factCheck.notes ||
+        "";
+
+
+      status =
+        factCheck.status ||
+        factCheck.verdict ||
+        "जाँच उपलब्ध";
+
+    }
+
+
+    if (!text) {
+
+      return "";
+
+    }
+
+
+    return `
+      <section class="fact-card">
+
+        <div class="fact-card-header">
+
+          <div class="fact-card-title">
+            फैक्ट चेक
+          </div>
+
+          <span class="fact-badge">
+            ${escapeHTML(status)}
+          </span>
+
+        </div>
+
+        <p>
+          ${escapeHTML(text)}
+        </p>
+
+      </section>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     HERO
+  ===================================================== */
+
+
+  function renderHero(
+    article
+  ) {
+
+    const image =
+      getArticleImage(
+        article
+      );
+
+
+    const caption =
+      getArticleCaption(
+        article
+      );
+
+
+    if (!image) {
+
+      return "";
+
+    }
+
+
+    return `
+      <figure class="hero">
+
+        <img
+          src="${escapeAttribute(image)}"
+          alt="${escapeAttribute(
+            getArticleTitle(article)
+          )}"
+          loading="eager"
+        >
+
+        ${
+          caption
+            ? `
+              <figcaption class="hero-caption">
+                ${escapeHTML(caption)}
+              </figcaption>
+            `
+            : ""
+        }
+
+      </figure>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     AUTHOR SIDEBAR
+  ===================================================== */
+
+
+  function renderAuthorCard(
+    article
+  ) {
+
+    const author =
+      getArticleAuthor(
+        article
+      );
+
+
+    const role =
+      article.authorRole ||
+      article.role ||
+      "लेखक / विश्लेषक";
+
+
+    const initial =
+      String(
+        author
+      )
+        .trim()
+        .charAt(0) ||
+      "A";
+
+
+    return `
+      <aside class="side-card">
+
+        <h2 class="side-card-title">
+          लेखक
+        </h2>
+
+        <div class="author-box">
+
+          <div class="author-avatar">
+            ${escapeHTML(initial)}
+          </div>
+
+          <div>
+
+            <div class="author-name">
+              ${escapeHTML(author)}
+            </div>
+
+            <div class="author-role">
+              ${escapeHTML(role)}
+            </div>
+
+          </div>
+
+        </div>
+
+      </aside>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     READING INFO
+  ===================================================== */
+
+
+  function renderReadingCard(
+    article,
+    content
+  ) {
+
+    const minutes =
+      calculateReadingTime(
+        content
+      );
+
+
+    const publishedAt =
+      article.publishedAt ||
+      article.publishDate ||
+      article.createdAt;
+
+
+    return `
+      <aside class="side-card">
+
+        <h2 class="side-card-title">
+          लेख जानकारी
+        </h2>
+
+        <div class="reading-box">
+
+          <span class="reading-label">
+            पढ़ने का समय
+          </span>
+
+          <span class="reading-value">
+            ${minutes} मिनट
+          </span>
+
+        </div>
+
+        <div class="reading-box">
+
+          <span class="reading-label">
+            प्रकाशित
+          </span>
+
+          <span class="reading-value">
+            ${escapeHTML(
+              publishedAt
+                ? formatDate(publishedAt)
+                : "—"
+            )}
+          </span>
+
+        </div>
+
+      </aside>
+    `;
+
+  }
+    /* =====================================================
+     ARTICLE ERROR MESSAGE
+  ===================================================== */
+
+
+  function renderError(
+    title,
+    message
+  ) {
+
+    const container =
+      document.getElementById(
+        "articleContainer"
+      );
+
+
+    if (!container) {
+      return;
+    }
+
+
+    container.innerHTML = `
+      <div class="message">
+
+        <h1>
+          ${escapeHTML(title)}
+        </h1>
+
+        <p>
+          ${escapeHTML(message)}
+        </p>
+
+        <a
+          class="message-action"
+          href="index.html"
+        >
+          मुख्य पृष्ठ पर जाएँ
+        </a>
+
+      </div>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     ARTICLE HEADER
+  ===================================================== */
+
+
+  function renderArticleHeader(
+    article
+  ) {
+
+    const title =
+      getArticleTitle(
+        article
+      );
+
+
+    const excerpt =
+      getArticleExcerpt(
+        article
+      );
+
+
+    const category =
+      getArticleCategory(
+        article
+      );
+
+
+    const author =
+      getArticleAuthor(
+        article
+      );
+
+
+    const publishedAt =
+      article.publishedAt ||
+      article.publishDate ||
+      article.createdAt ||
+      "";
+
+
+    return `
+      <header class="article-header">
+
+        <div class="category-label">
+          ${escapeHTML(category)}
+        </div>
+
+        <h1 class="article-title">
+          ${escapeHTML(title)}
+        </h1>
+
+        ${
+          excerpt
+            ? `
+              <p class="article-excerpt">
+                ${escapeHTML(excerpt)}
+              </p>
+            `
+            : ""
+        }
+
+        <div class="article-meta">
+
+          <span>
+            ${escapeHTML(author)}
+          </span>
+
+          ${
+            publishedAt
+              ? `
+                <span class="meta-separator">
+                  •
+                </span>
+
+                <span>
+                  ${escapeHTML(
+                    formatDate(
+                      publishedAt
+                    )
+                  )}
+                </span>
+              `
+              : ""
+          }
+
+          ${
+            article.updatedAt &&
+            article.updatedAt !==
+              publishedAt
+              ? `
+                <span class="meta-separator">
+                  •
+                </span>
+
+                <span>
+                  अपडेट:
+                  ${escapeHTML(
+                    formatDate(
+                      article.updatedAt
+                    )
+                  )}
+                </span>
+              `
+              : ""
+          }
+
+        </div>
+
+      </header>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     SHARE BUTTONS
+  ===================================================== */
+
+
+  function renderShareRow() {
+
+    return `
+      <div class="share-row">
+
+        <span class="share-label">
+          साझा करें
+        </span>
+
+        <button
+          type="button"
+          class="share-button"
+          data-share-action="native"
+        >
+          शेयर
+        </button>
+
+        <button
+          type="button"
+          class="share-button"
+          data-share-action="copy"
+        >
+          लिंक कॉपी करें
+        </button>
+
+        <button
+          type="button"
+          class="share-button"
+          data-share-action="print"
+        >
+          प्रिंट
+        </button>
+
+      </div>
+    `;
+
+  }
+
+
+
+  /* =====================================================
+     SHARE ACTIONS
+  ===================================================== */
+
+
+  async function shareArticle() {
+
+    const url =
+      window.location.href;
+
+
+    const title =
+      document.title;
+
+
+    if (
+      navigator.share
+    ) {
+
+      try {
+
+        await navigator.share({
+          title:
+            title,
+
+          url:
+            url
+        });
+
+        return;
+
+      } catch (error) {
+
+        /*
+         * User ने share dialog बंद किया हो
+         * तो कोई error message आवश्यक नहीं।
+         */
+
+        if (
+          error &&
+          error.name ===
+          "AbortError"
+        ) {
+
+          return;
+
+        }
+
+      }
+
+    }
+
+
+    await copyArticleLink();
+
+  }
+
+
+
+  async function copyArticleLink() {
+
+    const url =
+      window.location.href;
+
+
+    try {
+
+      await navigator.clipboard.writeText(
+        url
+      );
+
+
+      showTemporaryMessage(
+        "लेख का लिंक कॉपी हो गया।"
+      );
+
+    } catch (error) {
+
+      /*
+       * Clipboard API उपलब्ध न होने पर
+       * fallback method।
+       */
+
+      const input =
+        document.createElement(
+          "input"
+        );
+
+
+      input.value =
+        url;
+
+
+      document.body.appendChild(
+        input
+      );
+
+
+      input.select();
+
+
+      try {
+
+        document.execCommand(
+          "copy"
+        );
+
+        showTemporaryMessage(
+          "लेख का लिंक कॉपी हो गया।"
+        );
+
+      } catch (copyError) {
+
+        console.error(
+          "Copy failed:",
+          copyError
+        );
+
+        showTemporaryMessage(
+          "लिंक कॉपी नहीं हो सका।"
+        );
+
+      }
+
+
+      input.remove();
+
+    }
+
+  }
+
+
+
+  function showTemporaryMessage(
+    message
+  ) {
+
+    const existing =
+      document.getElementById(
+        "articleToast"
+      );
+
+
+    if (existing) {
+
+      existing.remove();
+
+    }
+
+
+    const toast =
+      document.createElement(
+        "div"
+      );
+
+
+    toast.id =
+      "articleToast";
+
+
+    toast.textContent =
+      message;
+
+
+    toast.style.position =
+      "fixed";
+
+    toast.style.left =
+      "50%";
+
+    toast.style.bottom =
+      "25px";
+
+    toast.style.transform =
+      "translateX(-50%)";
+
+    toast.style.zIndex =
+      "9999";
+
+    toast.style.padding =
+      "10px 15px";
+
+    toast.style.borderRadius =
+      "8px";
+
+    toast.style.background =
+      "#111827";
+
+    toast.style.color =
+      "#fff";
+
+    toast.style.fontSize =
+      "12px";
+
+    toast.style.fontWeight =
+      "700";
+
+    toast.style.boxShadow =
+      "0 8px 30px rgba(0,0,0,.18)";
+
+
+    document.body.appendChild(
+      toast
+    );
+
+
+    window.setTimeout(
+      () => {
+
+        toast.remove();
+
+      },
+      2200
+    );
+
+  }
+
+
+
+  /* =====================================================
+     SHARE EVENT BINDING
+  ===================================================== */
+
+
+  function setupShareButtons() {
+
+    document
+      .querySelectorAll(
+        "[data-share-action]"
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            async () => {
+
+              const action =
+                button.dataset
+                  .shareAction;
+
+
+              if (
+                action ===
+                "native"
+              ) {
+
+                await shareArticle();
+
+                return;
+
+              }
+
+
+              if (
+                action ===
+                "copy"
+              ) {
+
+                await copyArticleLink();
+
+                return;
+
+              }
+
+
+              if (
+                action ===
+                "print"
+              ) {
+
+                window.print();
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+  }
+
+
+
+  /* =====================================================
+     BREADCRUMB
+  ===================================================== */
+
+
+  function updateBreadcrumb(
+    article
+  ) {
+
+    const element =
+      document.getElementById(
+        "breadcrumbCategory"
+      );
+
+
+    if (!element) {
+      return;
+    }
+
+
+    element.textContent =
+      getArticleCategory(
+        article
+      );
+
+  }
+
+
+
+  /* =====================================================
+     ARTICLE RENDER
+  ===================================================== */
+
+
+  function renderArticle(
+    article
+  ) {
+
+    const container =
+      document.getElementById(
+        "articleContainer"
+      );
+
+
+    if (!container) {
+
+      console.error(
+        "articleContainer not found."
+      );
+
+      return;
+
+    }
+
+
+    const title =
+      getArticleTitle(
+        article
+      );
+
+
+    const content =
+      sanitizeArticleHTML(
+        getArticleContent(
+          article
+        )
+      );
+
+
+    const sources =
+      article.sources ||
+      article.references ||
+      article.sourceList ||
+      [];
+
+
+    const tags =
+      article.tags ||
+      article.keywords ||
+      [];
+
+
+    const hero =
+      renderHero(
+        article
+      );
+
+
+    const header =
+      renderArticleHeader(
+        article
+      );
+
+
+    const share =
+      renderShareRow();
+
+
+    const factCheck =
+      renderFactCheck(
+        article
+      );
+
+
+    const sourcesHTML =
+      renderSources(
+        sources
+      );
+
+
+    const tagsHTML =
+      renderTags(
+        tags
+      );
+
+
+    const authorCard =
+      renderAuthorCard(
+        article
+      );
+
+
+    const readingCard =
+      renderReadingCard(
+        article,
+        content
+      );
+
+
+    /*
+     * यदि content खाली है,
+     * तो article body में स्पष्ट संदेश।
+     */
+
+    const body =
+      content.trim()
+        ? content
+        : `
+          <p>
+            इस लेख की सामग्री अभी उपलब्ध नहीं है।
+          </p>
+        `;
+
+
+    container.innerHTML = `
+
+      ${header}
+
+      ${hero}
+
+      <div class="content-layout">
+
+        <article
+          class="article-body"
+          id="articleBody"
+        >
+
+          ${body}
+
+          ${share}
+
+          ${factCheck}
+
+          ${sourcesHTML}
+
+          ${tagsHTML}
+
+        </article>
+
+
+        <aside>
+
+          ${authorCard}
+
+          ${readingCard}
+
+        </aside>
+
+      </div>
+
+    `;
+
+
+    /*
+     * Page level metadata
+     */
+
+    updateSEO(
+      article
+    );
+
+
+    updateBreadcrumb(
+      article
+    );
+
+
+    /*
+     * Share buttons
+     */
+
+    setupShareButtons();
+
+
+    /*
+     * Accessibility
+     */
+
+    const articleBody =
+      document.getElementById(
+        "articleBody"
+      );
+
+
+    if (articleBody) {
+
+      articleBody.setAttribute(
+        "aria-label",
+        title
+      );
+
+    }
+
+  }
+
+
+
+  /* =====================================================
+     LOAD ARTICLE
+  ===================================================== */
+
+
+  function loadArticle() {
+
+    /*
+     * केवल published article पढ़ें।
+     */
+
+    const article =
+      getStoredArticle();
+
+
+    /*
+     * Published article उपलब्ध नहीं है।
+     */
+
+    if (!article) {
+
+      renderError(
+        "लेख उपलब्ध नहीं है",
+        "यह लेख प्रकाशित नहीं है या अभी उपलब्ध नहीं कराया गया है।"
+      );
+
+      return;
+
+    }
+
+
+    /*
+     * URL में slug दिया गया है तो
+     * वही article खुलना चाहिए।
+     *
+     * गलत slug होने पर किसी दूसरे article
+     * को दिखाना नहीं है।
+     */
+
+    if (
+      !articleMatchesRequestedSlug(
+        article
+      )
+    ) {
+
+      renderError(
+        "लेख नहीं मिला",
+        "यह URL किसी प्रकाशित लेख से मेल नहीं खाता।"
+      );
+
+      return;
+
+    }
+
+
+    /*
+     * सभी checks सफल होने के बाद
+     * article render करें।
+     */
+
+    renderArticle(
+      article
+    );
+
+  }
+
+
+
+  /* =====================================================
+     FOOTER YEAR
+  ===================================================== */
+
+
+  function updateFooterYear() {
+
+    const year =
+      document.getElementById(
+        "footerYear"
+      );
+
+
+    if (year) {
+
+      year.textContent =
+        new Date()
+          .getFullYear();
+
+    }
+
+  }
+
+
+
+  /* =====================================================
+     GLOBAL ERROR PROTECTION
+  ===================================================== */
+
+
+  window.addEventListener(
+    "error",
+    event => {
+
+      console.error(
+        "Article page error:",
+        event.error ||
+        event.message
+      );
+
+    }
   );
 
-}
 
-    
+
+  /* =====================================================
+     INITIALIZE ARTICLE PAGE
+  ===================================================== */
+
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      updateFooterYear();
+
+      loadArticle();
+
+    }
+  );
+
+</script>
+
+</body>
+
+</html>
