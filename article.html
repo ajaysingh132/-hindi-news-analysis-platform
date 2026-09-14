@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    id="metaDescription"
+    content="समाचार एवं विश्लेषण"
+  >
+
+  <meta
+    property="og:title"
+    id="ogTitle"
+    content="समाचार एवं विश्लेषण"
+  >
+
+  <meta
+    property="og:description"
+    id="ogDescription"
+    content=""
+  >
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+  <title id="pageTitle">
+    Article | GBSBFORYOU
+  </title>
+
+
+  <style>
+
+    :root {
+
+      --bg: #f5f6f8;
+
+      --surface: #ffffff;
+
+      --text: #15171a;
+
+      --muted: #68707a;
+
+      --border: #e2e5e9;
+
+      --primary: #111827;
+
+      --accent: #a61b12;
+
+      --accent-soft: #fff1ef;
+
+      --max-width: 1180px;
+
+      --article-width: 820px;
+
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      background:
+        var(--bg);
+
+      color:
+        var(--text);
+
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans Devanagari",
+        Arial,
+        sans-serif;
+
+      line-height: 1.6;
+
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+
+    /* =================================================
+       HEADER
+    ================================================= */
+
+    .site-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 100;
+
+      background:
+        rgba(255,255,255,.96);
+
+      border-bottom:
+        1px solid var(--border);
+
+      backdrop-filter:
+        blur(10px);
+
+    }
+
+
+    .header-inner {
+
+      width:
+        min(
+          var(--max-width),
+          calc(100% - 32px)
+        );
+
+      min-height:
+        64px;
+
+      margin:
+        0 auto;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+
+    }
+
+
+    .brand {
+
+      text-decoration:
+        none;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+      font-weight:
+        850;
+
+    }
+
+
+    .brand-mark {
+
+      width:
+        36px;
+
+      height:
+        36px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      border-radius:
+        8px;
+
+      background:
+        var(--primary);
+
+      color:
+        #fff;
+
+      font-size:
+        15px;
+
+    }
+
+
+    .brand-name {
+      font-size:
+        17px;
+    }
+
+
+    .header-nav {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      overflow:
+        auto;
+
+    }
+
+
+    .header-nav a {
+
+      padding:
+        7px 9px;
+
+      border-radius:
+        6px;
+
+      text-decoration:
+        none;
+
+      font-size:
+        12px;
+
+      font-weight:
+        650;
+
+      color:
+        #475569;
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .header-nav a:hover {
+      background:
+        #f1f5f9;
+    }
+
+
+    /* =================================================
+       PAGE
+    ================================================= */
+
+    .page {
+
+      width:
+        min(
+          var(--max-width),
+          calc(100% - 32px)
+        );
+
+      margin:
+        0 auto;
+
+      padding:
+        24px 0 60px;
+
+    }
+
+
+    .breadcrumb {
+
+      margin-bottom:
+        18px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+    }
+
+
+    .breadcrumb a {
+
+      text-decoration:
+        none;
+
+    }
+
+
+    .breadcrumb a:hover {
+      color:
+        var(--accent);
+    }
+
+
+    /* =================================================
+       ARTICLE HEADER
+    ================================================= */
+
+    .article-header {
+
+      max-width:
+        var(--article-width);
+
+      margin:
+        0 auto 25px;
+
+    }
+
+
+    .category-label {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      min-height:
+        27px;
+
+      padding:
+        0 9px;
+
+      margin-bottom:
+        12px;
+
+      border-radius:
+        999px;
+
+      background:
+        var(--accent-soft);
+
+      color:
+        var(--accent);
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .article-title {
+
+      margin:
+        0;
+
+      font-size:
+        clamp(
+          30px,
+          5vw,
+          48px
+        );
+
+      line-height:
+        1.18;
+
+      letter-spacing:
+        -.035em;
+
+      font-weight:
+        850;
+
+    }
+
+
+    .article-excerpt {
+
+      margin:
+        17px 0 0;
+
+      color:
+        #475569;
+
+      font-size:
+        18px;
+
+      line-height:
+        1.65;
+
+      font-weight:
+        600;
+
+    }
+
+
+    .article-meta {
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      align-items:
+        center;
+
+      gap:
+        7px 12px;
+
+      margin-top:
+        18px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
+    }
+
+
+    .meta-separator {
+      color:
+        #cbd5e1;
+    }
+
+
+    /* =================================================
+       HERO IMAGE
+    ================================================= */
+
+    .hero {
+
+      max-width:
+        1000px;
+
+      margin:
+        0 auto 30px;
+
+      background:
+        #e5e7eb;
+
+      border-radius:
+        12px;
+
+      overflow:
+        hidden;
+
+    }
+
+
+    .hero img {
+
+      display:
+        block;
+
+      width:
+        100%;
+
+      max-height:
+        600px;
+
+      object-fit:
+        cover;
+
+    }
+
+
+    .hero-placeholder {
+
+      min-height:
+        360px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      color:
+        #64748b;
+
+      font-size:
+        13px;
+
+    }
+
+
+    .hero-caption {
+
+      padding:
+        7px 12px;
+
+      color:
+        #64748b;
+
+      background:
+        #f8fafc;
+
+      font-size:
+        10px;
+
+    }
+
+
+    /* =================================================
+       MAIN CONTENT LAYOUT
+    ================================================= */
+
+    .content-layout {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        minmax(0, var(--article-width))
+        250px;
+
+      justify-content:
+        center;
+
+      gap:
+        35px;
+
+      align-items:
+        start;
+
+    }
+
+
+    .article-body {
+
+      min-width:
+        0;
+
+      background:
+        var(--surface);
+
+      padding:
+        30px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        10px;
+
+    }
+
+
+    /* =================================================
+       ARTICLE BODY TYPOGRAPHY
+    ================================================= */
+
+    .article-body {
+
+      font-size:
+        17px;
+
+      line-height:
+        1.9;
+
+    }
+
+
+    .article-body p {
+      margin:
+        0 0 20px;
+    }
+
+
+    .article-body h2 {
+
+      margin:
+        34px 0 13px;
+
+      font-size:
+        27px;
+
+      line-height:
+        1.35;
+
+    }
+
+
+    .article-body h3 {
+
+      margin:
+        28px 0 11px;
+
+      font-size:
+        22px;
+
+      line-height:
+        1.4;
+
+    }
+
+
+    .article-body ul,
+    .article-body ol {
+
+      margin:
+        0 0 22px;
+
+      padding-left:
+        28px;
+
+    }
+
+
+    .article-body li {
+      margin-bottom:
+        7px;
+    }
+
+
+    .article-body blockquote {
+
+      margin:
+        25px 0;
+
+      padding:
+        15px 20px;
+
+      border-left:
+        4px solid var(--accent);
+
+      background:
+        var(--accent-soft);
+
+      color:
+        #475569;
+
+      font-weight:
+        600;
+
+    }
+
+
+    .article-body img {
+
+      display:
+        block;
+
+      max-width:
+        100%;
+
+      height:
+        auto;
+
+      margin:
+        24px auto;
+
+      border-radius:
+        8px;
+
+    }
+
+
+    .article-body a {
+
+      color:
+        #1d4ed8;
+
+      text-decoration:
+        underline;
+
+    }
+
+
+    /* =================================================
+       SHARE
+    ================================================= */
+
+    .share-row {
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      margin:
+        25px 0;
+
+      padding:
+        15px 0;
+
+      border-top:
+        1px solid var(--border);
+
+      border-bottom:
+        1px solid var(--border);
+
+    }
+
+
+    .share-label {
+
+      margin-right:
+        4px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      font-weight:
+        750;
+
+    }
+
+
+    .share-button {
+
+      min-height:
+        34px;
+
+      padding:
+        0 11px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        7px;
+
+      background:
+        #fff;
+
+      color:
+        var(--text);
+
+      font-size:
+        11px;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .share-button:hover {
+      background:
+        #f8fafc;
+    }
+
+
+    /* =================================================
+       SOURCES
+    ================================================= */
+
+    .sources-section {
+
+      margin-top:
+        35px;
+
+      padding-top:
+        22px;
+
+      border-top:
+        1px solid var(--border);
+
+    }
+
+
+    .section-title {
+
+      margin:
+        0 0 13px;
+
+      font-size:
+        18px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .sources-list {
+
+      margin:
+        0;
+
+      padding-left:
+        22px;
+
+      color:
+        #475569;
+
+      font-size:
+        12px;
+
+      line-height:
+        1.7;
+
+    }
+
+
+    .sources-list li {
+      margin-bottom:
+        7px;
+    }
+
+
+    .sources-list a {
+      color:
+        #1d4ed8;
+
+      overflow-wrap:
+        anywhere;
+
+    }
+
+
+    /* =================================================
+       TAGS
+    ================================================= */
+
+    .tags {
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        7px;
+
+      margin-top:
+        24px;
+
+    }
+
+
+    .tag {
+
+      padding:
+        5px 9px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        999px;
+
+      color:
+        #475569;
+
+      font-size:
+        10px;
+
+      font-weight:
+        650;
+
+    }
+
+
+    /* =================================================
+       FACT CHECK CARD
+    ================================================= */
+
+    .fact-card {
+
+      margin-top:
+        25px;
+
+      padding:
+        17px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        9px;
+
+      background:
+        #fafafa;
+
+    }
+
+
+    .fact-card-header {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        8px;
+
+    }
+
+
+    .fact-card-title {
+
+      font-size:
+        14px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .fact-badge {
+
+      padding:
+        4px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        #ecfdf3;
+
+      color:
+        #15803d;
+
+      font-size:
+        9px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .fact-card p {
+
+      margin:
+        0;
+
+      color:
+        #64748b;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.6;
+
+    }
+
+
+    /* =================================================
+       SIDEBAR
+    ================================================= */
+
+    .side-card {
+
+      margin-bottom:
+        16px;
+
+      padding:
+        16px;
+
+      background:
+        #fff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        9px;
+
+    }
+
+
+    .side-card-title {
+
+      margin:
+        0 0 12px;
+
+      font-size:
+        13px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .author-box {
+
+      display:
+        flex;
+
+      gap:
+        10px;
+
+      align-items:
+        center;
+
+    }
+
+
+    .author-avatar {
+
+      width:
+        40px;
+
+      height:
+        40px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      flex:
+        0 0 auto;
+
+      border-radius:
+        50%;
+
+      background:
+        #e2e8f0;
+
+      color:
+        #475569;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .author-name {
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .author-role {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+    }
+
+
+    .reading-box {
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      padding:
+        8px 0;
+
+      border-bottom:
+        1px solid #f1f5f9;
+
+      font-size:
+        11px;
+
+    }
+
+
+    .reading-box:last-child {
+      border-bottom:
+        0;
+    }
+
+
+    .reading-label {
+      color:
+        var(--muted);
+    }
+
+
+    .reading-value {
+      font-weight:
+        750;
+    }
+
+
+    /* =================================================
+       ERROR / LOADING
+    ================================================= */
+
+    .message {
+
+      max-width:
+        700px;
+
+      margin:
+        70px auto;
+
+      padding:
+        25px;
+
+      text-align:
+        center;
+
+      background:
+        #fff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        10px;
+
+    }
+
+
+    .message h1 {
+
+      margin:
+        0 0 8px;
+
+      font-size:
+        23px;
+
+    }
+
+
+    .message p {
+
+      margin:
+        0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+    }
+
+
+    /* =================================================
+       FOOTER
+    ================================================= */
+
+    footer {
+
+      margin-top:
+        50px;
+
+      padding:
+        25px 0;
+
+      border-top:
+        1px solid var(--border);
+
+      color:
+        var(--muted);
+
+      text-align:
+        center;
+
+      font-size:
+        10px;
+
+    }
+
+
+    /* =================================================
+       RESPONSIVE
+    ================================================= */
+
+    @media (max-width: 900px) {
+
+      .content-layout {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .side-card {
+        display:
+          none;
+      }
+
+      .article-body {
+        max-width:
+          var(--article-width);
+
+        margin:
+          0 auto;
+
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .header-inner {
+        width:
+          calc(100% - 20px);
+      }
+
+      .header-nav {
+        display:
+          none;
+      }
+
+      .page {
+        width:
+          calc(100% - 20px);
+
+        padding-top:
+          15px;
+
+      }
+
+      .article-header {
+        margin-bottom:
+          18px;
+
+      }
+
+      .article-title {
+        font-size:
+          30px;
+
+      }
+
+      .article-excerpt {
+        font-size:
+          16px;
+
+      }
+
+      .article-body {
+        padding:
+          20px;
+
+        font-size:
+          16px;
+
+        line-height:
+          1.8;
+
+      }
+
+      .hero {
+        border-radius:
+          8px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =================================================
+       HEADER
+  ================================================= -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <span class="brand-mark">
+          N
+        </span>
+
+        <span class="brand-name">
+          GBSBFORYOU
+        </span>
+
+      </a>
+
+
+      <nav class="header-nav">
+
+        <a href="index.html">
+          मुख्य
+        </a>
+
+        <a href="index.html#latest">
+          नवीनतम
+        </a>
+
+        <a href="index.html#analysis">
+          विश्लेषण
+        </a>
+
+        <a href="index.html#research">
+          शोध
+        </a>
+
+        <a href="index.html#fact-check">
+          फैक्ट चेक
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =================================================
+       PAGE
+  ================================================= -->
+
+  <main class="page">
+
+
+    <div class="breadcrumb">
+
+      <a href="index.html">
+        मुख्य पृष्ठ
+      </a>
+
+      <span>
+        /
+      </span>
+
+      <span id="breadcrumbCategory">
+        लेख
+      </span>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ARTICLE
+    ================================================= -->
+
+    <div id="articleContainer">
+
+
+      <div class="message">
+
+        <h1>
+          Article loading...
+        </h1>
+
+        <p>
+          कृपया प्रतीक्षा करें।
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
+
+    <footer>
+
+      ©
+      <span id="footerYear"></span>
+      GBSBFORYOU News & Analysis Platform
+
+    </footer>
+
+
+  </main>
+
+
+
+  <script>
+
+    /* =====================================================
+       UTILITIES
+    ===================================================== */
+
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+
+        .replace(
+          /</g,
+          "&lt;"
+        )
+
+        .replace(
+          />/g,
+          "&gt;"
+        )
+
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+
+        .replace(
+          /'/g,
+          "&#039;"
+        );
+
+    }
+
+
+
+    function escapeAttribute(value) {
+
+      return escapeHTML(
+        value
+      );
+
+    }
+
+
+
+    /* =====================================================
+       DATE FORMAT
+    ===================================================== */
+
+
+    function formatDate(value) {
+
+      if (!value) {
+        return "";
+      }
+
+
+      const date =
+        new Date(value);
+
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+
+        return value;
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        "hi-IN",
+        {
+          dateStyle: "long",
+          timeStyle: "short"
+        }
+      ).format(
+        date
+      );
+
+    }
+
+
+
+    /* =====================================================
+       READING TIME
+    ===================================================== */
+
+
+    function calculateReadingTime(
+      html
+    ) {
+
+      const temporary =
+        document.createElement(
+          "div"
+        );
+
+
+      temporary.innerHTML =
+        html || "";
+
+
+      const text =
+        temporary.textContent ||
+        temporary.innerText ||
+        "";
+
+
+      const words =
+        text
+          .trim()
+          .split(
+            /\s+/u
+          )
+          .filter(Boolean);
+
+
+      if (!words.length) {
+        return 1;
+      }
+
+
+      return Math.max(
+        1,
+        Math.ceil(
+          words.length / 200
+        )
+      );
+
+    }
+
+
+
+    /* =====================================================
+       GET ARTICLE FROM STORAGE
+    ===================================================== */
+
+
+    function getStoredArticle() {
+
+      const published =
+        localStorage.getItem(
+          "newsroom_published_article"
+        );
+
+
+      if (published) {
+
+        try {
+
+          return JSON.parse(
+            published
+          );
+
+        } catch (error) {
+
+          console.error(
+            "Published article parse error:",
+            error
+          );
+
+        }
+
+      }
+
+
+      const draft =
+        localStorage.getItem(
+          "newsroom_article_draft"
+        );
+
+
+      if (draft) {
+
+        try {
+
+          const article =
+            JSON.parse(
+              draft
+            );
+
+
+          /*
+           * Public page पर draft नहीं दिखाना।
+           */
+
+          if (
+            article.status ===
+            "published"
+          ) {
+
+            return article;
+
+          }
+
+        } catch (error) {
+
+          console.error(
+            "Draft parse error:",
+            error
+          );
+
+        }
+
+      }
+
+
+      return null;
+
+    }
+
+
+
+    /* =====================================================
+       URL SLUG
+    ===================================================== */
+
+
+    function getRequestedSlug() {
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      const querySlug =
+        params.get(
+          "slug"
+        );
+
+
+      if (querySlug) {
+        return querySl
