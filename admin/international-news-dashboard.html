@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d1b2a">
+<title>अंतरराष्ट्रीय समाचार डेस्क | GBSBFORYOU</title>
+<style>
+:root{--ink:#0d1b2a;--ink2:#1b2f45;--gold:#c8731a;--paper:#f7f5f0;--white:#fff;--muted:#667085;--line:#e4e7ec;--green:#1e7e5a;--amber:#9a6700;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans Devanagari","Nirmala UI",system-ui,sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.shell{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:238px;background:var(--ink);color:#f8fafc;padding:22px 14px;overflow:auto}.brand{padding:4px 10px 20px;border-bottom:1px solid #34465a}.brand strong{font-size:18px}.brand small{display:block;color:#b5c2d0;margin-top:6px;font-size:12px}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#98a7b8;margin:23px 10px 8px}.nav a{display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:8px;color:#d4dbe4;font-size:13px;margin:3px 0}.nav a.active,.nav a:hover{background:#26384b;color:#fff}.nav .ico{width:20px;text-align:center}.side-note{margin:24px 6px;padding:12px;border:1px solid #34465a;border-radius:9px;font-size:11px;color:#c5d0dc;line-height:1.6}
+.main{margin-left:238px;min-height:100vh}.top{height:62px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.top small{color:var(--muted)}.pill{border:1px solid var(--line);border-radius:30px;padding:7px 11px;font-size:11px;background:#fff}
+.content{max-width:1500px;margin:auto;padding:26px}.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}.page-head h1{font-size:25px;margin:0 0 7px}.page-head p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}.head-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:8px;padding:10px 13px;background:#fff;color:var(--ink);font-size:12px;font-weight:700}.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}.btn:focus,input:focus,select:focus,textarea:focus{outline:2px solid #dba56d;outline-offset:1px}
+.notice{padding:12px 14px;background:#fff8e8;border:1px solid #f2d79a;border-radius:9px;color:#674d12;font-size:12px;line-height:1.7;margin-bottom:18px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:20px}.stat{background:#fff;border:1px solid var(--line);border-radius:11px;padding:16px}.stat label{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:27px;margin:8px 0 4px}.stat small{font-size:10px;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,.8fr);gap:17px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:17px}.panel-head{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}.panel-head h2{font-size:14px;margin:0}.panel-head p{font-size:11px;color:var(--muted);margin:5px 0 0}.panel-body{padding:16px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}.toolbar input{flex:1;min-width:150px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field label{font-size:11px;font-weight:700;color:#475467}.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;border:1px solid #d0d5dd;border-radius:7px;padding:10px;background:#fff;font-size:12px;color:var(--ink)}.field textarea{min-height:75px;resize:vertical;line-height:1.6}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.source-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.source{border:1px solid var(--line);border-radius:9px;padding:12px;min-width:0}.source-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.source h3{font-size:13px;margin:0}.source p{font-size:11px;line-height:1.6;color:var(--muted);margin:8px 0}.source a{display:inline-block;font-size:11px;color:#175cd3;font-weight:700}.tag{display:inline-flex;align-items:center;border-radius:30px;padding:4px 7px;font-size:10px;font-weight:700;background:#eef2f6;color:#344054;white-space:nowrap}.tag.green{background:#e7f6ed;color:var(--green)}.tag.amber{background:#fff3d6;color:var(--amber)}.tag.red{background:#feeceb;color:var(--red)}
+.queue{display:flex;flex-direction:column;gap:10px}.item{border:1px solid var(--line);border-radius:9px;padding:13px}.item-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.item h3{font-size:13px;line-height:1.6;margin:0 0 6px}.item p{font-size:11px;color:var(--muted);line-height:1.7;margin:0 0 9px;overflow-wrap:anywhere}.item-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.item-actions{display:flex;flex-wrap:wrap;gap:6px}.item-actions button{font-size:10px;padding:6px 8px}.empty{padding:24px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7}.checklist{list-style:none;padding:0;margin:0}.checklist li{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid #f0f1f3;font-size:12px;line-height:1.6}.checklist li:last-child{border:0}.check{display:grid;place-items:center;flex:0 0 21px;height:21px;border-radius:50%;background:#e7f6ed;color:var(--green);font-size:11px;font-weight:bold}.muted{color:var(--muted)}.foot{font-size:10px;color:var(--muted);line-height:1.7;padding:8px 2px}.hidden{display:none!important}
+@media(max-width:1050px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}.sidebar{width:205px}.main{margin-left:205px}.content{padding:20px}}
+@media(max-width:700px){.sidebar{position:static;width:auto;padding:12px;display:block}.brand{padding:5px 8px 12px}.eyebrow,.side-note{display:none}.nav{display:flex;gap:5px;overflow-x:auto;padding-top:10px}.nav a{white-space:nowrap;padding:9px 10px;font-size:11px}.main{margin-left:0}.top{height:50px;padding:0 14px}.content{padding:15px}.page-head{display:block}.page-head h1{font-size:21px}.head-actions{margin-top:13px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:23px}.source-list{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}.panel-head{padding:13px}.panel-body{padding:12px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="brand"><strong>GBSBFORYOU</strong><small>अंतरराष्ट्रीय समाचार डेस्क</small></div>
+  <div class="eyebrow">RESEARCH WORKSPACE</div>
+  <nav class="nav">
+    <a class="active" href="#overview"><span class="ico">▦</span> डैशबोर्ड</a>
+    <a href="#sources"><span class="ico">◎</span> समाचार स्रोत</a>
+    <a href="#queue"><span class="ico">▤</span> रिसर्च कतार</a>
+    <a href="#verification"><span class="ico">✓</span> तथ्य-जाँच</a>
+    <a href="#add-report"><span class="ico">＋</span> रिपोर्ट जोड़ें</a>
+  </nav>
+  <div class="side-note">संपादकीय सिद्धांत<br><b>व्यक्ति नहीं, विषय केंद्र में।<br>आरोप नहीं, प्रमाण केंद्र में।</b><br><br>यह स्वतंत्र शोध डैशबोर्ड है; मुख्य न्यूज़ वेबसाइट के पेज और डेटा को नहीं बदलता।</div>
+</aside>
+<main class="main">
+  <header class="top"><div><b>International News Research</b> <small> / हिंदी</small></div><span class="pill" id="today">स्थानीय तारीख</span></header>
+  <div class="content" id="overview">
+    <div class="page-head">
+      <div><h1>अंतरराष्ट्रीय समाचार डैशबोर्ड</h1><p>समाचार खोजें, मूल स्रोत दर्ज करें, दावों को प्रमाण से अलग रखें और संपादकीय समीक्षा के लिए तैयार करें।</p></div>
+      <div class="head-actions"><button class="btn" id="exportBtn">डेटा निर्यात करें</button><button class="btn primary" onclick="document.querySelector('#add-report').scrollIntoView({behavior:'smooth'})">＋ रिपोर्ट जोड़ें</button></div>
+    </div>
+    <div class="notice"><b>डेटा की पारदर्शिता:</b> यह प्रारंभिक, ब्राउज़र-आधारित डैशबोर्ड है। समाचार स्वतः लाइव फ़ीड से नहीं आ रहे हैं। यहाँ जोड़े गए रिकॉर्ड इसी ब्राउज़र के localStorage में रहते हैं; दूसरे डिवाइस पर साझा करने और स्वचालित फ़ीड के लिए बाद में सुरक्षित बैकएंड/API जोड़ना होगा।</div>
+    <section class="stats">
+      <div class="stat"><label>कुल रिसर्च रिकॉर्ड</label><strong id="countAll">0</strong><small>इस ब्राउज़र में सहेजे गए</small></div>
+      <div class="stat"><label>सत्यापन लंबित</label><strong id="countPending">0</strong><small>अभी समीक्षा आवश्यक</small></div>
+      <div class="stat"><label>प्रमाण सहित सत्यापित</label><strong id="countVerified">0</strong><small>संपादकीय जाँच दर्ज</small></div>
+      <div class="stat"><label>प्रकाशन हेतु तैयार</label><strong id="countReady">0</strong><small>केवल मैनुअल स्थिति</small></div>
+    </section>
+    <div class="layout">
+      <div>
+        <section class="panel" id="queue">
+          <div class="panel-head"><div><h2>रिसर्च कतार</h2><p>हर रिकॉर्ड का मूल स्रोत और सत्यापन स्तर देखें।</p></div><span class="tag" id="queueCount">0 रिकॉर्ड</span></div>
+          <div class="panel-body">
+            <div class="toolbar"><input id="searchInput" placeholder="शीर्षक, देश या स्रोत खोजें…"><select id="statusFilter" aria-label="सत्यापन स्थिति"><option value="">सभी स्थितियाँ</option><option value="pending">सत्यापन लंबित</option><option value="checking">जाँच जारी</option><option value="verified">प्रमाण सहित सत्यापित</option><option value="disputed">विवादित / अपुष्ट</option><option value="ready">संपादकीय समीक्षा हेतु तैयार</option></select></div>
+            <div class="queue" id="queueList"><div class="empty">अभी कोई रिपोर्ट नहीं है। दाईं ओर दिए फ़ॉर्म से पहली रिपोर्ट जोड़ें।</div></div>
+          </div>
+        </section>
+        <section class="panel" id="sources">
+          <div class="panel-head"><div><h2>प्राथमिक अंतरराष्ट्रीय स्रोत</h2><p>मूल रिपोर्ट खोलें; हर दावे की स्वतंत्र पुष्टि अलग से करें।</p></div></div>
+          <div class="panel-body"><div class="source-list">
+            <article class="source"><div class="source-top"><h3>Reuters</h3><span class="tag green">समाचार एजेंसी</span></div><p>वैश्विक राजनीति, कूटनीति, अर्थव्यवस्था और संघर्ष।</p><a href="https://www.reuters.com/world/" target="_blank" rel="noopener noreferrer">World News ↗</a></article>
+            <article class="source"><div class="source-top"><h3>Associated Press</h3><span class="tag green">समाचार एजेंसी</span></div><p>विश्व समाचार, घटनास्थल रिपोर्टिंग और फोटो/वीडियो।</p><a href="https://apnews.com/world-news" target="_blank" rel="noopener noreferrer">World News ↗</a></article>
+            <article class="source"><div class="source-top"><h3>AFP</h3><span class="tag green">समाचार एजेंसी</span></div><p>अंतरराष्ट्रीय रिपोर्टिंग और तथ्य-जाँच संसाधन।</p><a href="https://www.afp.com/en/news-hub" target="_blank" rel="noopener noreferrer">News Hub ↗</a></article>
+            <article class="source"><div class="source-top"><h3>BBC News</h3><span class="tag">प्रसारक</span></div><p>समाचार के साथ ऐतिहासिक और क्षेत्रीय संदर्भ।</p><a href="https://www.bbc.com/news/world" target="_blank" rel="noopener noreferrer">World ↗</a></article>
+            <article class="source"><div class="source-top"><h3>Al Jazeera</h3><span class="tag">क्षेत्रीय दृष्टिकोण</span></div><p>पश्चिम एशिया सहित अंतरराष्ट्रीय घटनाओं की रिपोर्टिंग।</p><a href="https://www.aljazeera.com/news/" target="_blank" rel="noopener noreferrer">News ↗</a></article>
+            <article class="source"><div class="source-top"><h3>UN News</h3><span class="tag">आधिकारिक संस्था</span></div><p>संयुक्त राष्ट्र के बयान, बैठकें और मानवीय मामले।</p><a href="https://news.un.org/en/" target="_blank" rel="noopener noreferrer">UN News ↗</a></article>
+            <article class="source"><div class="source-top"><h3>Deutsche Welle</h3><span class="tag">प्रसारक</span></div><p>यूरोप और वैश्विक मामलों पर रिपोर्टिंग व विश्लेषण।</p><a href="https://www.dw.com/en/top-stories/s-9097" target="_blank" rel="noopener noreferrer">Top Stories ↗</a></article>
+            <article class="source"><div class="source-top"><h3>International Crisis Group</h3><span class="tag">शोध/विश्लेषण</span></div><p>संघर्षों के कारण, जोखिम और नीति संबंधी शोध।</p><a href="https://www.crisisgroup.org/" target="_blank" rel="noopener noreferrer">Research ↗</a></article>
+          </div></div>
+        </section>
+      </div>
+      <div>
+        <section class="panel" id="add-report">
+          <div class="panel-head"><div><h2>नई रिपोर्ट दर्ज करें</h2><p>मूल लिंक के बिना रिपोर्ट को सत्यापित न मानें।</p></div></div>
+          <div class="panel-body">
+            <form id="reportForm">
+              <div class="field"><label for="title">समाचार / दावे का शीर्षक *</label><input id="title" required maxlength="240" placeholder="क्या हुआ? संक्षिप्त शीर्षक"></div>
+              <div class="field-row"><div class="field"><label for="country">देश / क्षेत्र</label><input id="country" placeholder="जैसे: यूक्रेन"></div><div class="field"><label for="sourceName">स्रोत का नाम *</label><input id="sourceName" required placeholder="जैसे: Reuters"></div></div>
+              <div class="field"><label for="sourceUrl">मूल समाचार लिंक *</label><input id="sourceUrl" type="url" required placeholder="https://…"></div>
+              <div class="field"><label for="claim">मुख्य दावा / तथ्य</label><textarea id="claim" placeholder="स्रोत ने वास्तव में क्या कहा?"></textarea></div>
+              <div class="field"><label for="evidence">अतिरिक्त प्रमाण / दूसरा स्वतंत्र स्रोत</label><textarea id="evidence" placeholder="दूसरे स्रोत, आधिकारिक दस्तावेज़ या सत्यापन नोट"></textarea></div>
+              <div class="field-row"><div class="field"><label for="status">सत्यापन स्थिति</label><select id="status"><option value="pending">सत्यापन लंबित</option><option value="checking">जाँच जारी</option><option value="verified">प्रमाण सहित सत्यापित</option><option value="disputed">विवादित / अपुष्ट</option><option value="ready">संपादकीय समीक्षा हेतु तैयार</option></select></div><div class="field"><label for="kind">रिकॉर्ड का प्रकार</label><select id="kind"><option>समाचार</option><option>आधिकारिक बयान</option><option>दावा</option><option>विश्लेषण</option><option>प्राथमिक दस्तावेज़</option></select></div></div>
+              <button class="btn primary" type="submit" style="width:100%">रिपोर्ट सुरक्षित करें</button>
+            </form>
+          </div>
+        </section>
+        <section class="panel" id="verification">
+          <div class="panel-head"><div><h2>तथ्य-जाँच चेकलिस्ट</h2><p>प्रकाशन से पहले समीक्षा करें।</p></div></div>
+          <div class="panel-body"><ul class="checklist">
+            <li><span class="check">1</span><span>मूल स्रोत और प्रकाशन तिथि दर्ज हैं।</span></li>
+            <li><span class="check">2</span><span>कम-से-कम एक स्वतंत्र स्रोत से तुलना की गई है।</span></li>
+            <li><span class="check">3</span><span>तथ्य, आरोप, राय और अनुमान अलग रखे गए हैं।</span></li>
+            <li><span class="check">4</span><span>दूसरे पक्ष का उत्तर और आधिकारिक दस्तावेज़ खोजे गए हैं।</span></li>
+            <li><span class="check">5</span><span>फोटो/वीडियो की तारीख, स्थान और संदर्भ जाँचे गए हैं।</span></li>
+            <li><span class="check">6</span><span>AI सारांश को मूल स्रोत से मिलाकर मानव समीक्षा की गई है।</span></li>
+          </ul></div>
+        </section>
+        <div class="foot">स्थिति अपने-आप सत्यता प्रमाणित नहीं करती। “सत्यापित” केवल तभी चुनें जब जाँच के प्रमाण रिकॉर्ड में लिखे हों। यह पेज किसी समाचार एजेंसी से संबद्ध नहीं है।</div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+<script>
+(function(){
+ const KEY='gbsbforyou_international_news_records_v1';
+ const $=id=>document.getElementById(id);
+ let records=[];
+ try{records=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(records))records=[]}catch(e){records=[]}
+ const labels={pending:'सत्यापन लंबित',checking:'जाँच जारी',verified:'प्रमाण सहित सत्यापित',disputed:'विवादित / अपुष्ट',ready:'संपादकीय समीक्षा हेतु तैयार'};
+ const safe=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const validUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'||u.protocol==='http:'}catch(e){return false}};
+ function save(){localStorage.setItem(KEY,JSON.stringify(records));render()}
+ function dateText(d){try{return new Date(d).toLocaleString('hi-IN',{dateStyle:'medium',timeStyle:'short'})}catch(e){return d}}
+ function render(){
+   $('countAll').textContent=records.length;
+   $('countPending').textContent=records.filter(r=>['pending','checking','disputed'].includes(r.status)).length;
+   $('countVerified').textContent=records.filter(r=>r.status==='verified').length;
+   $('countReady').textContent=records.filter(r=>r.status==='ready').length;
+   const q=($('searchInput').value||'').toLowerCase().trim(),st=$('statusFilter').value;
+   const shown=records.filter(r=>(!st||r.status===st)&&(!q||[r.title,r.country,r.sourceName,r.claim,r.evidence].join(' ').toLowerCase().includes(q))).sort((a,b)=>b.createdAt-a.createdAt);
+   $('queueCount').textContent=shown.length+' रिकॉर्ड';
+   $('queueList').innerHTML=shown.length?shown.map(r=>'<article class="item"><div class="item-head"><h3>'+safe(r.title)+'</h3><span class="tag '+(r.status==='verified'?'green':r.status==='disputed'?'red':r.status==='ready'?'green':'amber')+'">'+safe(labels[r.status]||r.status)+'</span></div><p>'+safe(r.claim||'मुख्य दावा अभी दर्ज नहीं है।')+'</p><div class="item-meta"><span class="tag">'+safe(r.sourceName)+'</span><span class="tag">'+safe(r.country||'क्षेत्र निर्दिष्ट नहीं')+'</span><span class="tag">'+safe(r.kind)+'</span><span class="tag">'+safe(dateText(r.createdAt))+'</span></div>'+(r.evidence?'<p><b>सत्यापन नोट:</b> '+safe(r.evidence)+'</p>':'')+'<div class="item-actions"><a class="btn" href="'+safe(r.sourceUrl)+'" target="_blank" rel="noopener noreferrer">मूल स्रोत खोलें ↗</a><button class="btn" data-status="checking" data-id="'+r.id+'">जाँच जारी</button><button class="btn" data-status="verified" data-id="'+r.id+'">सत्यापित</button><button class="btn" data-status="disputed" data-id="'+r.id+'">विवादित</button><button class="btn" data-status="ready" data-id="'+r.id+'">समीक्षा हेतु</button><button class="btn" data-delete="'+r.id+'">हटाएँ</button></div></article>').join(''):'<div class="empty">इस फ़िल्टर में कोई रिकॉर्ड नहीं मिला। रिपोर्ट जोड़ें या खोज बदलें।</div>';
+ }
+ $('reportForm').addEventListener('submit',e=>{
+   e.preventDefault();
+   const sourceUrl=$('sourceUrl').value.trim();
+   if(!validUrl(sourceUrl)){alert('कृपया http या https वाला वैध मूल लिंक दर्ज करें।');return}
+   const r={id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),title:$('title').value.trim(),country:$('country').value.trim(),sourceName:$('sourceName').value.trim(),sourceUrl,claim:$('claim').value.trim(),evidence:$('evidence').value.trim(),status:$('status').value,kind:$('kind').value,createdAt:Date.now()};
+   records.push(r);save();e.target.reset();$('status').value='pending';$('queue').scrollIntoView({behavior:'smooth'}); 
+ });
+ $('queueList').addEventListener('click',e=>{
+   const b=e.target.closest('button');if(!b)return;
+   if(b.dataset.id){const r=records.find(x=>x.id===b.dataset.id);if(r){r.status=b.dataset.status;save()}}
+   if(b.dataset.delete&&confirm('क्या यह रिकॉर्ड हटाना चाहते हैं?')){records=records.filter(x=>x.id!==b.dataset.delete);save()}
+ });
+ $('searchInput').addEventListener('input',render);$('statusFilter').addEventListener('change',render);
+ $('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='gbsbforyou-international-news-records.json';a.click();URL.revokeObjectURL(a.href)});
+ $('today').textContent=new Date().toLocaleDateString('hi-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+ render();
+})();
+</script>
+</body>
+</html>
